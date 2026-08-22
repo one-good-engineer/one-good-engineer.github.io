@@ -1,0 +1,32 @@
+# AptLayer
+
+> Independent AI product engineering studio in Kraków, Poland. AptLayer builds production AI features, MCP servers, agentic workflows and agent-ready products for software companies and operational teams.
+
+Primary language: English. Polish version: https://aptlayer.github.io/pl/
+Contact: gwizdala.kr@gmail.com
+
+## Services
+
+- AI feature implementation for existing SaaS and software products
+- Model Context Protocol (MCP) server design and implementation
+- Agent-ready product engineering and discoverability
+- Agentic workflow architecture, orchestration and human approval
+- LLM evaluation, model routing, caching and cost optimization
+- AI product, architecture and agent-readiness audits
+- AI-native applications built from zero
+- Agentic engineering workflow design for software teams
+
+## Selected work
+
+- Agent Rynku: production AI equity analyst for Warsaw Stock Exchange filings, with one MCP data layer serving in-product chat, Telegram and user-connected clients. https://agentrynku.pl/
+- Let Agents In: deterministic agent-readiness audits measuring discovery, registration, credential provisioning and integration. https://letagentsin.com/
+- Meet Live Assist: local-first meeting assistant delivered as a Chrome extension and local MCP server. https://meet-live-assist.github.io/
+- Open-source MCP portfolio: payment gateways, governed content editing, voice, developer integration and agent payments. https://github.com/krystiangw
+
+## Studio
+
+AptLayer is founder-led by Krystian Gwizdała, an AI engineer and full-stack product developer with more than ten years of experience. Engineering portfolio: https://krystian-gwizdala.github.io/
+
+## Engagement model
+
+Direct access to the senior engineer designing and building the system. Work typically starts with a focused audit or sprint, continues through a production implementation and can extend into measurement and optimization.
