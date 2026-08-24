@@ -34,6 +34,9 @@ export const metadata: Metadata = {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",
   },
+  verification: {
+    google: "AivhVutlgdzwPhOT26aWe5RxRWJp5YqixFXJ6ie48nM",
+  },
   openGraph: {
     type: "website",
     siteName: "One Good Engineer & Co.",
