@@ -4,7 +4,7 @@ import LandingPage from "./LandingPage";
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: "Production AI & Agent Systems",
+  title: "Software delivery without a software house",
   alternates: {
     canonical: "/",
     languages: { en: "/", pl: "/pl/", "x-default": "/" },

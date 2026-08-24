@@ -1,8 +1,8 @@
-# AptLayer
+# One Good Engineer & Co.
 
-Production AI & Agent Systems.
+Software delivery without a software house: one senior engineer running a crew of AI agents.
 
-A bilingual studio site for AptLayer, statically generated for GitHub Pages.
+The bilingual studio site, statically generated for GitHub Pages. English at `/`, Polish at `/pl/`.
 
 ## Development
 
@@ -18,3 +18,14 @@ npm run build:pages
 ```
 
 The GitHub Actions workflow publishes `dist/client` to GitHub Pages.
+
+## Checks
+
+```bash
+npm run lint
+npm test          # builds, then asserts the rendered output
+```
+
+The test suite guards the things that regress silently: every case study points at a screenshot
+that exists, the delivery diagram stays honest, the copy stays free of em dashes, and the Open
+Graph dimensions stay correct.

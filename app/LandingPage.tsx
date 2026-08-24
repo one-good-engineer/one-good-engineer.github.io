@@ -6,251 +6,323 @@ const copy = {
       ["Services", "#services"],
       ["Work", "#work"],
       ["Method", "#method"],
-      ["Studio", "#studio"],
+      ["About", "#studio"],
     ],
     langHref: "/pl/",
     langLabel: "PL",
-    eyebrow: "Independent AI engineering studio · Kraków / remote",
-    heroA: "Production AI for software",
-    heroB: "that needs to do real work.",
+    eyebrow: "One engineer, a crew of agents · Kraków, working remotely",
+    heroA: "You don't need a software house.",
+    heroB: "You need one engineer running a crew of agents.",
     intro:
-      "We add capable AI to existing products, build agent-ready interfaces and ship new systems from first architecture to measured production.",
-    primaryCta: "Discuss a build",
-    secondaryCta: "Explore the work",
-    chips: ["AI product engineering", "MCP & agent interfaces", "Reliable agent workflows"],
-    consoleTitle: "agent execution / live trace",
-    proof: [
-      ["10+ years", "shipping software products"],
-      ["Multiple", "MCP servers delivered"],
-      ["End to end", "architecture through operations"],
-      ["One owner", "senior attention throughout"],
+      "I'm Krystian. Ten years of shipping product software, and now a crew of AI agents doing the volume while I stay accountable for what lands: the architecture, the review, the tests and the way it behaves in production. Vibe coding gets you a prototype. This gets you something you can run.",
+    primaryCta: "Send me the project",
+    secondaryCta: "See what I shipped",
+    chips: ["Delivery run by agents", "Senior review on every change", "No team to keep fed"],
+    consoleTitle: "how a change reaches production",
+    consoleBadge: "the loop",
+    trace: [
+      ["00", "brief", "scope and acceptance agreed"],
+      ["01", "agents", "implementation, migrations, tests"],
+      ["02", "review", "independent model reads the diff"],
+      ["03", "human", "I read it, and I sign it"],
+      ["04", "gate", "tests, lint and build green"],
+      ["05", "ship", "repo, runbook, handover"],
     ],
-    servicesKicker: "What we build",
-    servicesTitle: "A focused layer of intelligence. Not an AI-shaped detour.",
+    metrics: [
+      ["review", "every diff, twice"],
+      ["you get", "the repo and the runbook"],
+      ["lock-in", "none"],
+    ],
+    proof: [
+      ["4", "products live in public, all built solo"],
+      ["4", "open-source MCP servers on GitHub"],
+      ["177", "products measured by my agent-readiness scanner"],
+      ["10+", "years shipping software before the agents existed"],
+    ],
+    servicesKicker: "What I build",
+    servicesTitle: "Four kinds of work, and all of them end in production.",
     servicesIntro:
-      "Every engagement starts with a real product or workflow and ends with something observable, testable and useful in production.",
+      "Every engagement starts from a product or a process that already exists, and ends with something you can observe, test and hand to your own team.",
     services: [
       {
         n: "01",
-        title: "AI inside your product",
-        body: "Copilots, decision support, retrieval and generative features designed around the way users already work.",
-        tags: ["Product UX", "RAG", "Tool use", "Human review"],
+        title: "Your product, end to end",
+        body: "Architecture, implementation, tests and deployment for a web product or an API. The build a software house quotes in months, run by one engineer and a crew of agents.",
+        tags: ["Architecture", "Full stack", "CI and tests", "Deployment"],
       },
       {
         n: "02",
-        title: "MCP & agent-ready products",
-        body: "Secure MCP servers and agent interfaces that expose the right tools, data and workflows — with auth, scopes, docs and testing included.",
-        tags: ["MCP", "OAuth", "Tool design", "Discoverability"],
+        title: "AI inside an existing product",
+        body: "Copilots, decision support, retrieval and generative features shaped around the way your users already work.",
+        tags: ["Product UX", "RAG", "Tool use", "Human review"],
       },
       {
         n: "03",
-        title: "Agentic workflows",
-        body: "Multi-step operational systems with approvals, recovery paths, audit trails and clear boundaries between models and deterministic code.",
-        tags: ["Orchestration", "Evals", "Guardrails", "Telemetry"],
+        title: "MCP and agent-ready products",
+        body: "Secure MCP servers and agent interfaces that expose the right tools, data and workflows, with authorization, scopes, documentation and tests in the same delivery.",
+        tags: ["MCP", "OAuth", "Tool design", "Discoverability"],
       },
       {
         n: "04",
-        title: "AI architecture & economics",
-        body: "Model routing, caching, context design, quality evaluation and cost attribution — optimized per successful task, not per token alone.",
-        tags: ["Routing", "Caching", "Fallbacks", "AI FinOps"],
+        title: "Agent workflows and what they cost",
+        body: "Multi-step operational systems with approvals, recovery paths and audit trails, tuned against the cost of a finished task rather than the price of a token.",
+        tags: ["Orchestration", "Evals", "Guardrails", "AI FinOps"],
       },
     ],
     signatureLabel: "Signature engagement",
     signatureTitle: "Agent-Ready Product Sprint",
     signatureBody:
-      "Turn an existing SaaS or API into a product agents can discover, understand and use. The sprint covers interface design, MCP implementation, authentication, integration tests, machine-readable documentation and a reproducible readiness audit.",
+      "I take an existing SaaS or API and get it to the state where an agent can find it, understand it and use it. The sprint covers interface design, the MCP implementation, authentication, integration tests, machine-readable documentation and a readiness audit you can re-run yourself afterwards.",
     signatureItems: ["Architecture", "Working implementation", "Agent test harness", "Launch plan"],
     signatureCta: "Ask about the sprint",
-    workKicker: "Selected systems",
-    workTitle: "Evidence over adjectives.",
+    workKicker: "Live products",
+    workTitle: "Four products, one engineer, all of them public.",
     workIntro:
-      "Public products and engineering work across finance, collaboration, developer tooling and agent infrastructure.",
+      "This is the whole argument. One person, working this way, shipped all four. Open them and check.",
     cases: [
       {
         type: "AI product · MCP · finance",
         title: "Agent Rynku",
-        body: "A production AI analyst for Warsaw Stock Exchange filings. One MCP data layer powers in-product chat, Telegram and user-connected clients.",
-        result: "Regulatory filings analyzed within minutes",
+        body: "A production AI analyst for Warsaw Stock Exchange filings. One MCP data layer serves the in-product chat, a Telegram bot and any MCP client a user connects.",
+        result: "One MCP server exposing 92 tools over exchange data",
         href: "https://agentrynku.pl/",
+        img: "/work/agent-rynku.webp",
+        alt: "Agent Rynku home page: an AI analyst for the Warsaw Stock Exchange with a sample Telegram alert",
       },
       {
-        type: "Agent audit · research platform",
+        type: "Agent readiness · research",
         title: "Let Agents In",
-        body: "A deterministic, reproducible audit of whether agents can find, register with and integrate a software product — backed by real agent runs.",
-        result: "From discovery to first successful integration",
+        body: "A reproducible audit of whether an agent can find a product, read its docs, create an account, get a key and make the first API call without a person helping.",
+        result: "177 products measured, 79 with a signup an agent cannot render",
         href: "https://letagentsin.com/",
+        img: "/work/let-agents-in.webp",
+        alt: "Let Agents In home page: a scanner that measures whether an AI agent can integrate a product",
       },
       {
-        type: "Local AI · browser extension · MCP",
+        type: "Local AI · extension · MCP",
         title: "Meet Live Assist",
-        body: "A local-first assistant that follows live meeting captions and helps inside the call, while keeping stored conversation data on the user’s machine.",
-        result: "Chrome extension + local MCP server",
+        body: "A local-first assistant that reads live meeting captions and answers in a side panel while the call is still running. The transcript stays a file on your own disk.",
+        result: "Chrome extension plus a local MCP server",
         href: "https://meet-live-assist.github.io/",
+        img: "/work/meet-live-assist.webp",
+        alt: "Meet Live Assist home page: a live in-call assistant for Google Meet and Zoom",
+      },
+      {
+        type: "Agent infrastructure · hosted",
+        title: "Muster",
+        body: "Shared operational memory for agents that outlive their own sessions: who is on duty, who owns what, what rotted and what needs a human. An agent registers itself with one HTTP call.",
+        result: "Signup is one curl, no account and no CAPTCHA",
+        href: "https://musterboard.dev/",
+        img: "/work/muster.webp",
+        alt: "Muster home page: shared operational memory for long-lived AI agents",
       },
     ],
     methodKicker: "How the work runs",
-    methodTitle: "Fast where speed helps. Deliberate where failure costs.",
+    methodTitle: "Agents do the volume. A senior engineer stays accountable.",
     method: [
-      ["Frame", "Define the user outcome, baseline, constraints and acceptance evidence before choosing a model."],
-      ["Build", "Deliver the thinnest complete path through product, data, tools and interface — then expand from evidence."],
-      ["Prove", "Run deterministic tests and model evaluations. Measure quality, latency, cost and failure recovery."],
-      ["Operate", "Ship observability, fallbacks and documentation with the feature. Improve it from real usage."],
+      ["Frame", "We agree the outcome, the constraints and what evidence counts as done. This step is never handed to a model."],
+      ["Run", "Agents write the implementation, the migrations and the test suites. I decide what gets built, in what order, and what gets thrown away."],
+      ["Review", "Every change is read twice: by an independent model that never saw the reasoning, and then by me, because a model rationalises its own work."],
+      ["Hand over", "Observability, fallbacks and documentation ship with the feature. You end up with the repository, the tests and the runbook, not a dependency on me."],
     ],
-    principlesTitle: "Production means the unglamorous parts are included.",
+    principlesTitle: "The parts vibe coding skips are the parts you are paying for.",
     principles: [
-      "Human approval where consequences matter",
-      "Deterministic code around probabilistic models",
-      "Model and vendor independence where practical",
-      "Privacy, least privilege and auditable tool access",
-      "Evals tied to user outcomes",
-      "Cost, latency and failure telemetry from day one",
+      "Nothing ships that a human has not read",
+      "Tests that can actually fail, not tests that describe the code",
+      "You own the repository, the history and the runbook",
+      "A human approves anything with consequences",
+      "Deterministic code wrapped around probabilistic models",
+      "Cost, latency and failure telemetry from the first day",
     ],
-    studioKicker: "The studio",
-    studioTitle: "Senior engineering, without the handoffs.",
+    studioFacts: [
+      ["Where", "Kraków, working remotely across the EU"],
+      ["Languages", "Polish and English"],
+      ["Experience", "10+ years in product engineering"],
+      ["Contact", "Straight to my inbox, no form and no funnel"],
+    ],
+    studioKicker: "The obvious objection",
+    studioTitle: "One person is the whole supplier. Here is why that is safe.",
     studioBody:
-      "AptLayer is an independent, founder-led studio. Krystian Gwizdała brings more than a decade of full-stack product engineering and hands-on work across AI agents, MCP, developer tooling and production SaaS. Clients work directly with the person designing and building the system; specialist collaborators can be added when the scope calls for them.",
+      "Everything lives in a repository you own, with the history, the tests and a runbook written for whoever comes next. No in-house framework, no hosting that only I understand, no month of archaeology if you replace me. Behind that sits more than ten years of full-stack product engineering, with the recent years spent on AI agents, MCP and production SaaS. When a scope genuinely needs a second specialist, I bring one in and tell you who it is.",
     studioLinks: [
-      ["View engineering portfolio", "https://krystian-gwizdala.github.io/"],
-      ["Explore GitHub", "https://github.com/krystiangw"],
+      ["Engineering portfolio", "https://krystian-gwizdala.github.io/"],
+      ["Code on GitHub", "https://github.com/krystiangw"],
     ],
-    finalKicker: "Have a real workflow in mind?",
-    finalTitle: "Let’s find the smallest AI system worth putting into production.",
+    finalKicker: "Got a quote you are not happy with?",
+    finalTitle: "Let's find the smallest version of your project worth building.",
     finalBody:
-      "Share the product, the bottleneck and what a successful outcome would change. You’ll get a direct, technical response — not a sales sequence.",
-    finalCta: "hello@aptlayer — coming soon",
-    emailCta: "Email the studio",
-    footer: "Production AI · MCP · Agent systems",
+      "Tell me the project, the deadline and what you were quoted. You get a technical answer from me, not a sales sequence.",
+    emailCta: "Write to me",
+    footer: "One engineer · a crew of agents · Kraków",
   },
   pl: {
     nav: [
       ["Usługi", "#services"],
       ["Realizacje", "#work"],
       ["Metoda", "#method"],
-      ["Studio", "#studio"],
+      ["O mnie", "#studio"],
     ],
     langHref: "/",
     langLabel: "EN",
-    eyebrow: "Niezależne studio AI · Kraków / zdalnie",
-    heroA: "Produkcyjne AI dla aplikacji,",
-    heroB: "które wykonują prawdziwą pracę.",
+    eyebrow: "Jeden inżynier, załoga agentów · Kraków, zdalnie",
+    heroA: "Nie potrzebujesz software house'u.",
+    heroB: "Potrzebujesz jednego inżyniera, który prowadzi załogę agentów.",
     intro:
-      "Dodajemy użyteczne AI do istniejących produktów, tworzymy interfejsy dla agentów i dowozimy nowe systemy — od architektury po mierzalną produkcję.",
-    primaryCta: "Porozmawiajmy o wdrożeniu",
-    secondaryCta: "Zobacz realizacje",
-    chips: ["AI w produktach", "MCP i interfejsy agentowe", "Niezawodne workflow agentowe"],
-    consoleTitle: "wykonanie agenta / ślad na żywo",
-    proof: [
-      ["10+ lat", "tworzenia produktów cyfrowych"],
-      ["Wiele", "wdrożonych serwerów MCP"],
-      ["End to end", "od architektury po utrzymanie"],
-      ["Jeden owner", "senior na każdym etapie"],
+      "Jestem Krystian. Dziesięć lat dowożenia oprogramowania produktowego, a teraz załoga agentów AI robi objętość, podczas gdy ja odpowiadam za to, co ląduje: za architekturę, review, testy i zachowanie na produkcji. Vibe coding daje prototyp. To daje coś, co da się uruchomić.",
+    primaryCta: "Opisz mi projekt",
+    secondaryCta: "Zobacz, co dowiozłem",
+    chips: ["Dostawa prowadzona agentami", "Senior sprawdza każdą zmianę", "Bez zespołu do utrzymania"],
+    consoleTitle: "jak zmiana trafia na produkcję",
+    consoleBadge: "pętla",
+    trace: [
+      ["00", "brief", "ustalony zakres i odbiór"],
+      ["01", "agenty", "implementacja, migracje, testy"],
+      ["02", "review", "niezależny model czyta diff"],
+      ["03", "człowiek", "czytam i podpisuję"],
+      ["04", "bramka", "testy, lint i build na zielono"],
+      ["05", "wydanie", "repo, runbook, przekazanie"],
     ],
-    servicesKicker: "Co budujemy",
-    servicesTitle: "Precyzyjna warstwa inteligencji. Bez objazdu przez modę na AI.",
+    metrics: [
+      ["review", "każdy diff, dwa razy"],
+      ["dostajesz", "repo i runbook"],
+      ["lock-in", "brak"],
+    ],
+    proof: [
+      ["4", "produkty działające publicznie, wszystkie zbudowane solo"],
+      ["4", "serwery MCP z otwartym kodem na GitHubie"],
+      ["177", "produktów zmierzonych moim skanerem gotowości na agentów"],
+      ["10+", "lat dowożenia oprogramowania, zanim pojawiły się agenty"],
+    ],
+    servicesKicker: "Co buduję",
+    servicesTitle: "Cztery rodzaje pracy, każdy kończy się na produkcji.",
     servicesIntro:
-      "Każda współpraca zaczyna się od realnego produktu lub procesu, a kończy rozwiązaniem, które można obserwować, testować i wykorzystać na produkcji.",
+      "Każda współpraca zaczyna się od produktu albo procesu, który już istnieje, a kończy czymś, co możesz obserwować, testować i przekazać własnemu zespołowi.",
     services: [
       {
         n: "01",
-        title: "AI wewnątrz produktu",
-        body: "Copiloty, wsparcie decyzji, wyszukiwanie i funkcje generatywne zaprojektowane wokół sposobu, w jaki użytkownicy już pracują.",
-        tags: ["Product UX", "RAG", "Narzędzia", "Kontrola człowieka"],
+        title: "Twój produkt, od początku do końca",
+        body: "Architektura, wdrożenie, testy i deployment produktu webowego albo API. To, co software house wycenia w miesiącach, prowadzone przez jednego inżyniera i załogę agentów.",
+        tags: ["Architektura", "Full stack", "CI i testy", "Deployment"],
       },
       {
         n: "02",
-        title: "MCP i produkty gotowe na agentów",
-        body: "Bezpieczne serwery MCP i interfejsy agentowe udostępniające właściwe dane, narzędzia i procesy — wraz z autoryzacją, dokumentacją i testami.",
-        tags: ["MCP", "OAuth", "Projekt narzędzi", "Widoczność"],
+        title: "AI w istniejącym produkcie",
+        body: "Copiloty, wsparcie decyzji, wyszukiwanie i funkcje generatywne zaprojektowane pod to, jak Twoi użytkownicy już pracują.",
+        tags: ["Product UX", "RAG", "Narzędzia", "Kontrola człowieka"],
       },
       {
         n: "03",
-        title: "Workflow agentowe",
-        body: "Wieloetapowe systemy operacyjne z akceptacją, ścieżkami awaryjnymi, audytem i czytelną granicą między modelem a deterministycznym kodem.",
-        tags: ["Orkiestracja", "Ewaluacje", "Guardrails", "Telemetria"],
+        title: "MCP i produkty gotowe na agentów",
+        body: "Bezpieczne serwery MCP i interfejsy agentowe udostępniające właściwe narzędzia, dane i procesy, razem z autoryzacją, zakresami uprawnień, dokumentacją i testami w tej samej dostawie.",
+        tags: ["MCP", "OAuth", "Projekt narzędzi", "Widoczność"],
       },
       {
         n: "04",
-        title: "Architektura i ekonomia AI",
-        body: "Routing modeli, caching, projektowanie kontekstu, ocena jakości i przypisywanie kosztów — optymalizacja udanego zadania, nie tylko tokena.",
-        tags: ["Routing", "Caching", "Fallbacki", "AI FinOps"],
+        title: "Workflow agentowe i ich koszt",
+        body: "Wieloetapowe systemy operacyjne z akceptacją, ścieżkami odzyskiwania i audytem, strojone pod koszt skończonego zadania, a nie pod cenę tokena.",
+        tags: ["Orkiestracja", "Ewaluacje", "Guardrails", "AI FinOps"],
       },
     ],
     signatureLabel: "Flagowa usługa",
     signatureTitle: "Agent-Ready Product Sprint",
     signatureBody:
-      "Przygotowanie istniejącego SaaS lub API tak, aby agenci mogli go znaleźć, zrozumieć i użyć. Sprint obejmuje projekt interfejsu, wdrożenie MCP, autoryzację, testy integracyjne, dokumentację maszynową i powtarzalny audyt gotowości.",
-    signatureItems: ["Architektura", "Działające wdrożenie", "Harness testowy", "Plan uruchomienia"],
+      "Biorę istniejący SaaS albo API i doprowadzam je do stanu, w którym agent potrafi je znaleźć, zrozumieć i użyć. Sprint obejmuje projekt interfejsu, wdrożenie MCP, uwierzytelnianie, testy integracyjne, dokumentację czytelną dla maszyn i audyt gotowości, który potem możesz powtórzyć sam.",
+    signatureItems: ["Architektura", "Działające wdrożenie", "Harness testowy dla agentów", "Plan uruchomienia"],
     signatureCta: "Zapytaj o sprint",
-    workKicker: "Wybrane systemy",
-    workTitle: "Dowody zamiast przymiotników.",
+    workKicker: "Produkty na żywo",
+    workTitle: "Cztery produkty, jeden inżynier, wszystkie publiczne.",
     workIntro:
-      "Publiczne produkty i prace inżynierskie z obszaru finansów, współpracy, narzędzi developerskich i infrastruktury agentowej.",
+      "To jest cały argument. Jedna osoba, pracując w ten sposób, dowiozła wszystkie cztery. Otwórz i sprawdź.",
     cases: [
       {
         type: "Produkt AI · MCP · finanse",
         title: "Agent Rynku",
-        body: "Produkcyjny analityk AI dla GPW. Jedna warstwa danych MCP obsługuje chat w produkcie, Telegram i klientów podłączających własne narzędzia.",
-        result: "Raporty giełdowe analizowane w kilka minut",
+        body: "Produkcyjny analityk AI dla raportów spółek z GPW. Jedna warstwa danych MCP obsługuje czat w produkcie, bota na Telegramie i dowolnego klienta MCP, którego podłączy użytkownik.",
+        result: "Jeden serwer MCP z 92 narzędziami nad danymi giełdowymi",
         href: "https://agentrynku.pl/",
+        img: "/work/agent-rynku.webp",
+        alt: "Strona Agent Rynku: analityk AI dla GPW z przykładowym alertem na Telegramie",
       },
       {
-        type: "Audyt agentów · platforma badawcza",
+        type: "Gotowość na agentów · badania",
         title: "Let Agents In",
-        body: "Deterministyczny i powtarzalny audyt tego, czy agent potrafi znaleźć produkt, zarejestrować się i wykonać pierwszą integrację — wsparty realnymi przebiegami agentów.",
-        result: "Od znalezienia do pierwszej integracji",
+        body: "Powtarzalny audyt tego, czy agent potrafi znaleźć produkt, przeczytać dokumentację, założyć konto, dostać klucz i wykonać pierwsze wywołanie API bez pomocy człowieka.",
+        result: "177 zmierzonych produktów, 79 z rejestracją, której agent nie wyrenderuje",
         href: "https://letagentsin.com/",
+        img: "/work/let-agents-in.webp",
+        alt: "Strona Let Agents In: skaner mierzący, czy agent AI zintegruje się z produktem",
       },
       {
         type: "Lokalne AI · rozszerzenie · MCP",
         title: "Meet Live Assist",
-        body: "Lokalny asystent śledzący napisy spotkania i pomagający w trakcie rozmowy, z danymi przechowywanymi na komputerze użytkownika.",
-        result: "Rozszerzenie Chrome + lokalny serwer MCP",
+        body: "Lokalny asystent, który czyta napisy ze spotkania i odpowiada w panelu bocznym, kiedy rozmowa jeszcze trwa. Transkrypcja zostaje plikiem na Twoim dysku.",
+        result: "Rozszerzenie Chrome plus lokalny serwer MCP",
         href: "https://meet-live-assist.github.io/",
+        img: "/work/meet-live-assist.webp",
+        alt: "Strona Meet Live Assist: asystent działający na żywo w rozmowie na Google Meet i Zoom",
+      },
+      {
+        type: "Infrastruktura agentowa · hostowane",
+        title: "Muster",
+        body: "Wspólna pamięć operacyjna dla agentów, które przeżywają własne sesje: kto jest na służbie, kto co ma, co zgniło i co wymaga człowieka. Agent rejestruje się jednym wywołaniem HTTP.",
+        result: "Rejestracja to jeden curl, bez konta i bez CAPTCHA",
+        href: "https://musterboard.dev/",
+        img: "/work/muster.webp",
+        alt: "Strona Muster: wspólna pamięć operacyjna dla długo żyjących agentów AI",
       },
     ],
-    methodKicker: "Jak pracujemy",
-    methodTitle: "Szybko tam, gdzie szybkość pomaga. Rozważnie tam, gdzie błąd kosztuje.",
+    methodKicker: "Jak to przebiega",
+    methodTitle: "Agenty robią objętość. Odpowiedzialność zostaje po stronie seniora.",
     method: [
-      ["Ramy", "Definiujemy wynik użytkownika, punkt odniesienia, ograniczenia i kryteria akceptacji przed wyborem modelu."],
-      ["Budowa", "Dostarczamy najcieńszą kompletną ścieżkę przez produkt, dane, narzędzia i interfejs, a potem rozwijamy ją na podstawie dowodów."],
-      ["Weryfikacja", "Uruchamiamy testy deterministyczne i ewaluacje modeli. Mierzymy jakość, opóźnienie, koszt i obsługę błędów."],
-      ["Produkcja", "Wraz z funkcją wdrażamy obserwowalność, fallbacki i dokumentację. Ulepszamy system na podstawie realnego użycia."],
+      ["Ramy", "Ustalamy wynik, ograniczenia i to, jaki dowód oznacza koniec. Tego etapu nigdy nie oddaję modelowi."],
+      ["Prowadzenie", "Agenty piszą implementację, migracje i zestawy testów. Ja decyduję, co powstaje, w jakiej kolejności i co idzie do kosza."],
+      ["Review", "Każda zmiana jest czytana dwa razy: przez niezależny model, który nie widział rozumowania, i przeze mnie, bo model racjonalizuje własną robotę."],
+      ["Przekazanie", "Obserwowalność, fallbacki i dokumentacja jadą razem z funkcją. Zostajesz z repozytorium, testami i runbookiem, a nie z zależnością ode mnie."],
     ],
-    principlesTitle: "Produkcja oznacza, że mniej efektowne elementy również są w zakresie.",
+    principlesTitle: "To, co vibe coding pomija, jest dokładnie tym, za co płacisz.",
     principles: [
-      "Akceptacja człowieka tam, gdzie konsekwencje mają znaczenie",
-      "Deterministyczny kod wokół probabilistycznych modeli",
-      "Niezależność od modelu i dostawcy tam, gdzie ma sens",
-      "Prywatność, minimalne uprawnienia i audyt dostępu do narzędzi",
-      "Ewaluacje powiązane z wynikiem użytkownika",
-      "Koszt, opóźnienie i błędy mierzone od pierwszego dnia",
+      "Nic nie idzie na produkcję bez przeczytania przez człowieka",
+      "Testy, które naprawdę mogą się wywalić, a nie opisujące kod",
+      "Repozytorium, historia i runbook należą do Ciebie",
+      "Człowiek akceptuje wszystko, co niesie konsekwencje",
+      "Deterministyczny kod owinięty wokół probabilistycznych modeli",
+      "Telemetria kosztu, opóźnienia i błędów od pierwszego dnia",
     ],
-    studioKicker: "Studio",
-    studioTitle: "Doświadczona inżynieria bez przekazywania projektu między działami.",
+    studioFacts: [
+      ["Gdzie", "Kraków, praca zdalna w całej UE"],
+      ["Języki", "polski i angielski"],
+      ["Doświadczenie", "10+ lat w inżynierii produktowej"],
+      ["Kontakt", "prosto na moją skrzynkę, bez formularza i bez lejka"],
+    ],
+    studioKicker: "Oczywisty zarzut",
+    studioTitle: "Jedna osoba jest całym dostawcą. Oto dlaczego to jest bezpieczne.",
     studioBody:
-      "AptLayer to niezależne studio prowadzone przez założyciela. Krystian Gwizdała wnosi ponad dekadę doświadczenia w tworzeniu produktów full-stack oraz praktykę w AI agents, MCP, narzędziach developerskich i produkcyjnych systemach SaaS. Klient pracuje bezpośrednio z osobą projektującą i budującą system; gdy zakres tego wymaga, dołączają wyspecjalizowani współpracownicy.",
+      "Wszystko żyje w repozytorium, które należy do Ciebie, razem z historią, testami i runbookiem napisanym dla tego, kto przyjdzie po mnie. Żadnego autorskiego frameworka, żadnego hostingu, który rozumiem tylko ja, żadnego miesiąca archeologii, jeśli mnie wymienisz. Stoi za tym ponad dekada inżynierii produktowej full-stack, a ostatnie lata poszły w agentów AI, MCP i produkcyjny SaaS. Kiedy zakres naprawdę wymaga drugiego specjalisty, dobieram go i mówię Ci, kto to jest.",
     studioLinks: [
-      ["Zobacz portfolio inżynierskie", "https://krystian-gwizdala.github.io/"],
-      ["Zobacz GitHub", "https://github.com/krystiangw"],
+      ["Portfolio inżynierskie", "https://krystian-gwizdala.github.io/"],
+      ["Kod na GitHubie", "https://github.com/krystiangw"],
     ],
-    finalKicker: "Masz konkretny proces na myśli?",
-    finalTitle: "Znajdźmy najmniejszy system AI, który warto wdrożyć na produkcję.",
+    finalKicker: "Masz wycenę, która Ci nie leży?",
+    finalTitle: "Znajdźmy najmniejszą wersję Twojego projektu, którą warto zbudować.",
     finalBody:
-      "Opisz produkt, wąskie gardło i zmianę, jaką ma przynieść sukces. Otrzymasz bezpośrednią odpowiedź techniczną — nie sekwencję sprzedażową.",
-    finalCta: "hello@aptlayer — wkrótce",
-    emailCta: "Napisz do studia",
-    footer: "Produkcyjne AI · MCP · Systemy agentowe",
+      "Napisz mi, jaki to projekt, jaki jest termin i jaką masz wycenę. Dostaniesz ode mnie odpowiedź techniczną, nie sekwencję sprzedażową.",
+    emailCta: "Napisz do mnie",
+    footer: "Jeden inżynier · załoga agentów · Kraków",
   },
 } as const;
 
 const email = "gwizdala.kr@gmail.com";
+const signature = "Krystian Gwizdała";
+const brand = "One Good Engineer";
+const traceTone = ["", "active", "", "success", "", "approval"] as const;
 
 function Mark() {
   return (
     <span className="mark" aria-hidden="true">
-      <span className="mark-layer mark-layer-a" />
-      <span className="mark-layer mark-layer-b" />
-      <span className="mark-core" />
+      <span className="mark-lead" />
+      <span />
+      <span />
+      <span />
     </span>
   );
 }
@@ -261,11 +333,11 @@ export default function LandingPage({ locale }: { locale: Locale }) {
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
-    name: "AptLayer",
+    name: `${brand} & Co.`,
     description: isPl
-      ? "Studio wdrażające produkcyjne AI, serwery MCP i systemy agentowe."
-      : "Production AI engineering studio building MCP servers and agent systems.",
-    url: "https://aptlayer.github.io/",
+      ? "Jeden inżynier prowadzący załogę agentów AI dowozi projekt od architektury po produkcję, zamiast software house'u."
+      : "One senior engineer running a crew of AI agents delivers the project end to end, in place of a software house.",
+    url: "https://one-good-engineer.github.io/",
     email,
     founder: {
       "@type": "Person",
@@ -279,6 +351,7 @@ export default function LandingPage({ locale }: { locale: Locale }) {
     },
     areaServed: ["Poland", "European Union", "Worldwide"],
     knowsAbout: [
+      "Software Product Engineering",
       "AI Product Engineering",
       "Model Context Protocol",
       "AI Agents",
@@ -293,9 +366,9 @@ export default function LandingPage({ locale }: { locale: Locale }) {
     <div className="site-shell" lang={locale}>
       <div className="noise" aria-hidden="true" />
       <header className="topbar">
-        <a className="brand" href={isPl ? "/pl/" : "/"} aria-label="AptLayer home">
+        <a className="brand" href={isPl ? "/pl/" : "/"} aria-label={`${brand} home`}>
           <Mark />
-          <span>AptLayer</span>
+          <span className="brand-name">{brand}<i>&amp; Co.</i></span>
         </a>
         <nav className="nav" aria-label={isPl ? "Główna nawigacja" : "Main navigation"}>
           {c.nav.map(([label, href]) => (
@@ -312,10 +385,11 @@ export default function LandingPage({ locale }: { locale: Locale }) {
         <section className="hero section-pad">
           <div className="hero-copy">
             <p className="eyebrow"><span className="status-dot" />{c.eyebrow}</p>
-            <h1>{c.heroA}<br /><span>{c.heroB}</span></h1>
+            <h1>{c.heroA}</h1>
+            <p className="hero-sub">{c.heroB}</p>
             <p className="hero-intro">{c.intro}</p>
             <div className="hero-actions">
-              <a className="button button-primary" href={`mailto:${email}?subject=AptLayer%20—%20project%20inquiry`}>{c.primaryCta}<span>↗</span></a>
+              <a className="button button-primary" href={`mailto:${email}?subject=Project%20inquiry`}>{c.primaryCta}<span>↗</span></a>
               <a className="button button-ghost" href="#work">{c.secondaryCta}</a>
             </div>
             <div className="capability-list">
@@ -323,37 +397,33 @@ export default function LandingPage({ locale }: { locale: Locale }) {
             </div>
           </div>
 
-          <div className="system-visual" aria-label={isPl ? "Schemat działania systemu agentowego" : "Agent system execution diagram"}>
-            <div className="orbit orbit-one" />
-            <div className="orbit orbit-two" />
-            <div className="console">
-              <div className="console-bar">
+          <div className="system-visual">
+            <figure className="console">
+              <figcaption className="console-bar">
                 <span>{c.consoleTitle}</span>
-                <span className="live"><i /> live</span>
-              </div>
+                <span className="badge">{c.consoleBadge}</span>
+              </figcaption>
               <div className="trace">
-                <div className="trace-row"><span className="trace-time">00.000</span><span className="trace-type">intent</span><strong>resolve customer request</strong></div>
-                <div className="trace-row"><span className="trace-time">00.041</span><span className="trace-type">route</span><strong>fast_model → tools</strong></div>
-                <div className="trace-row active"><span className="trace-time">00.213</span><span className="trace-type">mcp</span><strong>records.search</strong></div>
-                <div className="trace-row"><span className="trace-time">00.587</span><span className="trace-type">policy</span><strong>scope verified</strong></div>
-                <div className="trace-row approval"><span className="trace-time">00.604</span><span className="trace-type">human</span><strong>approval required</strong></div>
-                <div className="trace-row success"><span className="trace-time">03.821</span><span className="trace-type">result</span><strong>task completed · €0.014</strong></div>
+                {c.trace.map(([step, type, label], index) => (
+                  <div className={`trace-row ${traceTone[index]}`} key={step}>
+                    <span className="trace-time">{step}</span>
+                    <span className="trace-type">{type}</span>
+                    <strong>{label}</strong>
+                  </div>
+                ))}
               </div>
               <div className="metrics">
-                <div><span>quality</span><strong>0.96</strong></div>
-                <div><span>latency</span><strong>3.8s</strong></div>
-                <div><span>fallback</span><strong>none</strong></div>
+                {c.metrics.map(([label, value]) => (
+                  <div key={label}><span>{label}</span><strong>{value}</strong></div>
+                ))}
               </div>
-            </div>
-            <div className="visual-label label-input">01 / CONTEXT</div>
-            <div className="visual-label label-tools">02 / TOOLS</div>
-            <div className="visual-label label-proof">03 / PROOF</div>
+            </figure>
           </div>
         </section>
 
-        <section className="proof-row section-pad" aria-label={isPl ? "Doświadczenie" : "Experience"}>
+        <section className="proof-row section-pad" aria-label={isPl ? "Dowody" : "Evidence"}>
           {c.proof.map(([value, label]) => (
-            <div className="proof-item" key={value + label}><strong>{value}</strong><span>{label}</span></div>
+            <div className="proof-item" key={label}><strong>{value}</strong><span>{label}</span></div>
           ))}
         </section>
 
@@ -366,9 +436,11 @@ export default function LandingPage({ locale }: { locale: Locale }) {
             {c.services.map((service) => (
               <article className="service-card" key={service.n}>
                 <span className="service-number">{service.n}</span>
-                <h3>{service.title}</h3>
-                <p>{service.body}</p>
-                <div className="tag-row">{service.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
+                <div className="service-body">
+                  <h3>{service.title}</h3>
+                  <p>{service.body}</p>
+                  <div className="tag-row">{service.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
+                </div>
               </article>
             ))}
           </div>
@@ -391,13 +463,12 @@ export default function LandingPage({ locale }: { locale: Locale }) {
             <p>{c.workIntro}</p>
           </div>
           <div className="case-grid">
-            {c.cases.map((item, index) => (
+            {c.cases.map((item) => (
               <a className="case-card" href={item.href} target="_blank" rel="noreferrer" key={item.title}>
-                <div className={`case-graphic case-graphic-${index + 1}`} aria-hidden="true">
-                  <span className="case-orb" />
-                  <span className="case-line line-a" />
-                  <span className="case-line line-b" />
-                  <span className="case-glyph">{index === 0 ? "Σ" : index === 1 ? "↳" : "◉"}</span>
+                <div className="case-shot">
+                  {/* Plain img: the export is static and next/image adds nothing with unoptimized output. */}
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={item.img} alt={item.alt} width={1200} height={750} loading="lazy" decoding="async" />
                 </div>
                 <p className="case-type">{item.type}</p>
                 <h3>{item.title}<span>↗</span></h3>
@@ -414,7 +485,10 @@ export default function LandingPage({ locale }: { locale: Locale }) {
           </div>
           <div className="method-grid">
             {c.method.map(([title, body], index) => (
-              <article key={title}><span>0{index + 1}</span><h3>{title}</h3><p>{body}</p></article>
+              <article key={title}>
+                <span>0{index + 1}</span>
+                <div className="method-body"><h3>{title}</h3><p>{body}</p></div>
+              </article>
             ))}
           </div>
           <div className="principles">
@@ -424,7 +498,11 @@ export default function LandingPage({ locale }: { locale: Locale }) {
         </section>
 
         <section className="studio section-pad" id="studio">
-          <div className="studio-mark"><Mark /><span>AL / 01</span></div>
+          <dl className="studio-facts">
+            {c.studioFacts.map(([label, value]) => (
+              <div key={label}><dt>{label}</dt><dd>{value}</dd></div>
+            ))}
+          </dl>
           <div className="studio-copy">
             <p className="kicker">{c.studioKicker}</p>
             <h2>{c.studioTitle}</h2>
@@ -440,15 +518,15 @@ export default function LandingPage({ locale }: { locale: Locale }) {
           <p className="kicker">{c.finalKicker}</p>
           <h2>{c.finalTitle}</h2>
           <p>{c.finalBody}</p>
-          <a className="button button-primary" href={`mailto:${email}?subject=AptLayer%20—%20project%20inquiry`}>{c.emailCta}<span>↗</span></a>
-          <small>{email}</small>
+          <a className="button button-primary" href={`mailto:${email}?subject=Project%20inquiry`}>{c.emailCta}<span>↗</span></a>
+          <small>{signature} · {email}</small>
         </section>
       </main>
 
       <footer className="footer section-pad">
-        <a className="brand" href={isPl ? "/pl/" : "/"}><Mark /><span>AptLayer</span></a>
+        <a className="brand" href={isPl ? "/pl/" : "/"}><Mark /><span className="brand-name">{brand}<i>&amp; Co.</i></span></a>
         <p>{c.footer}</p>
-        <p>© {new Date().getFullYear()} AptLayer</p>
+        <p>© {new Date().getFullYear()} {brand} &amp; Co.</p>
       </footer>
 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />

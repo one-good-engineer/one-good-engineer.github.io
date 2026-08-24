@@ -13,22 +13,22 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://aptlayer.github.io"),
+  metadataBase: new URL("https://one-good-engineer.github.io"),
   title: {
-    default: "AptLayer — Production AI & Agent Systems",
-    template: "%s — AptLayer",
+    default: "One Good Engineer · Software delivery without a software house",
+    template: "%s · One Good Engineer",
   },
   description:
-    "Founder-led AI engineering studio building production AI features, MCP servers, agentic workflows and agent-ready products.",
+    "Krystian Gwizdała: one senior engineer running a crew of AI agents delivers your project end to end, with review on every change and a runbook you own.",
   keywords: [
-    "AI implementation",
+    "software development without agency",
+    "AI agent software delivery",
+    "solo software engineer",
     "AI product engineering",
     "MCP development",
     "Model Context Protocol",
-    "AI agents",
     "agentic workflows",
-    "LLM cost optimization",
-    "AI development Poland",
+    "software development Poland",
   ],
   icons: {
     icon: "/favicon.svg",
@@ -36,26 +36,26 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    siteName: "AptLayer",
-    title: "AptLayer — Production AI & Agent Systems",
+    siteName: "One Good Engineer & Co.",
+    title: "One Good Engineer · Software delivery without a software house",
     description:
-      "AI that ships inside real products. MCP, agent systems and production-grade AI engineering.",
+      "One engineer running a crew of AI agents, with senior review on every change. Vibe coding gets you a prototype. This gets you something you can run.",
     locale: "en_US",
     alternateLocale: "pl_PL",
     images: [
       {
         url: "/og.png",
-        width: 1745,
-        height: 909,
-        alt: "AptLayer — Production AI & Agent Systems",
+        width: 1200,
+        height: 630,
+        alt: "One Good Engineer & Co. · one engineer, a crew of agents",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "AptLayer — Production AI & Agent Systems",
+    title: "One Good Engineer · Software delivery without a software house",
     description:
-      "AI that ships inside real products. MCP, agent systems and production-grade AI engineering.",
+      "One engineer running a crew of AI agents, with senior review on every change. Vibe coding gets you a prototype. This gets you something you can run.",
     images: ["/og.png"],
   },
 };
@@ -71,6 +71,17 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable}`}
       >
         {children}
+        {/* Same GoatCounter account as the portfolio, so the paths are prefixed to stay separable. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: 'window.goatcounter={path:function(p){return "oge"+p}}',
+          }}
+        />
+        <script
+          data-goatcounter="https://krystiangw.goatcounter.com/count"
+          async
+          src="https://gc.zgo.at/count.js"
+        />
       </body>
     </html>
   );

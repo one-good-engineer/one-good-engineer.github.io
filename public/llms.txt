@@ -1,32 +1,46 @@
-# AptLayer
+# One Good Engineer & Co.
 
-> Independent AI product engineering studio in Kraków, Poland. AptLayer builds production AI features, MCP servers, agentic workflows and agent-ready products for software companies and operational teams.
+> A software delivery studio of one. Krystian Gwizdała, a senior engineer in Kraków, Poland, runs a crew of AI agents to deliver whole projects in place of a software house: architecture, implementation, tests, deployment and handover. The agents do the volume, a human reads every change before it ships. Suited to clients who want one accountable senior engineer rather than a delivery team, and not suited to clients who need a large staffed team on site.
 
-Primary language: English. Polish version: https://aptlayer.github.io/pl/
+Languages: English at the root, Polish at [/pl/](https://one-good-engineer.github.io/pl/).
 Contact: gwizdala.kr@gmail.com
+
+## How the work runs
+
+1. Frame. The outcome, the constraints and the acceptance evidence are agreed with the client. This step is never handed to a model.
+2. Run. Agents write the implementation, the migrations and the test suites. The engineer decides what gets built, in what order, and what gets discarded.
+3. Review. Every change is read twice: by an independent model that never saw the reasoning, then by the engineer.
+4. Hand over. Observability, fallbacks and documentation ship with the feature. The client keeps the repository, the tests and the runbook, with no dependency on the studio.
 
 ## Services
 
-- AI feature implementation for existing SaaS and software products
+- Whole product delivery end to end: architecture, implementation, tests and deployment for a web product or an API
+- AI feature implementation inside existing SaaS and software products
 - Model Context Protocol (MCP) server design and implementation
 - Agent-ready product engineering and discoverability
-- Agentic workflow architecture, orchestration and human approval
+- Agent workflow architecture, orchestration and human approval steps
 - LLM evaluation, model routing, caching and cost optimization
 - AI product, architecture and agent-readiness audits
-- AI-native applications built from zero
-- Agentic engineering workflow design for software teams
 
-## Selected work
+## Signature engagement
 
-- Agent Rynku: production AI equity analyst for Warsaw Stock Exchange filings, with one MCP data layer serving in-product chat, Telegram and user-connected clients. https://agentrynku.pl/
-- Let Agents In: deterministic agent-readiness audits measuring discovery, registration, credential provisioning and integration. https://letagentsin.com/
-- Meet Live Assist: local-first meeting assistant delivered as a Chrome extension and local MCP server. https://meet-live-assist.github.io/
-- Open-source MCP portfolio: payment gateways, governed content editing, voice, developer integration and agent payments. https://github.com/krystiangw
+Agent-Ready Product Sprint takes an existing SaaS or API to the state where an agent can find it, understand it and use it. It covers interface design, MCP implementation, authentication, integration tests, machine-readable documentation and a readiness audit the client can re-run independently.
 
-## Studio
+## Live products, all public, all built by one engineer
 
-AptLayer is founder-led by Krystian Gwizdała, an AI engineer and full-stack product developer with more than ten years of experience. Engineering portfolio: https://krystian-gwizdala.github.io/
+- [Agent Rynku](https://agentrynku.pl/): production AI analyst for Warsaw Stock Exchange filings. One MCP server exposing 92 tools serves the in-product chat, a Telegram bot and any MCP client a user connects.
+- [Let Agents In](https://letagentsin.com/): reproducible agent-readiness audits measuring discovery, documentation, registration, credential provisioning and first integration. 177 products measured so far, 79 of them serve a signup an agent cannot render.
+- [Meet Live Assist](https://meet-live-assist.github.io/): local-first meeting assistant delivered as a Chrome extension plus a local MCP server, with the transcript kept on the user's own disk.
+- [Muster](https://musterboard.dev/): shared operational memory for agents that outlive their own sessions. An agent registers itself with one HTTP call, with no person in the loop.
+
+## Open source
+
+- [GitHub profile](https://github.com/krystiangw): four public MCP servers, covering CKEditor operation, CKEditor integration guidance, ElevenLabs voice, and the ZEN.com payment gateway.
+
+## Who does the work
+
+- [Engineering portfolio](https://krystian-gwizdala.github.io/): Krystian Gwizdała, full-stack product engineer with more than ten years of experience shipping software, and the recent years spent on AI agents, MCP and production SaaS.
 
 ## Engagement model
 
-Direct access to the senior engineer designing and building the system. Work typically starts with a focused audit or sprint, continues through a production implementation and can extend into measurement and optimization.
+Work usually starts with a focused audit or a sprint, continues into a production implementation and can extend into measurement and optimization. Quality, latency, cost and failure recovery are measured from the first day, and cost is tracked per finished task rather than per token.

@@ -4,9 +4,9 @@ import LandingPage from "../LandingPage";
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: "Wdrożenia AI i systemy agentowe",
+  title: "Oprogramowanie bez software house'u",
   description:
-    "Produkcyjne wdrożenia AI, serwery MCP, workflow agentowe i przygotowanie produktów na agentów.",
+    "Jeden inżynier prowadzący załogę agentów AI dowozi projekt od architektury po produkcję, z review każdej zmiany i runbookiem, który należy do Ciebie.",
   alternates: {
     canonical: "/pl/",
     languages: { en: "/", pl: "/pl/", "x-default": "/" },

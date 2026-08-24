@@ -1,4 +1,4 @@
-name: Deploy AptLayer to GitHub Pages
+name: Deploy One Good Engineer to GitHub Pages
 
 on:
   push:
