@@ -311,12 +311,12 @@ const copy = {
   },
 } as const;
 
-const email = "gwizdala.kr@gmail.com";
+export const email = "gwizdala.kr@gmail.com";
 const signature = "Krystian Gwizdała";
-const brand = "One Good Engineer";
+export const brand = "One Good Engineer";
 const traceTone = ["", "active", "", "success", "", "approval"] as const;
 
-function Mark() {
+export function Mark() {
   return (
     <span className="mark" aria-hidden="true">
       <span className="mark-lead" />
@@ -376,6 +376,7 @@ export default function LandingPage({ locale }: { locale: Locale }) {
           ))}
         </nav>
         <div className="top-actions">
+          {isPl ? <a className="automation-link" href="/pl/automatyzacje/">Automatyzacje</a> : null}
           <a className="language" href={c.langHref} hrefLang={isPl ? "en" : "pl"}>{c.langLabel}</a>
           <a className="contact-pill" href={`mailto:${email}`}>{isPl ? "Kontakt" : "Contact"}</a>
         </div>

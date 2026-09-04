@@ -5,6 +5,12 @@
 Languages: English at the root, Polish at [/pl/](https://one-good-engineer.github.io/pl/).
 Contact: gwizdala.kr@gmail.com
 
+## Automatyzacje dla małych firm w Polsce
+
+[Polska oferta automatyzacji sprzedaży i obsługi klienta](https://one-good-engineer.github.io/pl/automatyzacje/) łączy formularze, firmową pocztę, CRM, follow-upy i modele AI. Oferta jest skierowana do firm usługowych, które regularnie otrzymują zapytania i chcą szybciej odpowiadać klientom, ograniczyć ręczne przepisywanie danych oraz wiedzieć, gdzie w procesie giną leady.
+
+Współpraca zaczyna się od bezpłatnej, 20-minutowej konsultacji diagnostycznej. Jej celem jest ustalenie, czy automatyzacja konkretnego procesu ma ekonomiczny sens. Typowe wdrożenia obejmują obsługę leadów z formularza, kwalifikację i routing zapytań, automatyczne follow-upy, wsparcie firmowej skrzynki, podsumowanie rozmów i aktualizację CRM.
+
 ## How the work runs
 
 1. Frame. The outcome, the constraints and the acceptance evidence are agreed with the client. This step is never handed to a model.

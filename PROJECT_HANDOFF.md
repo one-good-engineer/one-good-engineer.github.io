@@ -1,6 +1,6 @@
 # One Good Engineer & Co., project handoff
 
-Last updated: 2026-08-24 (Europe/Warsaw)
+Last updated: 2026-09-04 (Europe/Warsaw)
 
 ## What this is
 
@@ -15,6 +15,8 @@ The bilingual site for a software delivery studio of one. The thesis: you no lon
 - GitHub organisation **`one-good-engineer`**, created 2026-08-24. Repository `one-good-engineer.github.io`, GitHub Pages.
 - Contact email: `gwizdala.kr@gmail.com`.
 - No em dashes anywhere in the copy. A test enforces this.
+- Process automation is a dedicated Polish offer at `/pl/automatyzacje/`, under the One Good Engineer brand. It targets service companies broadly rather than one vertical.
+- The Polish YouTube format uses screen recordings, diagrams, narration and captions, with no human avatar.
 
 ## Naming, settled 2026-08-24
 
@@ -47,6 +49,8 @@ Project directory: `/Users/kgwizdal/projects/aptlayer.github.io` (still named af
 - The "about" section carries a facts block (location, languages, experience, contact) instead of the decorative framed logo it inherited from the old design. A portrait photo belongs there and is the single biggest thing still missing: the section answers "can I trust one person", and a face answers that better than anything else on the page.
 - Analytics: GoatCounter, the same account as the portfolio (`krystiangw.goatcounter.com`). Cookieless, so no consent banner, which matters because a banner would block the agent-readiness story. Paths are prefixed with `oge` in `app/layout.tsx` so this site's `/` does not collide with the portfolio's `/` in the same account. Move it to its own site code by changing the one `data-goatcounter` URL.
 - Static export for GitHub Pages, deployment workflow, SEO metadata, canonicals, hreflang, JSON-LD, sitemap, robots.txt, favicon and `llms.txt`.
+- A separate automation landing page explains business problems, three example workflows, the engagement process and a five-field diagnostic form. Until `NEXT_PUBLIC_LEAD_ENDPOINT` is configured, the form prepares an email instead of claiming a successful automated submission.
+- The repeatable video pipeline lives separately at `/Users/kgwizdal/projects/one-good-engineer-video`. It uses Playwright for controlled 1440p screen capture, Remotion for editing, FFmpeg for MP4 output and ElevenLabs timestamps for narration captions.
 
 ## Important files
 
@@ -54,6 +58,7 @@ Project directory: `/Users/kgwizdal/projects/aptlayer.github.io` (still named af
 - `app/globals.css`, the design system.
 - `app/layout.tsx`, site metadata, `metadataBase` and the social preview.
 - `app/page.tsx` and `app/pl/page.tsx`, the two routes.
+- `app/pl/automatyzacje/`, the Polish process-automation landing page and diagnostic form.
 - `public/work/*.webp`, product screenshots used as case evidence.
 - `public/llms.txt`, `public/robots.txt`, `public/sitemap.xml`, `public/og.png`, `public/favicon.svg`.
 - `.github/workflows/pages.yml`, Pages deployment.

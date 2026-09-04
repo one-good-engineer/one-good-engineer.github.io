@@ -9,6 +9,7 @@ const readPages = () =>
     readFile(new URL("index.html", root), "utf8"),
     readFile(new URL("pl/index.html", root), "utf8"),
   ]);
+const readAutomation = () => readFile(new URL("pl/automatyzacje/index.html", root), "utf8");
 
 test("exports the English and Polish pages for GitHub Pages", async () => {
   const [english, polish] = await readPages();
@@ -21,6 +22,20 @@ test("exports the English and Polish pages for GitHub Pages", async () => {
   assert.match(polish, /hreflang="en"/i);
 });
 
+test("exports the Polish automation offer with a diagnostic form", async () => {
+  const [polish, automation] = await Promise.all([
+    readFile(new URL("pl/index.html", root), "utf8"),
+    readAutomation(),
+  ]);
+
+  assert.match(polish, /href="\/pl\/automatyzacje\/"/);
+  assert.match(automation, /Automatyzuję sprzedaż i obsługę klienta/);
+  assert.match(automation, /name="companyIndustry"/);
+  assert.match(automation, /name="contact"/);
+  assert.match(automation, /name="process"/);
+  assert.match(automation, /name="volume"/);
+});
+
 test("carries the One Good Engineer brand and no trace of the old one", async () => {
   const [english, polish] = await readPages();
 
@@ -31,7 +46,7 @@ test("carries the One Good Engineer brand and no trace of the old one", async ()
 });
 
 test("points every canonical, sitemap and robots entry at the live host", async () => {
-  const [english, polish] = await readPages();
+  const [english, polish, automation] = await Promise.all([...await readPages(), readAutomation()]);
   const [robots, sitemap] = await Promise.all([
     readFile(new URL("robots.txt", root), "utf8"),
     readFile(new URL("sitemap.xml", root), "utf8"),
@@ -39,8 +54,10 @@ test("points every canonical, sitemap and robots entry at the live host", async 
 
   assert.match(english, new RegExp(`rel="canonical" href="${SITE}"`));
   assert.match(polish, new RegExp(`rel="canonical" href="${SITE}/pl/"`));
+  assert.match(automation, new RegExp(`rel="canonical" href="${SITE}/pl/automatyzacje/"`));
   assert.match(robots, new RegExp(`Sitemap: ${SITE}/sitemap\\.xml`));
   assert.match(sitemap, /hreflang="pl"/);
+  assert.match(sitemap, new RegExp(`${SITE}/pl/automatyzacje/`));
   assert.doesNotMatch(sitemap, /aptlayer/i);
 });
 
@@ -68,10 +85,10 @@ test("describes the delivery loop with the human review step intact", async () =
 });
 
 test("keeps the copy free of em dashes and en dashes", async () => {
-  const [english, polish] = await readPages();
+  const [english, polish, automation] = await Promise.all([...await readPages(), readAutomation()]);
   const bodyOf = (page) => page.slice(page.indexOf("<body"));
 
-  for (const page of [english, polish]) {
+  for (const page of [english, polish, automation]) {
     assert.doesNotMatch(bodyOf(page), /[—–]/);
   }
 });
