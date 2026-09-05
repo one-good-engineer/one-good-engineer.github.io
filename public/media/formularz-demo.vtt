@@ -1,0 +1,22 @@
+WEBVTT
+
+00:00.000 --> 00:04.600
+Formularz wysłany. I co dalej?
+Demonstracja lokalna na fikcyjnych danych.
+
+00:04.600 --> 00:10.000
+Klient wypełnia formularz zapytania o szkolenie.
+
+00:10.000 --> 00:13.600
+Wysłanie formularza uruchamia proces w n8n.
+
+00:13.600 --> 00:16.700
+Zapytanie trafia do tabeli w n8n.
+
+00:16.700 --> 00:26.600
+Klient otrzymuje potwierdzenie z numerem zgłoszenia.
+W demonstracji pocztę przechwytuje lokalny Mailpit.
+
+00:26.600 --> 00:32.600
+Osobny mail dla zespołu zawiera kontakt i treść pytania.
+To podstawowy proces testowy, nie pełne wdrożenie produkcyjne.

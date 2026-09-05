@@ -1,0 +1,288 @@
+{
+  "name": "01 · Formularz → baza → potwierdzenie",
+  "nodes": [
+    {
+      "id": "1e7e3517-2249-471b-bda3-6a97d832dcf3",
+      "name": "Formularz zapytania",
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.2,
+      "position": [
+        240,
+        300
+      ],
+      "parameters": {
+        "formTitle": "Zapytaj o szkolenie",
+        "formDescription": "Demonstracja One Good Engineer. Używaj wyłącznie fikcyjnych danych.",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Imię",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "E-mail",
+              "fieldType": "email",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Temat",
+              "fieldType": "dropdown",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "Szkolenie dla zespołu"
+                  },
+                  {
+                    "option": "Inne pytanie"
+                  }
+                ]
+              },
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Wiadomość",
+              "fieldType": "textarea",
+              "requiredField": true
+            }
+          ]
+        },
+        "responseMode": "lastNode",
+        "options": {
+          "buttonLabel": "Wyślij zapytanie",
+          "appendAttribution": false,
+          "respondWithOptions": {
+            "values": {
+              "respondWith": "text",
+              "formSubmittedText": "Dziękujemy. Zapytanie zostało zapisane. Potwierdzenie wysłaliśmy na podany adres."
+            }
+          }
+        }
+      },
+      "webhookId": "oge-szkolenie-demo"
+    },
+    {
+      "id": "cb7e89d7-d26f-4f29-8de5-4f750da6b9cb",
+      "name": "Uporządkuj dane",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        510,
+        300
+      ],
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "158bd886-4e6a-4bd0-a86e-6f4c1f036353",
+              "name": "imie",
+              "value": "={{ $json['Imię'] }}",
+              "type": "string"
+            },
+            {
+              "id": "bae93e6f-e02c-4c10-8dbc-0e2e848c1cda",
+              "name": "email",
+              "value": "={{ $json['E-mail'] }}",
+              "type": "string"
+            },
+            {
+              "id": "a167e199-1edb-421f-abbc-bf17b70f477e",
+              "name": "temat",
+              "value": "={{ $json['Temat'] }}",
+              "type": "string"
+            },
+            {
+              "id": "51a0888d-2ae6-4948-8ceb-3ba5870d3638",
+              "name": "wiadomosc",
+              "value": "={{ $json['Wiadomość'] }}",
+              "type": "string"
+            },
+            {
+              "id": "56bbcb15-84b7-4e4f-a907-b22947f178d4",
+              "name": "status",
+              "value": "nowe",
+              "type": "string"
+            },
+            {
+              "id": "ce9e2aa4-22f8-4770-b181-68c9de8d33ec",
+              "name": "opiekun",
+              "value": "Zespół szkoleń",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "a5d01c2c-9ddf-4d5d-aed5-0726b014247c",
+      "name": "Zapisz zapytanie",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        780,
+        300
+      ],
+      "parameters": {
+        "resource": "row",
+        "operation": "insert",
+        "dataTableId": {
+          "__rl": true,
+          "mode": "name",
+          "value": "Zapytania ze strony"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "schema": [
+            {
+              "id": "imie",
+              "displayName": "imie",
+              "type": "string",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "type": "string",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "temat",
+              "displayName": "temat",
+              "type": "string",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "wiadomosc",
+              "displayName": "wiadomosc",
+              "type": "string",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "type": "string",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "opiekun",
+              "displayName": "opiekun",
+              "type": "string",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "c571de44-3621-4f77-86c4-f241eeaefbfd",
+      "name": "Potwierdzenie dla klienta",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        1050,
+        300
+      ],
+      "parameters": {
+        "fromEmail": "szkolenia@example.test",
+        "toEmail": "={{ $json.email }}",
+        "subject": "Otrzymaliśmy Twoje zapytanie",
+        "emailFormat": "text",
+        "text": "=Dzień dobry, {{ $json.imie }}!\n\nOtrzymaliśmy zapytanie: {{ $json.temat }}.\nNumer zgłoszenia: {{ $json.id }}.\nZespół szkoleń zapozna się z wiadomością i wróci z odpowiedzią.\n\nTo potwierdzenie odbioru, nie oferta ani rezerwacja terminu.\n\nZespół szkoleń",
+        "options": {
+          "appendAttribution": false
+        }
+      }
+    },
+    {
+      "id": "75cba9d5-df14-4cef-b42e-b27019af2a38",
+      "name": "Alert dla zespołu",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        1320,
+        300
+      ],
+      "parameters": {
+        "fromEmail": "formularz@example.test",
+        "toEmail": "zespol@example.test",
+        "subject": "=Nowe zapytanie #{{ $('Zapisz zapytanie').item.json.id }}",
+        "emailFormat": "text",
+        "text": "=Nowe zapytanie ze strony\n\nImię: {{ $('Zapisz zapytanie').item.json.imie }}\nE-mail: {{ $('Zapisz zapytanie').item.json.email }}\nTemat: {{ $('Zapisz zapytanie').item.json.temat }}\nWiadomość: {{ $('Zapisz zapytanie').item.json.wiadomosc }}\n\nStatus: nowe\nOpiekun: Zespół szkoleń\n\nSprawdź zgłoszenie i odpowiedz klientowi.",
+        "options": {
+          "appendAttribution": false
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Formularz zapytania": {
+      "main": [
+        [
+          {
+            "node": "Uporządkuj dane",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Uporządkuj dane": {
+      "main": [
+        [
+          {
+            "node": "Zapisz zapytanie",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Zapisz zapytanie": {
+      "main": [
+        [
+          {
+            "node": "Potwierdzenie dla klienta",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Potwierdzenie dla klienta": {
+      "main": [
+        [
+          {
+            "node": "Alert dla zespołu",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataSuccessExecution": "all",
+    "saveDataErrorExecution": "all"
+  }
+}

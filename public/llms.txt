@@ -5,11 +5,13 @@
 Languages: English at the root, Polish at [/pl/](https://one-good-engineer.github.io/pl/).
 Contact: gwizdala.kr@gmail.com
 
-## Automatyzacje dla małych firm w Polsce
+## Audyt procesów, automatyzacje i integracje dla firm w Polsce
 
-[Polska oferta automatyzacji sprzedaży i obsługi klienta](https://one-good-engineer.github.io/pl/automatyzacje/) łączy formularze, firmową pocztę, CRM, follow-upy i modele AI. Oferta jest skierowana do firm usługowych, które regularnie otrzymują zapytania i chcą szybciej odpowiadać klientom, ograniczyć ręczne przepisywanie danych oraz wiedzieć, gdzie w procesie giną leady.
+[Polska oferta automatyzacji i integracji](https://one-good-engineer.github.io/pl/automatyzacje/) obejmuje sprzedaż i obsługę klienta, realizację usług i zleceń, dokumenty i administrację oraz raportowanie i przepływ danych między systemami. Jest skierowana do firm usługowych i B2B, z Krakowa i całej Polski.
 
-Współpraca zaczyna się od bezpłatnej, 20-minutowej konsultacji diagnostycznej. Jej celem jest ustalenie, czy automatyzacja konkretnego procesu ma ekonomiczny sens. Typowe wdrożenia obejmują obsługę leadów z formularza, kwalifikację i routing zapytań, automatyczne follow-upy, wsparcie firmowej skrzynki, podsumowanie rozmów i aktualizację CRM.
+Trzy samodzielne usługi: płatny audyt i plan usprawnień jednego obszaru, wdrożenie pilotażowe i integracje oraz przegląd istniejącej automatyzacji z planem napraw. Opcjonalna opieka ma uzgodnione godziny, czas reakcji i limit pracy. Pierwsza rozmowa kwalifikująca trwa 20 minut i jest bezpłatna. Szczegółowa analiza jest osobną usługą. Rekomendacja może polegać na użyciu istniejącej funkcji lub rezygnacji z automatyzacji.
+
+Na stronie jest krótka, bezdźwięczna demonstracja lokalnego n8n: formularz, tabela i dwa maile przechwycone przez Mailpit. To fikcyjne dane i przykład edukacyjny, nie studium wdrożenia klienta. Nie obejmuje klasyfikacji AI, pełnego CRM ani follow-upów. Proces i instrukcja są dostępne do pobrania. Bez skonfigurowanego endpointu formularz kontaktowy tylko przygotowuje wiadomość e-mail; użytkownik musi ją wysłać we własnej poczcie.
 
 ## How the work runs
 

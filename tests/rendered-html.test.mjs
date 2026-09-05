@@ -29,11 +29,39 @@ test("exports the Polish automation offer with a diagnostic form", async () => {
   ]);
 
   assert.match(polish, /href="\/pl\/automatyzacje\/"/);
-  assert.match(automation, /Automatyzuję sprzedaż i obsługę klienta/);
+  assert.match(automation, /Porządkuję procesy i automatyzuję pracę między systemami/);
   assert.match(automation, /name="companyIndustry"/);
   assert.match(automation, /name="contact"/);
   assert.match(automation, /name="process"/);
   assert.match(automation, /name="volume"/);
+  assert.match(automation, /name="service"/);
+});
+
+test("describes four process areas and three separately purchasable services", async () => {
+  const page = await readAutomation();
+  for (const label of ["Realizacja usług i zleceń", "Dokumenty i administracja", "Raportowanie i integracje", "Audyt i plan usprawnień", "Wdrożenie i integracje", "Przegląd i plan napraw", "Samodzielna, płatna usługa", "opieka jest opcjonalna"]) assert.ok(page.includes(label), label);
+  assert.doesNotMatch(page, /0<\/strong><span>uzależnienia|nie bezpłatny warsztat/);
+  assert.match(page, /audyt procesów/i);
+});
+
+test("ships a real demo and downloadable materials with explicit limits", async () => {
+  const page = await readAutomation();
+  assert.match(page, /<video[^>]*controls/);
+  assert.match(page, /preload="none"/);
+  assert.match(page, /Demonstracja na fikcyjnych danych, nie wdrożenie klienta/);
+  assert.match(page, /Bez klasyfikacji AI, pełnego CRM i follow-upów/);
+  for (const file of ["media/formularz-demo.mp4", "media/formularz-poster.png", "media/formularz-demo.vtt", "materialy/formularz-baza-email.json", "materialy/formularz-instrukcja.txt"]) await access(new URL(file, root));
+  const workflow = await readFile(new URL("materialy/formularz-baza-email.json", root), "utf8");
+  assert.doesNotMatch(workflow, /"credentials"|"password"|"apiKey"/i);
+  assert.ok(JSON.parse(workflow).nodes.length > 0);
+});
+
+test("contact form is explicit about email-only behavior when no endpoint exists", async () => {
+  if (process.env.NEXT_PUBLIC_LEAD_ENDPOINT) return;
+  const page = await readAutomation();
+  assert.match(page, /Przygotuj wiadomość/);
+  assert.match(page, /Niczego nie wysyła ani nie zapisuje automatycznie/);
+  assert.doesNotMatch(page, /Zapytanie zostało zapisane/);
 });
 
 test("carries the One Good Engineer brand and no trace of the old one", async () => {

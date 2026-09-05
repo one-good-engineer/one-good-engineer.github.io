@@ -1,0 +1,44 @@
+# Formularz → baza zapytań → dwa maile
+
+Materiały do odcinka „Formularz wysłany. I co dalej?” — One Good Engineer.
+
+Demonstracja została sprawdzona w n8n 2.37.10. Interfejs w innej wersji może wyglądać inaczej. To przygotowany proces do przejścia i odtworzenia, nie kompletny system produkcyjny.
+
+## Co przygotować
+
+- Własną instancję n8n z funkcją Data Tables.
+- Plik `01-formularz-baza-email.json` dołączony do materiałów.
+- Serwer SMTP do testów. W filmie używany jest Mailpit, który przechwytuje pocztę lokalnie; nie jest skrzynką prawdziwego klienta.
+
+## Import i ustawienia
+
+1. W Data Tables utwórz tabelę `Zapytania ze strony`.
+2. Dodaj kolumny tekstowe: `imie`, `email`, `temat`, `wiadomosc`, `status`, `opiekun`. Systemowe kolumny identyfikatora i dat zostaw bez zmian.
+3. W edytorze nowego procesu wybierz Import from File i wskaż plik JSON.
+4. W kroku Zapisz zapytanie wybierz swoją tabelę. Operacja: Insert. Mapowanie: Map Automatically.
+5. Utwórz własne połączenie SMTP i wybierz je w obu krokach Send Email. Eksport nie zawiera danych logowania.
+6. Zmień adres nadawcy i adres zespołu na odpowiednie adresy testowe. W przykładzie używana jest domena `example.test`, nie prawdziwi odbiorcy.
+7. Sprawdź ścieżkę formularza. W istniejącej instancji nadaj jej unikalną nazwę, aby nie kolidowała z innym formularzem.
+8. Zapisz i opublikuj proces. Otwórz jego Production URL.
+
+### Ustawienia lokalnej demonstracji
+
+Tylko jeśli n8n oraz Mailpit pracują bezpośrednio na tym samym komputerze: host SMTP `127.0.0.1`, port `1026`, bez uwierzytelniania i szyfrowania. Mailpit musi faktycznie nasłuchiwać na tym porcie. Przy kontenerach adres `127.0.0.1` wskazuje sam kontener — użyj adresu właściwej usługi.
+
+Nie kopiuj testowych ustawień do serwera pocztowego firmy. Dla rzeczywistej poczty użyj konfiguracji, portu i szyfrowania wskazanych przez dostawcę.
+
+## Test
+
+1. Spróbuj wysłać pusty formularz — wymagane pola powinny zatrzymać wysłanie.
+2. Wyślij jedno zgłoszenie na fikcyjnych danych do lokalnej skrzynki testowej.
+3. Sprawdź dokładnie jeden nowy wiersz, poprawny adres, status `nowe` i opiekuna.
+4. W Executions otwórz ostatnie wykonanie i sprawdź wyniki kroków.
+5. Otwórz potwierdzenie dla klienta oraz alert dla zespołu. Porównaj dane i numer zgłoszenia z tabelą.
+
+## Ważne ograniczenia
+
+Każdy Insert dodaje nowy wiersz. Ponowne wysłanie formularza lub ponowienie całego procesu może zdublować zgłoszenie. Jeśli baza zapisała dane, ale poczta zawiodła, najpierw sprawdź historię — nie ponawiaj od razu wszystkiego.
+
+Przed wdrożeniem dodaj ochronę przed spamem, obsługę duplikatów i błędów poczty oraz odpowiednie zasady dostępu i przechowywania danych. Przy rzeczywistej poczcie osobno sprawdź dostarczenie wiadomości do odbiorcy, w tym folder spam.
+
+Ten odcinek nie obejmuje klasyfikacji przez AI, follow-upów ani pełnego CRM.

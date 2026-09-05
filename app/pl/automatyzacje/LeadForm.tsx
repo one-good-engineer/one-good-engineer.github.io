@@ -2,6 +2,7 @@
 
 import {FormEvent, useState} from "react";
 import {email} from "../../LandingPage";
+import {buildLeadMessage} from "./lead-message";
 
 type Status = "idle" | "sending" | "sent" | "email" | "error";
 
@@ -9,32 +10,23 @@ const endpoint = process.env.NEXT_PUBLIC_LEAD_ENDPOINT;
 
 export default function LeadForm() {
   const [status, setStatus] = useState<Status>("idle");
+  const [draft, setDraft] = useState<ReturnType<typeof buildLeadMessage> | null>(null);
+  const [copyStatus, setCopyStatus] = useState("");
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const form = event.currentTarget;
-    const values = Object.fromEntries(new FormData(form).entries());
+    const values = Object.fromEntries(Array.from(new FormData(form).entries(), ([key, value]) => [key, String(value)]));
 
     if (values.website) {
       setStatus("sent");
       return;
     }
 
+    const message = buildLeadMessage(values, window.location.href, email);
     if (!endpoint) {
-      const subject = encodeURIComponent(`Konsultacja automatyzacji: ${values.companyIndustry}`);
-      const body = encodeURIComponent(
-        [
-          `Imię: ${values.name}`,
-          `Firma i branża: ${values.companyIndustry}`,
-          `Kontakt: ${values.contact}`,
-          `Liczba operacji miesięcznie: ${values.volume}`,
-          "",
-          "Proces, który zabiera najwięcej czasu:",
-          values.process,
-        ].join("\n"),
-      );
+      setDraft(message);
       setStatus("email");
-      window.location.assign(`mailto:${email}?subject=${subject}&body=${body}`);
       return;
     }
 
@@ -42,10 +34,11 @@ export default function LeadForm() {
     try {
       const response = await fetch(endpoint, {
         method: "POST",
+        signal: AbortSignal.timeout(15000),
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify({
           ...values,
-          source: window.location.href,
+          source: message.source,
           submittedAt: new Date().toISOString(),
         }),
       });
@@ -58,27 +51,40 @@ export default function LeadForm() {
     }
   };
 
+  const copyMessage = async () => {
+    if (!draft) return;
+    try {
+      await navigator.clipboard.writeText(`Do: ${email}\nTemat: ${draft.subject}\n\n${draft.body}`);
+      setCopyStatus("Skopiowano. Wklej treść do swojej poczty i wyślij wiadomość.");
+    } catch {
+      setCopyStatus("Nie mogę skopiować automatycznie. Zaznacz i skopiuj treść z pola poniżej.");
+    }
+  };
+
   return (
-    <form className="lead-form" onSubmit={handleSubmit}>
+    <form className="lead-form" onSubmit={handleSubmit} onChange={() => {setDraft(null); setCopyStatus(""); setStatus("idle");}}>
+      {!endpoint ? <p className="contact-mode">Ten formularz przygotowuje wiadomość do <a href={`mailto:${email}`}>{email}</a>. Niczego nie wysyła ani nie zapisuje automatycznie.</p> : null}
       <div className="form-grid">
         <label>
           <span>Imię</span>
-          <input name="name" autoComplete="given-name" required />
+          <input name="name" autoComplete="given-name" maxLength={120} required />
         </label>
         <label>
           <span>Firma i branża</span>
-          <input name="companyIndustry" autoComplete="organization" placeholder="np. klinika stomatologiczna" required />
+          <input name="companyIndustry" autoComplete="organization" placeholder="np. firma szkoleniowa B2B" maxLength={180} required />
         </label>
       </div>
       <label>
         <span>E-mail lub telefon</span>
-        <input name="contact" autoComplete="email" placeholder="Jak najlepiej się z Tobą skontaktować?" required />
+        <input name="contact" autoComplete="email" placeholder="Jak najlepiej się z Tobą skontaktować?" maxLength={160} required />
       </label>
+      <label><span>W czym mogę pomóc?</span><select name="service" defaultValue="Nie wiem jeszcze"><option>Nie wiem jeszcze</option><option>Audyt i plan usprawnień</option><option>Wdrożenie i integracje</option><option>Przegląd istniejącej automatyzacji</option></select></label>
       <label>
         <span>Który proces zabiera dziś najwięcej czasu?</span>
         <textarea
           name="process"
           rows={5}
+          maxLength={2000}
           placeholder="Opisz krótko, co uruchamia proces, kto go obsługuje i gdzie najczęściej pojawia się opóźnienie."
           required
         />
@@ -100,15 +106,16 @@ export default function LeadForm() {
       </label>
       <div className="form-submit-row">
         <button className="button button-primary" type="submit" disabled={status === "sending"}>
-          {status === "sending" ? "Wysyłam..." : "Wyślij opis procesu"}<span>↗</span>
+          {status === "sending" ? "Wysyłam..." : endpoint ? "Wyślij opis procesu" : "Przygotuj wiadomość"}<span>↗</span>
         </button>
         <p>Odpowiadam osobiście. Pierwsza rozmowa trwa 20 minut i nic nie kosztuje.</p>
       </div>
       <div className={`form-status ${status}`} aria-live="polite">
         {status === "sent" ? "Dziękuję. Zapytanie zostało zapisane. Odezwę się, żeby ustalić termin rozmowy." : null}
-        {status === "email" ? "Otwieram przygotowaną wiadomość. Wyślij ją w swoim programie pocztowym." : null}
+        {status === "email" ? "Wiadomość jest przygotowana, ale jeszcze nie została wysłana. Otwórz pocztę lub skopiuj treść poniżej." : null}
         {status === "error" ? <>Nie udało się wysłać formularza. Napisz bezpośrednio na <a href={`mailto:${email}`}>{email}</a>.</> : null}
       </div>
+      {draft ? <section className="message-draft" aria-label="Przygotowana wiadomość"><div className="draft-actions"><a className="button button-primary" href={draft.mailto}>Otwórz pocztę ↗</a><button type="button" className="button button-ghost" onClick={copyMessage}>Kopiuj wiadomość</button></div><label><span>Treść do wysłania na {email}</span><textarea readOnly rows={10} value={`Temat: ${draft.subject}\n\n${draft.body}`} /></label><p role="status">{copyStatus}</p></section> : null}
     </form>
   );
 }

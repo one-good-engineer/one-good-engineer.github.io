@@ -302,6 +302,84 @@ a { color: inherit; text-decoration: none; }
 .form-status.error { color: #ff9b78; }
 .form-status a { text-decoration: underline; }
 
+/* Process offer: keep the existing brand, make service scope and reading easier. */
+.automation-shell .eyebrow, .automation-shell .kicker { font-size: .8125rem; }
+.automation-shell .nav, .automation-shell .language, .automation-shell .contact-pill { font-size: .875rem; }
+.automation-shell .section-head > p { font-size: 1rem; color: #b4bbb2; }
+.automation-shell .automation-hero h1 { max-width: 17ch; font-size: clamp(2.7rem,4.25vw,4.4rem); }
+.automation-qualifier { color: #b4bbb2; font-size: .875rem; }
+.automation-proof span { color: #b4bbb2; font-size: .875rem; }
+.process-brief { position: relative; border: 1px solid #414b37; background: #111513; padding: 2rem; }
+.process-brief h2 { margin: 1.1rem 0; font-size: clamp(1.7rem,2.3vw,2.25rem); line-height: 1.18; letter-spacing: -.035em; }
+.process-brief > p, .process-brief li p { color: #b9c1b5; font-size: 1rem; line-height: 1.6; }
+.process-brief ol { list-style: none; padding: 0; margin: 1.8rem 0; }
+.process-brief li { display: grid; grid-template-columns: 2rem 1fr; gap: 1rem; padding: 1.1rem 0; border-top: 1px solid var(--line); }
+.process-brief li > span { color: var(--acid); font: .8125rem var(--font-geist-mono); }
+.process-brief li strong { font-size: 1rem; font-weight: 600; }
+.process-brief li p { margin: .45rem 0 0; }
+.process-brief .brief-note { margin: 0; padding-top: 1rem; border-top: 1px solid var(--line); font-size: .875rem; }
+.automation-shell .problem-grid h3 { margin: 0 0 1rem; padding-top: 1.8rem; }
+.automation-shell .problem-grid p { font-size: 1rem; color: #b4bbb2; }
+.automation-shell .problem-grid article > span { font-size: .8125rem; }
+.automation-shell .problem-grid .area-example { color: var(--paper); margin-top: 1rem; }
+.automation-shell .problem-grid .area-measure { margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--line); font-size: .875rem; }
+.area-measure strong { color: var(--acid); font-weight: 500; }
+.automation-services { padding-top: 100px; padding-bottom: 100px; background: #0e1110; border-block: 1px solid var(--line); }
+.service-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1rem; }
+.service-grid article { display: flex; flex-direction: column; padding: 1.7rem; border: 1px solid var(--line); background: var(--ink); scroll-margin-top: 2rem; }
+.service-grid h3 { font-size: 1.7rem; line-height: 1.2; letter-spacing: -.035em; margin: 1.25rem 0; }
+.service-grid p, .service-grid li { font-size: 1rem; line-height: 1.65; color: #b9c0b5; }
+.service-grid .service-situation { color: var(--acid); font-size: .875rem; margin: 0; }
+.service-grid ul { padding-left: 1.15rem; margin: 1.25rem 0; }
+.service-grid li { padding: .25rem 0; }
+.service-grid .service-note { font-size: .875rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+.service-grid a { margin-top: auto; padding-top: 1rem; font-size: .9375rem; color: var(--paper); text-decoration: underline; text-underline-offset: .25em; }
+.care-note { display: grid; grid-template-columns: 1fr 2fr; gap: 2rem; margin-top: 2rem; padding: 2rem 0 0; }
+.care-note h3 { margin: 0; font-size: 1.4rem; }
+.care-note p { margin: 0; color: #b9c0b5; font-size: 1rem; line-height: 1.65; }
+.automation-demo { display: grid; grid-template-columns: .85fr 1.15fr; gap: 4rem; padding-block: 110px; border-bottom: 1px solid var(--line); align-items: center; }
+.demo-copy h2 { font-size: clamp(2rem,3.6vw,3.4rem); line-height: 1.1; letter-spacing: -.04em; margin: 1.1rem 0; }
+.demo-copy > p { font-size: 1rem; color: #b9c0b5; line-height: 1.7; }
+.demo-copy .demo-disclosure { font-size: .875rem; padding-left: 1rem; border-left: 2px solid var(--acid); }
+.demo-downloads { display: flex; flex-direction: column; align-items: flex-start; gap: 1rem; margin-top: 1.5rem; }
+.demo-downloads a { font-size: .9375rem; text-decoration: underline; text-underline-offset: .25em; }
+.demo-player { margin: 0; min-width: 0; }
+.demo-player video { display: block; width: 100%; aspect-ratio: 16 / 9; background: #111; border: 1px solid var(--line); }
+.demo-player figcaption { color: #b4bbb2; font-size: .8125rem; line-height: 1.6; margin-top: .75rem; }
+.automation-shell .cooperation-list p { font-size: 1rem; color: #b4bbb2; }
+.automation-shell .cooperation-list article > span { font-size: .8125rem; }
+.automation-shell .trust-facts > div { grid-template-columns: 100px 1fr; }
+.automation-shell .trust-facts span { font-size: .9375rem; }
+.trust-copy > p + p { margin-top: 1rem !important; }
+.automation-shell .trust-copy > a { font-size: .9375rem; }
+.automation-shell .consultation-copy > p:not(.kicker) { color: #b4bbb2; }
+.consultation-copy .contact-boundary { margin-top: 1.5rem; font-size: .875rem !important; }
+.contact-mode { color: #c4ccc0; font-size: .875rem; line-height: 1.6; margin: 0 0 1.5rem; padding-bottom: 1.3rem; border-bottom: 1px solid var(--line); }
+.contact-mode a { text-decoration: underline; overflow-wrap: anywhere; }
+.automation-shell .form-submit-row p, .automation-shell .form-status { font-size: .875rem; color: #b4bbb2; }
+.message-draft { padding-top: 1.25rem; border-top: 1px solid var(--line); }
+.draft-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-bottom: 1.5rem; }
+.draft-actions button { cursor: pointer; }
+.message-draft p { font-size: .875rem; color: var(--acid); line-height: 1.6; }
+.automation-shell :is(a,button):focus-visible { outline: 2px solid var(--acid); outline-offset: 5px; }
+.automation-shell :is(section,article)[id] { scroll-margin-top: 1.5rem; }
+
+@media (max-width: 1100px) {
+  .service-grid { grid-template-columns: 1fr; }
+  .service-grid article { padding: 2rem; }
+  .automation-demo { grid-template-columns: 1fr; gap: 2rem; }
+}
+@media (max-width: 640px) {
+  .process-brief { padding: 1.4rem; }
+  .automation-services, .automation-demo { padding-block: 75px; }
+  .service-grid article { padding: 1.5rem; }
+  .care-note { grid-template-columns: 1fr; gap: 1rem; }
+  .automation-shell .automation-hero h1 { font-size: 2.7rem; }
+  .automation-shell .hero-actions { align-items: stretch; }
+  .automation-shell .hero-actions .button { white-space: normal; min-height: 52px; }
+  .draft-actions { flex-direction: column; }
+}
+
 @media (max-width: 1050px) {
   .automation-hero { grid-template-columns: 1fr; gap: 64px; }
   .automation-hero h1 { max-width: 15ch; }

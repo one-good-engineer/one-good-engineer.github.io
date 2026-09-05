@@ -1,6 +1,16 @@
 # One Good Engineer & Co., project handoff
 
-Last updated: 2026-09-04 (Europe/Warsaw)
+Last updated: 2026-09-05 (Europe/Warsaw)
+
+## Latest automation offer revision
+
+- `/pl/automatyzacje/` now covers four areas: sales/customer service, service delivery, documents/administration, and reporting/integrations.
+- Three separately purchasable services: audit and improvement plan, implementation, and review of existing automations. Maintenance is optional and scoped; no public experimental pricing or guaranteed ROI.
+- The page includes a 32.6-second silent excerpt of the real local n8n demonstration, a captions track, a workflow JSON and a viewer guide. The full film with temporary synthetic narration is deliberately not included in the site.
+- No lead endpoint has been added. Without `NEXT_PUBLIC_LEAD_ENDPOINT`, the form visibly prepares an email draft, offers an explicit mail link and copy fallback, and does not claim automatic delivery or storage. The draft includes service selection and whitelisted UTM source parameters.
+- Broader metadata and service schema match the offer. Existing site-wide social image and original product-engineering pages are preserved.
+- Local ignored `work/walidacja-oferty.md` contains the internal 30-day commercial test, interview guide and audit deliverables. It is not included in the source commit or public build. No prospects have been contacted.
+- Build, lint and 14 non-browser tests passed. Full interactive/browser QA was not performed in this revision. Deployment status must be checked separately; older publishing notes below are historical.
 
 ## What this is
 
@@ -36,7 +46,7 @@ Open and non-blocking: `onegoodengineer.com` is not bought yet. Buying it makes 
 
 ## Current implementation
 
-Project directory: `/Users/kgwizdal/projects/aptlayer.github.io` (still named after the old brand; rename it to `one-good-engineer.github.io` when you push, it breaks nothing but the local static server).
+Project directory: `/Users/kgwizdal/projects/one-good-engineer.github.io`.
 
 - Dark visual system, acid-lime accent, responsive desktop and mobile layouts.
 - New mark: a two by two grid with one filled cell and three outlined. One leads, three work. Rendered in CSS in the page and as SVG in `favicon.svg`.
