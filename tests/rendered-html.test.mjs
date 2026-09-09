@@ -84,9 +84,37 @@ test("points every canonical, sitemap and robots entry at the live host", async 
   assert.match(polish, new RegExp(`rel="canonical" href="${SITE}/pl/"`));
   assert.match(automation, new RegExp(`rel="canonical" href="${SITE}/pl/automatyzacje/"`));
   assert.match(robots, new RegExp(`Sitemap: ${SITE}/sitemap\\.xml`));
-  assert.match(sitemap, /hreflang="pl"/);
   assert.match(sitemap, new RegExp(`${SITE}/pl/automatyzacje/`));
   assert.doesNotMatch(sitemap, /aptlayer/i);
+});
+
+test("exports a browser-readable XML sitemap with every public page exactly once", async () => {
+  const sitemap = await readFile(new URL("sitemap.xml", root), "utf8");
+
+  // XHTML elements disable the browser's native XML tree viewer. Language
+  // alternates belong in the HTML head instead; do not duplicate them here.
+  assert.doesNotMatch(sitemap, /xhtml|<\?xml-stylesheet/i);
+  assert.match(sitemap, /^<\?xml version="1\.0" encoding="UTF-8"\?>\s*<urlset xmlns="http:\/\/www\.sitemaps\.org\/schemas\/sitemap\/0\.9">(?:\s*<url>\s*<loc>https:\/\/[^<>&\s]+<\/loc>\s*<\/url>)+\s*<\/urlset>\s*$/);
+  const locations = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
+  assert.deepEqual(locations, [`${SITE}/`, `${SITE}/pl/`, `${SITE}/pl/automatyzacje/`]);
+  for (const location of locations) {
+    await access(new URL(`${new URL(location).pathname.slice(1)}index.html`, root));
+  }
+});
+
+test("retains language alternates in each page head without relying on the sitemap", async () => {
+  const pages = [...await readPages(), await readAutomation()];
+  const alternatives = [
+    { en: SITE, pl: `${SITE}/pl/`, "x-default": SITE },
+    { en: SITE, pl: `${SITE}/pl/`, "x-default": SITE },
+    { pl: `${SITE}/pl/automatyzacje/`, "x-default": `${SITE}/pl/automatyzacje/` },
+  ];
+  for (const [index, page] of pages.entries()) {
+    const head = page.slice(0, page.indexOf("</head>"));
+    for (const [language, href] of Object.entries(alternatives[index])) {
+      assert.ok(head.includes(`rel="alternate" hrefLang="${language}" href="${href}"`), `${language}: ${href}`);
+    }
+  }
 });
 
 test("shows every case study as a real screenshot, not a decoration", async () => {
