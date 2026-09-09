@@ -284,6 +284,7 @@ a { color: inherit; text-decoration: none; }
 .consultation-copy li { display: flex; gap: 12px; }
 .consultation-copy li span { color: var(--acid); }
 .lead-form { border: 1px solid var(--line); background: var(--panel); padding: 34px; }
+.lead-fields { min-width: 0; margin: 0; padding: 0; border: 0; }
 .lead-form label { display: block; margin-bottom: 23px; }
 .lead-form label > span { display: block; margin-bottom: 9px; color: #c5cac4; font-size: 14px; font-weight: 520; }
 .lead-form input, .lead-form textarea, .lead-form select { width: 100%; border: 1px solid var(--line-bright); border-radius: 0; background: #0d0f10; color: var(--paper); padding: 14px 15px; font: 16px/1.4 var(--font-geist-sans); outline: 0; transition: border-color .2s, box-shadow .2s; }

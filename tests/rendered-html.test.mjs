@@ -56,10 +56,12 @@ test("ships a real demo and downloadable materials with explicit limits", async 
   assert.ok(JSON.parse(workflow).nodes.length > 0);
 });
 
-test("contact form is explicit about email-only behavior when no endpoint exists", async () => {
-  if (process.env.NEXT_PUBLIC_LEAD_ENDPOINT) return;
+test("contact form submits to Formspree without opening an email client", async () => {
   const page = await readAutomation();
-  assert.match(page, /Przygotuj wiadomość/);
+  assert.match(page, /Wyślij opis procesu/);
+  assert.match(page, /action="https:\/\/formspree.io\/f\/xnogenpm" method="POST"/);
+  assert.match(page, /name="_gotcha"/);
+  assert.doesNotMatch(page, /Przygotuj wiadomość|Otwórz pocztę|Kopiuj wiadomość/);
   assert.doesNotMatch(page, /Ten formularz przygotowuje wiadomość do|Niczego nie wysyła ani nie zapisuje automatycznie/);
   assert.doesNotMatch(page, /Zapytanie zostało zapisane/);
 });

@@ -1,68 +1,45 @@
 "use client";
 
-import {FormEvent, useState} from "react";
+import {FormEvent, useRef, useState} from "react";
 import {email} from "../../LandingPage";
 import {buildLeadMessage} from "./lead-message";
+import {buildLeadPayload, LEAD_ENDPOINT, submitLead} from "./lead-submit";
 
-type Status = "idle" | "sending" | "sent" | "email" | "error";
-
-const endpoint = process.env.NEXT_PUBLIC_LEAD_ENDPOINT;
+type Status = "idle" | "sending" | "sent" | "error";
 
 export default function LeadForm() {
   const [status, setStatus] = useState<Status>("idle");
-  const [draft, setDraft] = useState<ReturnType<typeof buildLeadMessage> | null>(null);
-  const [copyStatus, setCopyStatus] = useState("");
+  const inFlight = useRef(false);
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (inFlight.current) return;
     const form = event.currentTarget;
     const values = Object.fromEntries(Array.from(new FormData(form).entries(), ([key, value]) => [key, String(value)]));
 
-    if (values.website) {
+    if (values._gotcha) {
       setStatus("sent");
       return;
     }
 
     const message = buildLeadMessage(values, window.location.href, email);
-    if (!endpoint) {
-      setDraft(message);
-      setStatus("email");
-      return;
-    }
-
+    inFlight.current = true;
     setStatus("sending");
     try {
-      const response = await fetch(endpoint, {
-        method: "POST",
-        signal: AbortSignal.timeout(15000),
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({
-          ...values,
-          source: message.source,
-          submittedAt: new Date().toISOString(),
-        }),
-      });
-
-      if (!response.ok) throw new Error(`Lead endpoint returned ${response.status}`);
+      await submitLead(buildLeadPayload(values, message.source));
       form.reset();
       setStatus("sent");
     } catch {
       setStatus("error");
-    }
-  };
-
-  const copyMessage = async () => {
-    if (!draft) return;
-    try {
-      await navigator.clipboard.writeText(`Do: ${email}\nTemat: ${draft.subject}\n\n${draft.body}`);
-      setCopyStatus("Skopiowano. Wklej treść do swojej poczty i wyślij wiadomość.");
-    } catch {
-      setCopyStatus("Nie mogę skopiować automatycznie. Zaznacz i skopiuj treść z pola poniżej.");
+    } finally {
+      inFlight.current = false;
     }
   };
 
   return (
-    <form className="lead-form" onSubmit={handleSubmit} onChange={() => {setDraft(null); setCopyStatus(""); setStatus("idle");}}>
+    <form className="lead-form" action={LEAD_ENDPOINT} method="POST" onSubmit={handleSubmit} onChange={() => {if (!inFlight.current) setStatus("idle");}} aria-busy={status === "sending"}>
+      <fieldset className="lead-fields" disabled={status === "sending"}>
+      <input type="hidden" name="subject" value="One Good Engineer - nowe zapytanie o proces" />
       <div className="form-grid">
         <label>
           <span>Imię</span>
@@ -101,20 +78,19 @@ export default function LeadForm() {
       </label>
       <label className="form-trap" aria-hidden="true">
         <span>Strona internetowa</span>
-        <input name="website" tabIndex={-1} autoComplete="off" />
+        <input name="_gotcha" tabIndex={-1} autoComplete="off" />
       </label>
       <div className="form-submit-row">
         <button className="button button-primary" type="submit" disabled={status === "sending"}>
-          {status === "sending" ? "Wysyłam..." : endpoint ? "Wyślij opis procesu" : "Przygotuj wiadomość"}<span>↗</span>
+          {status === "sending" ? "Wysyłam..." : "Wyślij opis procesu"}<span>↗</span>
         </button>
         <p>Odpowiadam osobiście. Pierwsza rozmowa trwa 20 minut i nic nie kosztuje.</p>
       </div>
+      </fieldset>
       <div className={`form-status ${status}`} aria-live="polite">
-        {status === "sent" ? "Dziękuję. Zapytanie zostało zapisane. Odezwę się, żeby ustalić termin rozmowy." : null}
-        {status === "email" ? "Wiadomość jest przygotowana, ale jeszcze nie została wysłana. Otwórz pocztę lub skopiuj treść poniżej." : null}
-        {status === "error" ? <>Nie udało się wysłać formularza. Napisz bezpośrednio na <a href={`mailto:${email}`}>{email}</a>.</> : null}
+        {status === "sent" ? "Dziękuję, wiadomość została wysłana. Odezwę się, żeby ustalić termin rozmowy." : null}
+        {status === "error" ? <>Nie udało się potwierdzić wysyłki. Twoje dane pozostały w formularzu. Spróbuj ponownie za chwilę lub <a href={`mailto:${email}`}>napisz e-mail</a>.</> : null}
       </div>
-      {draft ? <section className="message-draft" aria-label="Przygotowana wiadomość"><div className="draft-actions"><a className="button button-primary" href={draft.mailto}>Otwórz pocztę ↗</a><button type="button" className="button button-ghost" onClick={copyMessage}>Kopiuj wiadomość</button></div><label><span>Treść do wysłania na {email}</span><textarea readOnly rows={10} value={`Temat: ${draft.subject}\n\n${draft.body}`} /></label><p role="status">{copyStatus}</p></section> : null}
     </form>
   );
 }
