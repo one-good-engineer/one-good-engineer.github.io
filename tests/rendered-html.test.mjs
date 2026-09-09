@@ -60,7 +60,7 @@ test("contact form is explicit about email-only behavior when no endpoint exists
   if (process.env.NEXT_PUBLIC_LEAD_ENDPOINT) return;
   const page = await readAutomation();
   assert.match(page, /Przygotuj wiadomość/);
-  assert.match(page, /Niczego nie wysyła ani nie zapisuje automatycznie/);
+  assert.doesNotMatch(page, /Ten formularz przygotowuje wiadomość do|Niczego nie wysyła ani nie zapisuje automatycznie/);
   assert.doesNotMatch(page, /Zapytanie zostało zapisane/);
 });
 

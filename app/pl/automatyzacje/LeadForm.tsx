@@ -63,7 +63,6 @@ export default function LeadForm() {
 
   return (
     <form className="lead-form" onSubmit={handleSubmit} onChange={() => {setDraft(null); setCopyStatus(""); setStatus("idle");}}>
-      {!endpoint ? <p className="contact-mode">Ten formularz przygotowuje wiadomość do <a href={`mailto:${email}`}>{email}</a>. Niczego nie wysyła ani nie zapisuje automatycznie.</p> : null}
       <div className="form-grid">
         <label>
           <span>Imię</span>
