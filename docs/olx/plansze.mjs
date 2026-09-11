@@ -1,5 +1,5 @@
 import { chromium } from "playwright";
-import { mkdirSync, writeFileSync } from "node:fs";
+import { mkdirSync } from "node:fs";
 
 const out = new URL("./plansze/", import.meta.url).pathname;
 mkdirSync(out, { recursive: true });
@@ -46,7 +46,7 @@ li::before { content:""; position:absolute; left:0; top:16px; width:22px; height
 .sub { margin-top:18px; font-size:34px; color:var(--muted); max-width:900px; line-height:1.3; }
 `;
 
-const top = (light) => `<div class="grid"></div><div class="top"><div class="brand"><span class="mark"></span>One Good Engineer</div><div>Kraków · cała Polska</div></div>`;
+const top = () => `<div class="grid"></div><div class="top"><div class="brand"><span class="mark"></span>One Good Engineer</div><div>Kraków · cała Polska</div></div>`;
 const foot = (right = "faktura VAT") => `<div class="foot"><span><b>onegoodengineer.pl</b></span><span>${right}</span></div>`;
 
 const main = ({ kicker, title, price, unit, chips, small }) => `<div class="card">${top()}
