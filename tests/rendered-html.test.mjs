@@ -163,14 +163,26 @@ test("exports the offer page in both languages as directory indexes with cross l
   const [english, polish] = await readOfferPages();
   const [home, homePl] = await readPages();
 
-  assert.match(english, /Three versions of your website in 48 hours/);
+  assert.match(english, /A website that earns its keep/);
   assert.match(english, new RegExp(`rel="canonical" href="${SITE}/websites/"`));
   assert.match(english, /hreflang="pl" href="[^"]*\/pl\/strony\/"/i);
-  assert.match(polish, /Trzy wersje Twojej strony w 48 godzin/);
+  assert.match(polish, /Strona, która pomaga sprzedawać/);
   assert.match(polish, new RegExp(`rel="canonical" href="${SITE}/pl/strony/"`));
   assert.match(polish, /hreflang="en" href="[^"]*\/websites\/"/i);
   assert.match(home, /href="\/websites\/"/);
   assert.match(homePl, /href="\/pl\/strony\/"/);
+});
+
+test("presents the full-service offer and SEO language in both locales", async () => {
+  const [english, polish] = await readOfferPages();
+  for (const page of [english, polish]) {
+    assert.match(page, /full pack|Pełna obsługa/);
+    assert.match(page, /SEO/);
+    assert.match(page, /hosting/i);
+    assert.match(page, /domain|domen/i);
+  }
+  assert.match(english, /A complete website service for businesses in Poland/);
+  assert.match(polish, /Pełna obsługa strony dla firmy/);
 });
 
 test("prints the same prices on the offer page, in llms.txt and in the structured data", async () => {

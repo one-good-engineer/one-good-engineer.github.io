@@ -4,16 +4,17 @@ import OfferPage from "../OfferPage";
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: "Websites and online shops at a fixed price",
+  title: "Web design and online shops for businesses | fixed price",
   description:
-    "Three working versions of your website in 48 hours, a fixed price, launch on your domain within seven working days, then a monthly care plan where changes are one email away. Built for businesses in Poland.",
+    "A complete website service for businesses in Poland: strategy, copy, design, SEO, hosting and domain setup. Three working directions in 48 hours, fixed price and ongoing support.",
+  keywords: ["web design Poland", "company website Poland", "online shop Poland", "fixed price website", "website SEO and hosting", "website maintenance"],
   alternates: {
     canonical: "/websites/",
     languages: { en: "/websites/", pl: "/pl/strony/", "x-default": "/websites/" },
   },
   openGraph: {
-    title: "Websites and online shops at a fixed price · One Good Engineer",
-    description: "Three working versions in 48 hours, a fixed price, your domain in seven working days, then changes by email.",
+    title: "Web design and online shops for businesses · One Good Engineer",
+    description: "Strategy, copy, design, SEO, hosting and domain setup in one service. Three working directions in 48 hours, fixed price and ongoing support.",
   },
 };
 
