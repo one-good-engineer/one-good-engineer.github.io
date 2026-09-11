@@ -199,11 +199,34 @@ test("sells the care plan by request, never by the hour or the token", async () 
   }
 });
 
-test("starts the brief inside the mailto link so the first reply already carries the answers", async () => {
+test("renders the brief form on both offer pages, posting to the shared Formspree address", async () => {
   const [english, polish] = await readOfferPages();
+  const automation = await readAutomation();
 
-  assert.match(english, /mailto:[^"]*subject=Website%20brief&(amp;)?body=1\.%20Company%20name/);
-  assert.match(polish, /mailto:[^"]*subject=Brief%20strony&(amp;)?body=1\.%20Nazwa%20firmy/);
+  for (const page of [english, polish, automation]) {
+    assert.match(page, /<form class="lead-form"[^>]*action="https:\/\/formspree\.io\/f\/xnogenpm" method="POST"/);
+    assert.match(page, /name="_gotcha"/);
+  }
+  assert.match(english, /name="likedSites"/);
+  assert.match(polish, /Trzy strony, które Ci się podobają/);
+  assert.match(polish, /href="#brief\?plan=Sklep%20internetowy"/);
+  assert.match(polish, /href="#brief\?plan=Rozw%C3%B3j"/);
+  assert.match(polish, /<option>Audyt zgodności sklepu<\/option>/);
+  assert.match(polish, /<option>Sklep<\/option>/);
+  assert.doesNotMatch(polish, /name="likedSites"[^>]*required/);
+  assert.doesNotMatch(polish, /mailto:[^"]*body=/);
+});
+
+test("links the two Polish offers to each other and both to the shared chrome", async () => {
+  const [, polish] = await readOfferPages();
+  const automation = await readAutomation();
+
+  assert.match(polish, /href="\/pl\/automatyzacje\/"/);
+  assert.match(automation, /href="\/pl\/strony\/"/);
+  assert.match(automation, /href="\/pl\/strony\/#care"/);
+  for (const page of [polish, automation]) {
+    assert.equal((page.match(/class="mark" aria-hidden="true"/g) || []).length, 2, "one mark in the header, one in the footer");
+  }
 });
 
 test("ships machine-readable discovery and social assets", async () => {

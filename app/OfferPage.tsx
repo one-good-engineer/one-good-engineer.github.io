@@ -1,4 +1,6 @@
 import { email, signature, TopBar, Footer, type Locale } from "./SiteChrome";
+import BriefForm from "./lead/BriefForm";
+import { planHref } from "./lead/brief-payload.ts";
 
 type Plan = {
   name: string;
@@ -7,7 +9,6 @@ type Plan = {
   lead: string;
   items: readonly string[];
   cta: string;
-  subject: string;
   featured?: boolean;
 };
 
@@ -71,7 +72,6 @@ const copy = {
           "Live on your domain within seven working days",
         ],
         cta: "Order a website",
-        subject: "Company website: brief",
       },
       {
         name: "Online shop",
@@ -88,7 +88,6 @@ const copy = {
           "Live on your domain within 21 working days",
         ],
         cta: "Order a shop",
-        subject: "Online shop: brief",
         featured: true,
       },
       {
@@ -104,7 +103,6 @@ const copy = {
           "If you order the fixes, the audit fee is deducted",
         ],
         cta: "Order an audit",
-        subject: "Shop audit",
       },
     ] satisfies readonly Plan[],
     careKicker: "Care plan",
@@ -124,7 +122,6 @@ const copy = {
           "Domain and hosting in your name, administered by me",
         ],
         cta: "Choose Care",
-        subject: "Care plan",
       },
       {
         name: "Growth",
@@ -137,7 +134,6 @@ const copy = {
           "Everything in Care, including unlimited small changes",
         ],
         cta: "Choose Growth",
-        subject: "Growth plan",
         featured: true,
       },
       {
@@ -153,7 +149,6 @@ const copy = {
           "Everything in Growth",
         ],
         cta: "Choose Shop",
-        subject: "Shop care plan",
       },
     ] satisfies readonly Plan[],
     careRules: [
@@ -196,22 +191,8 @@ const copy = {
       ["Do you issue VAT invoices?", "Yes. All prices are net, Polish VAT applies."],
     ],
     finalKicker: "Ready?",
-    finalTitle: "Send the brief. The ten questions are already in the email.",
-    finalBody: "Click the button, answer what you can, send. Within 48 hours you get three working versions of your site.",
-    emailCta: "Send the brief",
-    briefSubject: "Website brief",
-    briefBody: [
-      "1. Company name and what it does:",
-      "2. Current website address, if any:",
-      "3. Three websites you like (any industry) and why:",
-      "4. Who the customer is and what they should do on the site (call, buy, book):",
-      "5. Pages you need:",
-      "6. Texts: ready, or to be drafted from a conversation:",
-      "7. Photos: your own or licensed:",
-      "8. Domain: you have one, or one needs buying:",
-      "9. The date the site has to be live:",
-      "10. Budget, if different from the package:",
-    ],
+    finalTitle: "Send the brief. Ten questions, twenty minutes.",
+    finalBody: "Answer what you can and send. Within 48 hours you get a link with three working versions of your site. Prefer email? Write to the address below.",
     footer: "One engineer · a crew of agents · Kraków",
   },
   pl: {
@@ -220,6 +201,7 @@ const copy = {
       ["Pakiety", "#packages"],
       ["Opieka", "#care"],
       ["Pytania", "#faq"],
+      ["Automatyzacje", "/pl/automatyzacje/"],
       ["Studio", "/pl/"],
     ],
     langHref: "/websites/",
@@ -273,7 +255,6 @@ const copy = {
           "Publikacja pod Twoją domeną w siedem dni roboczych",
         ],
         cta: "Zamów stronę",
-        subject: "Strona firmowa: brief",
       },
       {
         name: "Sklep internetowy",
@@ -290,7 +271,6 @@ const copy = {
           "Publikacja pod Twoją domeną w 21 dni roboczych",
         ],
         cta: "Zamów sklep",
-        subject: "Sklep internetowy: brief",
         featured: true,
       },
       {
@@ -306,7 +286,6 @@ const copy = {
           "Jeśli zamawiasz poprawki, koszt audytu odliczam",
         ],
         cta: "Zamów audyt",
-        subject: "Audyt sklepu",
       },
     ] satisfies readonly Plan[],
     careKicker: "Opieka",
@@ -326,7 +305,6 @@ const copy = {
           "Domena i hosting na Ciebie, administrowane przeze mnie",
         ],
         cta: "Wybierz Opiekę",
-        subject: "Pakiet Opieka",
       },
       {
         name: "Rozwój",
@@ -339,7 +317,6 @@ const copy = {
           "Wszystko z pakietu Opieka, łącznie z drobnymi zmianami bez limitu",
         ],
         cta: "Wybierz Rozwój",
-        subject: "Pakiet Rozwój",
         featured: true,
       },
       {
@@ -355,7 +332,6 @@ const copy = {
           "Wszystko z pakietu Rozwój",
         ],
         cta: "Wybierz Sklep",
-        subject: "Pakiet Sklep",
       },
     ] satisfies readonly Plan[],
     careRules: [
@@ -398,31 +374,13 @@ const copy = {
       ["Czy wystawiasz faktury VAT?", "Tak. Wszystkie ceny są netto, dolicza się VAT."],
     ],
     finalKicker: "Gotowy?",
-    finalTitle: "Wyślij brief. Dziesięć pytań jest już w mailu.",
-    finalBody: "Klikasz, odpowiadasz na to, na co umiesz, wysyłasz. W ciągu 48 godzin dostajesz trzy działające wersje swojej strony.",
-    emailCta: "Wyślij brief",
-    briefSubject: "Brief strony",
-    briefBody: [
-      "1. Nazwa firmy i czym się zajmuje:",
-      "2. Adres obecnej strony, jeśli jest:",
-      "3. Trzy strony (z dowolnej branży), które Ci się podobają, i dlaczego:",
-      "4. Kto jest klientem i co ma zrobić na stronie (zadzwonić, kupić, umówić się):",
-      "5. Podstrony, których potrzebujesz:",
-      "6. Teksty: gotowe czy do przygotowania z rozmowy:",
-      "7. Zdjęcia: własne czy licencjonowane:",
-      "8. Domena: masz czy trzeba kupić:",
-      "9. Termin, do którego strona ma działać:",
-      "10. Budżet, jeśli inny niż pakiet:",
-    ],
+    finalTitle: "Wyślij brief. Dziesięć pytań, dwadzieścia minut.",
+    finalBody: "Odpowiadasz na to, na co umiesz, i wysyłasz. W ciągu 48 godzin dostajesz link z trzema działającymi wersjami swojej strony. Wolisz maila? Adres jest poniżej.",
     footer: "Jeden inżynier · załoga agentów · Kraków",
   },
 } as const;
 
 const traceTone = ["", "active", "", "", "success", "approval"] as const;
-
-const mailto = (subject: string, body?: readonly string[]) =>
-  `mailto:${email}?subject=${encodeURIComponent(subject)}` +
-  (body ? `&body=${encodeURIComponent(body.join("\n\n"))}` : "");
 
 function PlanCard({ plan }: { plan: Plan }) {
   return (
@@ -431,7 +389,7 @@ function PlanCard({ plan }: { plan: Plan }) {
       <p className="plan-price"><strong>{plan.price}</strong><span>{plan.priceNote}</span></p>
       <p className="plan-lead">{plan.lead}</p>
       <ul>{plan.items.map((item) => <li key={item}><span>✓</span>{item}</li>)}</ul>
-      <a className="button button-ghost" href={mailto(plan.subject)}>{plan.cta}<span>↗</span></a>
+      <a className="button button-ghost" href={planHref(plan.name)}>{plan.cta}<span>↓</span></a>
     </article>
   );
 }
@@ -470,7 +428,7 @@ export default function OfferPage({ locale }: { locale: Locale }) {
             <p className="hero-sub">{c.heroB}</p>
             <p className="hero-intro">{c.intro}</p>
             <div className="hero-actions">
-              <a className="button button-primary" href={mailto(c.briefSubject, c.briefBody)}>{c.primaryCta}<span>↗</span></a>
+              <a className="button button-primary" href="#brief">{c.primaryCta}<span>↓</span></a>
               <a className="button button-ghost" href="#packages">{c.secondaryCta}</a>
             </div>
             <div className="capability-list">
@@ -573,13 +531,14 @@ export default function OfferPage({ locale }: { locale: Locale }) {
           </dl>
         </section>
 
-        <section className="final-cta section-pad">
-          <div className="cta-glow" aria-hidden="true" />
-          <p className="kicker">{c.finalKicker}</p>
-          <h2>{c.finalTitle}</h2>
-          <p>{c.finalBody}</p>
-          <a className="button button-primary" href={mailto(c.briefSubject, c.briefBody)}>{c.emailCta}<span>↗</span></a>
-          <small>{signature} · {email}</small>
+        <section className="brief section-pad" id="brief">
+          <div className="brief-copy">
+            <p className="kicker">{c.finalKicker}</p>
+            <h2>{c.finalTitle}</h2>
+            <p>{c.finalBody}</p>
+            <small>{signature} · {email}</small>
+          </div>
+          <BriefForm locale={locale} plans={[...c.plans, ...c.care].map((plan) => plan.name)} />
         </section>
       </main>
 

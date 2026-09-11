@@ -22,13 +22,17 @@ export function TopBar({
   nav,
   langHref,
   langLabel,
+  langOf,
 }: {
   locale: Locale;
   nav: readonly NavItem[];
   langHref: string;
   langLabel: string;
+  /** Language of the page behind langHref. Defaults to the other locale; pass the same locale for a sibling page. */
+  langOf?: Locale;
 }) {
   const isPl = locale === "pl";
+  const targetLang = langOf ?? (isPl ? "en" : "pl");
   return (
     <header className="topbar">
       <a className="brand" href={isPl ? "/pl/" : "/"} aria-label={`${brand} home`}>
@@ -41,7 +45,7 @@ export function TopBar({
         ))}
       </nav>
       <div className="top-actions">
-        <a className="language" href={langHref} hrefLang={isPl ? "en" : "pl"}>{langLabel}</a>
+        <a className="language" href={langHref} hrefLang={targetLang}>{langLabel}</a>
         <a className="contact-pill" href={`mailto:${email}`}>{isPl ? "Kontakt" : "Contact"}</a>
       </div>
     </header>
