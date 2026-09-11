@@ -26,7 +26,7 @@ CO OTRZYMUJESZ
 - zgodność z RODO, cookies oraz wymaganiami dostępności WCAG,
 - wdrożenie gotowej strony i fakturę VAT.
 
-Jeżeli wystarczy Ci prosta wizytówka one page, jej cena zaczyna się od 1 490 zł netto. Powiedz po prostu, czym zajmuje się firma, a pomogę wybrać rozsądny zakres.
+Jeżeli wystarczy Ci prosta wizytówka one page, jej cena zaczyna się od 990 zł netto. Powiedz po prostu, czym zajmuje się firma, a pomogę wybrać rozsądny zakres.
 
 DLACZEGO MOGĘ PRACOWAĆ TAK SZYBKO
 

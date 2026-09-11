@@ -3,6 +3,10 @@ export type Locale = "en" | "pl";
 export const email = "gwizdala.kr@gmail.com";
 export const signature = "Krystian Gwizdała";
 export const brand = "One Good Engineer";
+export const legalCompany = "Krystian Gwizdała Appfront";
+export const legalAddress = "Wysoka 447, 37-100 Wysoka";
+export const legalNip = "8151745185";
+export const legalRegon = "363740603";
 
 export function Mark() {
   return (
@@ -57,6 +61,7 @@ export function Footer({ locale, line }: { locale: Locale; line: string }) {
     <footer className="footer section-pad">
       <a className="brand" href={locale === "pl" ? "/pl/" : "/"}><Mark /><span className="brand-name">{brand}<i>&amp; Co.</i></span></a>
       <p>{line}</p>
+      <p className="footer-legal">{legalCompany}<br />{legalAddress}<br />NIP {legalNip} · REGON {legalRegon}</p>
       <p>© {new Date().getFullYear()} {brand} &amp; Co.</p>
     </footer>
   );

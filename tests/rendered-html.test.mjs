@@ -188,7 +188,7 @@ test("presents the full-service offer and SEO language in both locales", async (
 test("prints the same prices on the offer page, in llms.txt and in the structured data", async () => {
   const [english, polish] = await readOfferPages();
   const llms = await readFile(new URL("llms.txt", root), "utf8");
-  const prices = ["2 990", "7 900", "1 490", "290", "590", "990"];
+  const prices = ["990", "2 990", "7 900", "1 490", "290", "590"];
 
   for (const price of prices) {
     assert.match(english, new RegExp(`${price} PLN`));
@@ -198,7 +198,7 @@ test("prints the same prices on the offer page, in llms.txt and in the structure
   for (const page of [english, polish]) {
     const schema = JSON.parse(page.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)[1]);
     assert.equal(schema["@type"], "Service");
-    assert.deepEqual(schema.offers.map((offer) => offer.price), [2990, 7900, 1490, 290, 590, 990]);
+    assert.deepEqual(schema.offers.map((offer) => offer.price), [990, 2990, 7900, 1490, 290, 590, 990]);
   }
 });
 

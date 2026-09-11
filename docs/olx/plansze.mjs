@@ -92,7 +92,7 @@ const ktoRobi = list({
 
 const ads = {
   "1-strona": [
-    main({ kicker: "Strona internetowa dla firmy", title: "Trzy wersje w 24 godziny, online w 48 godzin", price: "od 2 990 zł", unit: "netto · wizytówka one page 1 490 zł", chips: ["3 wersje do wyboru", "online w 48 h od wyboru", "RODO i WCAG", "faktura VAT"] }),
+    main({ kicker: "Strona internetowa dla firmy", title: "Trzy wersje w 24 godziny, online w 48 godzin", price: "od 2 990 zł", unit: "netto · wizytówka one page 990 zł", chips: ["3 wersje do wyboru", "online w 48 h od wyboru", "RODO i WCAG", "faktura VAT"] }),
     proces,
     list({ kicker: "Co dostajesz", title: "Strona firmowa, w cenie", items: ["Kilka podstron i aktualności", "Wersja na telefon, tablet i komputer", "Formularz, telefon, mapa, social media", "Podstawowe SEO i wizytówka Google", "Pomoc w tekstach i zdjęciach", "Domena, hosting, certyfikat SSL", "Zgodność z RODO i dostępnością WCAG", "Szybka, bez wtyczek do łamania"], light: true }),
     ktoRobi,
