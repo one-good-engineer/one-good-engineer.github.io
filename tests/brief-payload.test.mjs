@@ -4,7 +4,7 @@ import {buildBriefPayload, briefFields, planFromHash, planHref} from "../app/lea
 import {sourceOf} from "../app/lead/formspree.ts";
 
 const values = {name: " Anna ", company: "Sklep z kawą, sprzedaje na Allegro", contact: " anna@example.com ", package: "Sklep internetowy", _gotcha: ""};
-const source = "https://one-good-engineer.github.io/pl/strony/";
+const source = "https://onegoodengineer.pl/pl/strony/";
 
 test("brief payload carries every brief field, trimmed, with a Reply-To when the contact is an email", () => {
   const payload = buildBriefPayload(values, source, "pl");

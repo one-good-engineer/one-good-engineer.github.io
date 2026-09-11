@@ -1,6 +1,7 @@
 import { email, signature, TopBar, Footer, type Locale } from "./SiteChrome";
 import BriefForm from "./lead/BriefForm";
 import { planHref } from "./lead/brief-payload.ts";
+import { SITE } from "./site";
 
 type Plan = {
   name: string;
@@ -397,13 +398,13 @@ function PlanCard({ plan }: { plan: Plan }) {
 export default function OfferPage({ locale }: { locale: Locale }) {
   const c = copy[locale];
   const isPl = locale === "pl";
-  const pageUrl = `https://one-good-engineer.github.io${isPl ? "/pl/strony/" : "/websites/"}`;
+  const pageUrl = `${SITE}${isPl ? "/pl/strony/" : "/websites/"}`;
   const priceOf = (price: string) => Number(price.replace(/\D/g, ""));
   const offerSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
     name: isPl ? "Strony i sklepy internetowe ze stałą ceną i opieką" : "Websites and online shops at a fixed price with a care plan",
-    provider: { "@type": "ProfessionalService", name: "One Good Engineer & Co.", url: "https://one-good-engineer.github.io/", email },
+    provider: { "@type": "ProfessionalService", name: "One Good Engineer & Co.", url: `${SITE}/`, email },
     areaServed: "Poland",
     url: pageUrl,
     offers: [...c.plans, ...c.care].map((plan) => ({

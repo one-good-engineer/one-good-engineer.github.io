@@ -1,4 +1,5 @@
 import {brand, email, Footer, TopBar} from "../../SiteChrome";
+import {SITE} from "../../site";
 import LeadForm from "./LeadForm";
 
 const areas = [
@@ -25,7 +26,7 @@ const serviceSchema = {
   provider: {"@type": "ProfessionalService", name: brand + " & Co.", email, address: {"@type": "PostalAddress", addressLocality: "Kraków", addressCountry: "PL"}},
   areaServed: {"@type": "Country", name: "Polska"},
   hasOfferCatalog: {"@type": "OfferCatalog", name: "Usługi procesowe i inżynierskie", itemListElement: services.map(s => ({"@type": "Offer", itemOffered: {"@type": "Service", name: s.title, description: s.body}}))},
-  availableChannel: {"@type": "ServiceChannel", serviceUrl: "https://one-good-engineer.github.io/pl/automatyzacje/"},
+  availableChannel: {"@type": "ServiceChannel", serviceUrl: `${SITE}/pl/automatyzacje/`},
 };
 
 export default function AutomationPage() {

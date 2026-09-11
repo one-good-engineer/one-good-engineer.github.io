@@ -1,8 +1,9 @@
 # One Good Engineer & Co., site
 
-Static bilingual site for a one-person software delivery studio. English at `/`, Polish at
-`/pl/`, plus the productised websites-and-shops offer at `/websites/` and `/pl/strony/`
-(`app/OfferPage.tsx`). Built with vinext (Vite + Next-compatible), exported statically, deployed to
+Static bilingual site for a one-person software delivery studio, live at `https://onegoodengineer.pl`
+(the host lives once, in `app/site.ts`; `one-good-engineer.github.io` redirects there). English at
+`/`, Polish at `/pl/`, plus the productised websites-and-shops offer at `/websites/` and
+`/pl/strony/` (`app/OfferPage.tsx`). Built with vinext (Vite + Next-compatible), exported statically, deployed to
 GitHub Pages by `.github/workflows/pages.yml`. Header, footer and the mark live in
 `app/SiteChrome.tsx` and are shared by both pages.
 
@@ -66,6 +67,15 @@ Both were the same mistake: a child-combinator selector on `span` also matching 
 Inside `.brand` and `.studio-mark`, select with an explicit class (`.brand-name`,
 `.studio-mark-label`), never a bare element selector. The mark also needs `grid-template-rows`, not
 just columns, or its rows collapse to the border width.
+
+## Domain
+
+`onegoodengineer.pl` is registered at OVH (renews Sep 2027) with OVH's own DNS: four `A` and four
+`AAAA` records to GitHub Pages at the apex, `www` as a CNAME to `one-good-engineer.github.io`,
+and `v=spf1 -all` because nothing sends mail from it. The custom domain is set in the Pages
+settings (via `gh api .../pages`), which is what makes GitHub issue the certificate and redirect
+the github.io host. Setting it before the DNS delegation is public takes the site offline, because
+the redirect starts immediately; that happened once on 2026-09-11.
 
 ## Things that look like cruft but are not
 

@@ -1,4 +1,5 @@
 import { email, signature, brand, TopBar, Footer, type Locale } from "./SiteChrome";
+import { SITE } from "./site";
 
 const copy = {
   en: {
@@ -344,7 +345,7 @@ export default function LandingPage({ locale }: { locale: Locale }) {
     description: isPl
       ? "Jeden inżynier prowadzący załogę agentów AI dowozi projekt od architektury po produkcję, zamiast software house'u."
       : "One senior engineer running a crew of AI agents delivers the project end to end, in place of a software house.",
-    url: "https://one-good-engineer.github.io/",
+    url: `${SITE}/`,
     email,
     founder: {
       "@type": "Person",

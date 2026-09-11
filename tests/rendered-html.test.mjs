@@ -3,7 +3,7 @@ import { access, readFile } from "node:fs/promises";
 import test from "node:test";
 
 const root = new URL("../dist/client/", import.meta.url);
-const SITE = "https://one-good-engineer.github.io";
+import { SITE } from "../app/site.ts";
 const readPages = () =>
   Promise.all([
     readFile(new URL("index.html", root), "utf8"),

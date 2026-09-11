@@ -2,12 +2,12 @@
 
 > A software delivery studio of one. Krystian Gwizdała, a senior engineer in Kraków, Poland, runs a crew of AI agents to deliver whole projects in place of a software house: architecture, implementation, tests, deployment and handover. The agents do the volume, a human reads every change before it ships. Suited to clients who want one accountable senior engineer rather than a delivery team, and not suited to clients who need a large staffed team on site.
 
-Languages: English at the root, Polish at [/pl/](https://one-good-engineer.github.io/pl/).
+Languages: English at the root, Polish at [/pl/](https://onegoodengineer.pl/pl/).
 Contact: gwizdala.kr@gmail.com
 
 ## Audyt procesów, automatyzacje i integracje dla firm w Polsce
 
-[Polska oferta automatyzacji i integracji](https://one-good-engineer.github.io/pl/automatyzacje/) obejmuje sprzedaż i obsługę klienta, realizację usług i zleceń, dokumenty i administrację oraz raportowanie i przepływ danych między systemami. Jest skierowana do firm usługowych i B2B, z Krakowa i całej Polski.
+[Polska oferta automatyzacji i integracji](https://onegoodengineer.pl/pl/automatyzacje/) obejmuje sprzedaż i obsługę klienta, realizację usług i zleceń, dokumenty i administrację oraz raportowanie i przepływ danych między systemami. Jest skierowana do firm usługowych i B2B, z Krakowa i całej Polski.
 
 Trzy samodzielne usługi: płatny audyt i plan usprawnień jednego obszaru, wdrożenie pilotażowe i integracje oraz przegląd istniejącej automatyzacji z planem napraw. Opcjonalna opieka ma uzgodnione godziny, czas reakcji i limit pracy. Pierwsza rozmowa kwalifikująca trwa 20 minut i jest bezpłatna. Szczegółowa analiza jest osobną usługą. Rekomendacja może polegać na użyciu istniejącej funkcji lub rezygnacji z automatyzacji.
 
@@ -55,7 +55,7 @@ Work usually starts with a focused audit or a sprint, continues into a productio
 
 ## Websites and online shops for businesses in Poland
 
-A fixed-price, productised offer, described at [/websites/](https://one-good-engineer.github.io/websites/) (English) and [/pl/strony/](https://one-good-engineer.github.io/pl/strony/) (Polish). The client leaves four fields on the page (name, contact, company, package), answers a ten-question brief that comes back by email, receives three working versions of the site within 48 hours of those answers, picks one, gets one revision round, and the site is live on the client's own domain within seven working days (21 for a shop). Prices are net, in PLN:
+A fixed-price, productised offer, described at [/websites/](https://onegoodengineer.pl/websites/) (English) and [/pl/strony/](https://onegoodengineer.pl/pl/strony/) (Polish). The client leaves four fields on the page (name, contact, company, package), answers a ten-question brief that comes back by email, receives three working versions of the site within 48 hours of those answers, picks one, gets one revision round, and the site is live on the client's own domain within seven working days (21 for a shop). Prices are net, in PLN:
 
 - Company website, up to six pages: from 2 990 PLN one-off
 - Online shop, up to 200 products, payments, InPost or courier delivery, Omnibus price history and WCAG 2.1 AA accessibility from day one: from 7 900 PLN one-off

@@ -5,7 +5,7 @@ import { execFileSync } from "node:child_process";
 import { copyFile, mkdir, readdir, writeFile } from "node:fs/promises";
 import { join, relative } from "node:path";
 
-const SITE = "https://one-good-engineer.github.io";
+import { SITE } from "../app/site.ts";
 const root = new URL("../dist/client/", import.meta.url).pathname;
 const sharedSources = ["app/SiteChrome.tsx", "app/layout.tsx", "app/globals.css"];
 const routeSources = {

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { SITE } from "./site";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://one-good-engineer.github.io"),
+  metadataBase: new URL(SITE),
   title: {
     default: "One Good Engineer · Software delivery without a software house",
     template: "%s · One Good Engineer",
