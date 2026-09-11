@@ -1,8 +1,6 @@
 import {looksLikeEmail} from "./formspree.ts";
 
-export const briefFields = [
-  "name", "company", "contact", "package", "currentSite", "likedSites", "goal", "pages", "content", "domain", "deadline", "budget",
-] as const;
+export const briefFields = ["name", "company", "contact", "package"] as const;
 
 export function buildBriefPayload(values: Record<string, string>, source: string, locale: "en" | "pl") {
   const contact = (values.contact || "").trim();

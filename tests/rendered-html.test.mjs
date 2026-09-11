@@ -210,13 +210,13 @@ test("renders the brief form on both offer pages, posting to the shared Formspre
     assert.match(page, /<form class="lead-form"[^>]*action="https:\/\/formspree\.io\/f\/xnogenpm" method="POST"/);
     assert.match(page, /name="_gotcha"/);
   }
-  assert.match(english, /name="likedSites"/);
-  assert.match(polish, /Trzy strony, które Ci się podobają/);
+  for (const page of [english, polish]) {
+    assert.equal((page.match(/<(input|select|textarea) [^>]*name="(?!_gotcha)/g) || []).length, 4, "four fields, the rest is asked in the reply");
+  }
   assert.match(polish, /href="#brief\?plan=Sklep%20internetowy"/);
   assert.match(polish, /href="#brief\?plan=Rozw%C3%B3j"/);
   assert.match(polish, /<option>Audyt zgodności sklepu<\/option>/);
   assert.match(polish, /<option>Sklep<\/option>/);
-  assert.doesNotMatch(polish, /name="likedSites"[^>]*required/);
   assert.doesNotMatch(polish, /mailto:[^"]*body=/);
 });
 

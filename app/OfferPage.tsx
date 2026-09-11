@@ -28,13 +28,13 @@ const copy = {
     heroB: "A fixed price, seven working days to launch, then a care plan where you request changes by email.",
     intro:
       "The agents in my studio build the three directions, which is why three cost you the same as one. I read every one of them before you do, and I am the person you write to, from the brief to the day the site is live and long after.",
-    primaryCta: "Send the brief",
+    primaryCta: "Start the brief",
     secondaryCta: "See the packages",
     chips: ["Fixed price, agreed before we start", "Your domain, your code, your content", "Monthly plan, cancel with one month's notice"],
     consoleTitle: "how your site gets built",
     consoleBadge: "the flow",
     trace: [
-      ["00", "brief", "ten questions, twenty minutes"],
+      ["00", "start", "four fields, one minute"],
       ["01", "versions", "three working sites, 48 hours"],
       ["02", "choice", "one link, one decision"],
       ["03", "revision", "one round, included"],
@@ -49,7 +49,7 @@ const copy = {
     flowKicker: "How it runs",
     flowTitle: "You make two decisions. Everything else is my job.",
     flow: [
-      ["Brief", "Ten questions by email: what the company does, who the customer is, what they should do on the site, three sites you like. Twenty minutes, no meeting needed."],
+      ["Brief", "Four fields on this page, then ten questions by email: who the customer is, what they should do on the site, three sites you like. Twenty minutes, no meeting needed."],
       ["Three directions", "Within 48 hours you get a link with three working versions of your site, different in layout, tone and colour. Not mock-ups: real pages you can open on your phone."],
       ["Choice and revision", "You pick one and send a list of changes. One revision round is in the price. Mixing the header of one with the colours of another is not a revision, it is a fourth version, and I will say so."],
       ["Launch and care", "The site goes live on your domain within seven working days of the brief. From that day the care plan takes over: you email a change, it is live the same working day."],
@@ -191,8 +191,8 @@ const copy = {
       ["Do you issue VAT invoices?", "Yes. All prices are net, Polish VAT applies."],
     ],
     finalKicker: "Ready?",
-    finalTitle: "Send the brief. Ten questions, twenty minutes.",
-    finalBody: "Answer what you can and send. Within 48 hours you get a link with three working versions of your site. Prefer email? Write to the address below.",
+    finalTitle: "Start with four fields. The brief comes by email.",
+    finalBody: "Leave your name, contact and company, and the ten brief questions come back to you by email. Answer what you can; 48 hours later you get a link with three working versions. Prefer email from the start? The address is below.",
     footer: "One engineer · a crew of agents · Kraków",
   },
   pl: {
@@ -211,13 +211,13 @@ const copy = {
     heroB: "Stała cena, siedem dni roboczych do publikacji, a potem opieka, w której zmiany zamawiasz mailem.",
     intro:
       "Trzy kierunki budują agenty z mojego studia, dlatego trzy kosztują Cię tyle, co jeden. Każdy z nich czytam, zanim zobaczysz go Ty, i to do mnie piszesz: od briefu, przez dzień publikacji, po każdą późniejszą zmianę.",
-    primaryCta: "Wyślij brief",
+    primaryCta: "Zacznij brief",
     secondaryCta: "Zobacz pakiety",
     chips: ["Stała cena ustalona przed startem", "Twoja domena, Twój kod, Twoje treści", "Abonament miesięczny, wypowiedzenie z miesiąca na miesiąc"],
     consoleTitle: "jak powstaje Twoja strona",
     consoleBadge: "przebieg",
     trace: [
-      ["00", "brief", "dziesięć pytań, dwadzieścia minut"],
+      ["00", "start", "cztery pola, minuta"],
       ["01", "wersje", "trzy działające strony, 48 godzin"],
       ["02", "wybór", "jeden link, jedna decyzja"],
       ["03", "poprawki", "jedna runda w cenie"],
@@ -232,7 +232,7 @@ const copy = {
     flowKicker: "Jak to przebiega",
     flowTitle: "Podejmujesz dwie decyzje. Reszta jest po mojej stronie.",
     flow: [
-      ["Brief", "Dziesięć pytań mailem: czym zajmuje się firma, kto jest klientem, co ma zrobić na stronie, trzy strony, które Ci się podobają. Dwadzieścia minut, bez spotkania."],
+      ["Brief", "Cztery pola na tej stronie, potem dziesięć pytań mailem: kto jest klientem, co ma zrobić na stronie, trzy strony, które Ci się podobają. Dwadzieścia minut, bez spotkania."],
       ["Trzy kierunki", "W ciągu 48 godzin dostajesz link z trzema działającymi wersjami strony, różnymi w układzie, tonie i kolorze. Nie makiety: prawdziwe strony, które otworzysz na telefonie."],
       ["Wybór i poprawki", "Wybierasz jedną i wysyłasz listę zmian. Jedna runda poprawek jest w cenie. Nagłówek z pierwszej z kolorami z drugiej to nie poprawka, tylko czwarta wersja, i powiem to wprost."],
       ["Publikacja i opieka", "Strona działa pod Twoją domeną w ciągu siedmiu dni roboczych od briefu. Od tego dnia przejmuje ją opieka: piszesz maila ze zmianą, zmiana jest na stronie tego samego dnia roboczego."],
@@ -374,8 +374,8 @@ const copy = {
       ["Czy wystawiasz faktury VAT?", "Tak. Wszystkie ceny są netto, dolicza się VAT."],
     ],
     finalKicker: "Gotowy?",
-    finalTitle: "Wyślij brief. Dziesięć pytań, dwadzieścia minut.",
-    finalBody: "Odpowiadasz na to, na co umiesz, i wysyłasz. W ciągu 48 godzin dostajesz link z trzema działającymi wersjami swojej strony. Wolisz maila? Adres jest poniżej.",
+    finalTitle: "Zacznij od czterech pól. Brief przyjdzie mailem.",
+    finalBody: "Zostawiasz imię, kontakt i firmę, a dziesięć pytań briefu wraca do Ciebie mailem. Odpowiadasz na to, na co umiesz; 48 godzin później dostajesz link z trzema działającymi wersjami. Wolisz maila od początku? Adres jest poniżej.",
     footer: "Jeden inżynier · załoga agentów · Kraków",
   },
 } as const;
