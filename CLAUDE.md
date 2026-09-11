@@ -7,7 +7,9 @@ GitHub Pages by `.github/workflows/pages.yml`. Header, footer and the mark live 
 `app/SiteChrome.tsx` and are shared by both pages.
 
 vinext exports each route as `<route>.html`; `scripts/pages-export.mjs` turns every one into
-`<route>/index.html` after the build, so a new route needs no change to `package.json`.
+`<route>/index.html` after the build and writes `sitemap.xml` from that list, with `lastmod` taken
+from the last commit touching the route's sources. A new route needs one line in `routeSources`
+there (the script refuses to build without it) and nothing in `package.json` or `public/`.
 
 Every lead form posts JSON to the one Formspree address in `app/lead/formspree.ts` (a public form
 id, not a secret). Per-form payload builders sit next to their form and have a node test each.
