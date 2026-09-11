@@ -9,6 +9,11 @@ GitHub Pages by `.github/workflows/pages.yml`. Header, footer and the mark live 
 vinext exports each route as `<route>.html`; `scripts/pages-export.mjs` turns every one into
 `<route>/index.html` after the build, so a new route needs no change to `package.json`.
 
+Every lead form posts JSON to the one Formspree address in `app/lead/formspree.ts` (a public form
+id, not a secret). Per-form payload builders sit next to their form and have a node test each.
+Cross-module `.ts` imports carry the `.ts` extension so node's type stripping can run those tests
+without a bundler; `allowImportingTsExtensions` is on for that reason.
+
 Full history, decisions and the naming audit live in `PROJECT_HANDOFF.md`. Read it before any
 change to positioning or branding.
 
