@@ -1,4 +1,4 @@
-type Locale = "en" | "pl";
+import { email, signature, brand, TopBar, Footer, type Locale } from "./SiteChrome";
 
 const copy = {
   en: {
@@ -7,6 +7,8 @@ const copy = {
       ["Work", "#work"],
       ["Method", "#method"],
       ["About", "#studio"],
+      ["Pricing", "#billing"],
+      ["Websites", "/websites/"],
     ],
     langHref: "/pl/",
     langLabel: "PL",
@@ -134,6 +136,14 @@ const copy = {
       "Deterministic code wrapped around probabilistic models",
       "Cost, latency and failure telemetry from the first day",
     ],
+    billingKicker: "How you pay",
+    billingTitle: "Time and material is over. You pay for a closed unit of work.",
+    billingBody:
+      "The scope and the acceptance criteria are written down before anything starts, the price is fixed, and the code ships with its proof: the review trace, the tests and a recording of the working path.",
+    billingPunch:
+      "How many tokens the agents burned getting there is my problem, not a line on your invoice.",
+    billingCaveat:
+      "When something genuinely cannot be closed into a unit, I say so up front and we work on a day rate instead.",
     studioFacts: [
       ["Where", "Kraków, working remotely across the EU"],
       ["Languages", "Polish and English"],
@@ -161,6 +171,9 @@ const copy = {
       ["Realizacje", "#work"],
       ["Metoda", "#method"],
       ["O mnie", "#studio"],
+      ["Rozliczenie", "#billing"],
+      ["Strony i sklepy", "/pl/strony/"],
+      ["Automatyzacje", "/pl/automatyzacje/"],
     ],
     langHref: "/",
     langLabel: "EN",
@@ -288,6 +301,14 @@ const copy = {
       "Deterministyczny kod owinięty wokół probabilistycznych modeli",
       "Telemetria kosztu, opóźnienia i błędów od pierwszego dnia",
     ],
+    billingKicker: "Rozliczenie",
+    billingTitle: "Koniec z time & material. Płacisz za zamkniętą jednostkę pracy.",
+    billingBody:
+      "Zakres i kryterium akceptacji spisujemy przed startem, cena jest stała, a razem z kodem dostajesz dowód: ślad przeglądu, testy i nagranie działającej ścieżki.",
+    billingPunch:
+      "Ile tokenów zjadły na to agenty, jest moim problemem, nie Twoją pozycją na fakturze.",
+    billingCaveat:
+      "Jeśli czegoś uczciwie nie da się domknąć w jednostkę, mówię to wprost i wtedy pracujemy na stawce dziennej.",
     studioFacts: [
       ["Gdzie", "Kraków, praca zdalna w całej UE"],
       ["Języki", "polski i angielski"],
@@ -311,21 +332,7 @@ const copy = {
   },
 } as const;
 
-export const email = "gwizdala.kr@gmail.com";
-const signature = "Krystian Gwizdała";
-export const brand = "One Good Engineer";
 const traceTone = ["", "active", "", "success", "", "approval"] as const;
-
-export function Mark() {
-  return (
-    <span className="mark" aria-hidden="true">
-      <span className="mark-lead" />
-      <span />
-      <span />
-      <span />
-    </span>
-  );
-}
 
 export default function LandingPage({ locale }: { locale: Locale }) {
   const c = copy[locale];
@@ -365,22 +372,7 @@ export default function LandingPage({ locale }: { locale: Locale }) {
   return (
     <div className="site-shell" lang={locale}>
       <div className="noise" aria-hidden="true" />
-      <header className="topbar">
-        <a className="brand" href={isPl ? "/pl/" : "/"} aria-label={`${brand} home`}>
-          <Mark />
-          <span className="brand-name">{brand}<i>&amp; Co.</i></span>
-        </a>
-        <nav className="nav" aria-label={isPl ? "Główna nawigacja" : "Main navigation"}>
-          {c.nav.map(([label, href]) => (
-            <a href={href} key={href}>{label}</a>
-          ))}
-        </nav>
-        <div className="top-actions">
-          {isPl ? <a className="automation-link" href="/pl/automatyzacje/">Automatyzacje</a> : null}
-          <a className="language" href={c.langHref} hrefLang={isPl ? "en" : "pl"}>{c.langLabel}</a>
-          <a className="contact-pill" href={`mailto:${email}`}>{isPl ? "Kontakt" : "Contact"}</a>
-        </div>
-      </header>
+      <TopBar locale={locale} nav={c.nav} langHref={c.langHref} langLabel={c.langLabel} />
 
       <main>
         <section className="hero section-pad">
@@ -514,6 +506,18 @@ export default function LandingPage({ locale }: { locale: Locale }) {
           </div>
         </section>
 
+        <section className="billing section-pad" id="billing">
+          <div>
+            <p className="kicker">{c.billingKicker}</p>
+            <h2>{c.billingTitle}</h2>
+          </div>
+          <div className="billing-copy">
+            <p>{c.billingBody}</p>
+            <p className="billing-punch">{c.billingPunch}</p>
+            <p className="billing-caveat">{c.billingCaveat}</p>
+          </div>
+        </section>
+
         <section className="final-cta section-pad">
           <div className="cta-glow" aria-hidden="true" />
           <p className="kicker">{c.finalKicker}</p>
@@ -524,11 +528,7 @@ export default function LandingPage({ locale }: { locale: Locale }) {
         </section>
       </main>
 
-      <footer className="footer section-pad">
-        <a className="brand" href={isPl ? "/pl/" : "/"}><Mark /><span className="brand-name">{brand}<i>&amp; Co.</i></span></a>
-        <p>{c.footer}</p>
-        <p>© {new Date().getFullYear()} {brand} &amp; Co.</p>
-      </footer>
+      <Footer locale={locale} line={c.footer} />
 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
     </div>

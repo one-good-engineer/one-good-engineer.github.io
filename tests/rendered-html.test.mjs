@@ -10,6 +10,11 @@ const readPages = () =>
     readFile(new URL("pl/index.html", root), "utf8"),
   ]);
 const readAutomation = () => readFile(new URL("pl/automatyzacje/index.html", root), "utf8");
+const readOfferPages = () =>
+  Promise.all([
+    readFile(new URL("websites/index.html", root), "utf8"),
+    readFile(new URL("pl/strony/index.html", root), "utf8"),
+  ]);
 
 test("exports the English and Polish pages for GitHub Pages", async () => {
   const [english, polish] = await readPages();
@@ -98,7 +103,7 @@ test("exports a browser-readable XML sitemap with every public page exactly once
   assert.doesNotMatch(sitemap, /xhtml|<\?xml-stylesheet/i);
   assert.match(sitemap, /^<\?xml version="1\.0" encoding="UTF-8"\?>\s*<urlset xmlns="http:\/\/www\.sitemaps\.org\/schemas\/sitemap\/0\.9">(?:\s*<url>\s*<loc>https:\/\/[^<>&\s]+<\/loc>\s*<\/url>)+\s*<\/urlset>\s*$/);
   const locations = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
-  assert.deepEqual(locations, [`${SITE}/`, `${SITE}/pl/`, `${SITE}/pl/automatyzacje/`]);
+  assert.deepEqual(locations, [`${SITE}/`, `${SITE}/pl/`, `${SITE}/pl/automatyzacje/`, `${SITE}/websites/`, `${SITE}/pl/strony/`]);
   for (const location of locations) {
     await access(new URL(`${new URL(location).pathname.slice(1)}index.html`, root));
   }
@@ -143,12 +148,62 @@ test("describes the delivery loop with the human review step intact", async () =
 });
 
 test("keeps the copy free of em dashes and en dashes", async () => {
-  const [english, polish, automation] = await Promise.all([...await readPages(), readAutomation()]);
+  const pages = [...(await readPages()), ...(await readOfferPages()), await readAutomation()];
   const bodyOf = (page) => page.slice(page.indexOf("<body"));
 
-  for (const page of [english, polish, automation]) {
+  for (const page of pages) {
     assert.doesNotMatch(bodyOf(page), /[—–]/);
   }
+});
+
+test("exports the offer page in both languages as directory indexes with cross links", async () => {
+  const [english, polish] = await readOfferPages();
+  const [home, homePl] = await readPages();
+
+  assert.match(english, /Three versions of your website in 48 hours/);
+  assert.match(english, new RegExp(`rel="canonical" href="${SITE}/websites/"`));
+  assert.match(english, /hreflang="pl" href="[^"]*\/pl\/strony\/"/i);
+  assert.match(polish, /Trzy wersje Twojej strony w 48 godzin/);
+  assert.match(polish, new RegExp(`rel="canonical" href="${SITE}/pl/strony/"`));
+  assert.match(polish, /hreflang="en" href="[^"]*\/websites\/"/i);
+  assert.match(home, /href="\/websites\/"/);
+  assert.match(homePl, /href="\/pl\/strony\/"/);
+});
+
+test("prints the same prices on the offer page, in llms.txt and in the structured data", async () => {
+  const [english, polish] = await readOfferPages();
+  const llms = await readFile(new URL("llms.txt", root), "utf8");
+  const prices = ["2 990", "7 900", "1 490", "290", "590", "990"];
+
+  for (const price of prices) {
+    assert.match(english, new RegExp(`${price} PLN`));
+    assert.match(polish, new RegExp(`${price} zł`));
+    assert.match(llms, new RegExp(`${price} PLN`));
+  }
+  for (const page of [english, polish]) {
+    const schema = JSON.parse(page.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)[1]);
+    assert.equal(schema["@type"], "Service");
+    assert.deepEqual(schema.offers.map((offer) => offer.price), [2990, 7900, 1490, 290, 590, 990]);
+  }
+});
+
+test("sells the care plan by request, never by the hour or the token", async () => {
+  const [english, polish] = await readOfferPages();
+  const llms = await readFile(new URL("llms.txt", root), "utf8");
+
+  assert.match(english, /one request at a time/);
+  assert.match(polish, /jedno zgłoszenie naraz/);
+  assert.match(llms, /one request at a time/);
+  for (const page of [english, polish, llms]) {
+    assert.doesNotMatch(page, /hours? of changes|godzin(y)? zmian|PLN per (hour|token)|zł za (godzinę|token)/i);
+  }
+});
+
+test("starts the brief inside the mailto link so the first reply already carries the answers", async () => {
+  const [english, polish] = await readOfferPages();
+
+  assert.match(english, /mailto:[^"]*subject=Website%20brief&(amp;)?body=1\.%20Company%20name/);
+  assert.match(polish, /mailto:[^"]*subject=Brief%20strony&(amp;)?body=1\.%20Nazwa%20firmy/);
 });
 
 test("ships machine-readable discovery and social assets", async () => {

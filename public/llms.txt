@@ -52,3 +52,14 @@ Agent-Ready Product Sprint takes an existing SaaS or API to the state where an a
 ## Engagement model
 
 Work usually starts with a focused audit or a sprint, continues into a production implementation and can extend into measurement and optimization. Quality, latency, cost and failure recovery are measured from the first day, and cost is tracked per finished task rather than per token.
+
+## Websites and online shops for businesses in Poland
+
+A fixed-price, productised offer, described at [/websites/](https://one-good-engineer.github.io/websites/) (English) and [/pl/strony/](https://one-good-engineer.github.io/pl/strony/) (Polish). The client answers a ten-question brief by email, receives three working versions of the site within 48 hours, picks one, gets one revision round, and the site is live on the client's own domain within seven working days (21 for a shop). Prices are net, in PLN:
+
+- Company website, up to six pages: from 2 990 PLN one-off
+- Online shop, up to 200 products, payments, InPost or courier delivery, Omnibus price history and WCAG 2.1 AA accessibility from day one: from 7 900 PLN one-off
+- Compliance audit of an existing shop (Omnibus, accessibility, speed): 1 490 PLN, credited against the fixes
+- Care plans, monthly, cancellable with one month's notice, with no hour limit: small changes are unlimited, one request at a time, live the same working day. Care 290 PLN (small changes, monitoring, backups, updates), Growth 590 PLN (adds one new page or article a month, technical SEO, a monthly report), Shop 990 PLN (adds unlimited products and promotions, a monthly Omnibus and accessibility check, integrations watched, four-hour outage response). A small change is one that fits in a working day on an existing page; anything bigger is quoted as a fixed price before it starts.
+
+The domain is registered to the client from day one, the code lives in a repository the client owns, and leaving the care plan switches nothing off. The offer is for Poland; it does not include mobile apps.

@@ -1,4 +1,4 @@
-import {Mark, brand, email} from "../../LandingPage";
+import {Mark, brand, email} from "../../SiteChrome";
 import LeadForm from "./LeadForm";
 
 const areas = [

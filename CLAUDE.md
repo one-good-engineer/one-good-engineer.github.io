@@ -1,8 +1,13 @@
 # One Good Engineer & Co., site
 
-Static bilingual landing page for a one-person software delivery studio. English at `/`, Polish at
-`/pl/`. Built with vinext (Vite + Next-compatible), exported statically, deployed to GitHub Pages
-by `.github/workflows/pages.yml`.
+Static bilingual site for a one-person software delivery studio. English at `/`, Polish at
+`/pl/`, plus the productised websites-and-shops offer at `/websites/` and `/pl/strony/`
+(`app/OfferPage.tsx`). Built with vinext (Vite + Next-compatible), exported statically, deployed to
+GitHub Pages by `.github/workflows/pages.yml`. Header, footer and the mark live in
+`app/SiteChrome.tsx` and are shared by both pages.
+
+vinext exports each route as `<route>.html`; `scripts/pages-export.mjs` turns every one into
+`<route>/index.html` after the build, so a new route needs no change to `package.json`.
 
 Full history, decisions and the naming audit live in `PROJECT_HANDOFF.md`. Read it before any
 change to positioning or branding.
@@ -40,6 +45,8 @@ The AI and MCP work is the **proof**, not the pitch.
   delivery loop; it must never present invented telemetry as measured data, which is what the first
   version did with `quality 0.96` and `€0.014`.
 - **Case studies carry real screenshots**, in `public/work/*.webp`, not abstract decoration.
+- **The offer prices live in three places and must agree**: `OfferPage.tsx` (both languages),
+  `public/llms.txt` and the JSON-LD the page emits. A test compares them, so change all three.
 
 ## Traps this repo has already sprung twice
 
