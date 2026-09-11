@@ -36,7 +36,8 @@ export const metadata: Metadata = {
     shortcut: "/favicon.svg",
   },
   verification: {
-    google: "AivhVutlgdzwPhOT26aWe5RxRWJp5YqixFXJ6ie48nM",
+    // one token per Search Console property: the github.io one and onegoodengineer.pl
+    google: ["AivhVutlgdzwPhOT26aWe5RxRWJp5YqixFXJ6ie48nM", "3ffKuF1iQL0fJGMbwIWWx_oBMDj2S1Jz5EjQfP-iy80"],
   },
   openGraph: {
     type: "website",
