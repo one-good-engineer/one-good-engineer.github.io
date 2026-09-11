@@ -2,7 +2,7 @@
 
 Formularz na `/pl/strony/` i `/websites/` zbiera cztery pola (imię, kontakt, firma, pakiet) i
 obiecuje, że dziesięć pytań briefu wraca mailem. To jest ten mail. Wysyła go człowiek, nie
-automat, w tym samym dniu roboczym. 48 godzin do trzech wersji liczy się od odpowiedzi klienta.
+automat, w tym samym dniu roboczym. 24 godziny do trzech wersji liczą się od odpowiedzi klienta.
 
 ## PL
 
@@ -11,7 +11,7 @@ Temat: Brief: dziesięć pytań do Twojej strony
 Cześć {imię},
 
 dzięki za zgłoszenie. Żeby przygotować trzy wersje, potrzebuję odpowiedzi na dziesięć pytań.
-Odpowiedz na te, na które umiesz, resztę ustalimy po drodze. Od Twojej odpowiedzi liczę 48 godzin.
+Odpowiedz na te, na które umiesz, resztę ustalimy po drodze. Od Twojej odpowiedzi liczę 24 godziny.
 
 1. Czym dokładnie zajmuje się firma i co ją odróżnia od podobnych?
 2. Adres obecnej strony, jeśli jest.
@@ -35,7 +35,7 @@ Subject: Brief: ten questions about your website
 Hi {name},
 
 thanks for getting in touch. To build the three versions I need answers to ten questions.
-Answer the ones you can, we will settle the rest along the way. The 48 hours start when you reply.
+Answer the ones you can, we will settle the rest along the way. The 24 hours start when you reply.
 
 1. What exactly does the company do, and what sets it apart from similar ones?
 2. Current website address, if any.

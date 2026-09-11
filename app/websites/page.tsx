@@ -6,7 +6,7 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "Web design and online shops for businesses | fixed price",
   description:
-    "A complete website service for businesses in Poland: strategy, copy, design, SEO, hosting and domain setup. Three working directions in 48 hours, fixed price and ongoing support.",
+    "A complete website service for businesses in Poland: strategy, copy, design, SEO, hosting and domain setup. Three website versions in 24 hours, a company site live in 48 hours, fixed price and ongoing support.",
   keywords: ["web design Poland", "company website Poland", "online shop Poland", "fixed price website", "website SEO and hosting", "website maintenance"],
   alternates: {
     canonical: "/websites/",
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Web design and online shops for businesses · One Good Engineer",
-    description: "Strategy, copy, design, SEO, hosting and domain setup in one service. Three working directions in 48 hours, fixed price and ongoing support.",
+    description: "Strategy, copy, design, SEO, hosting and domain setup in one service. Three website versions in 24 hours, a company site live in 48 hours, fixed price and ongoing support.",
   },
 };
 
