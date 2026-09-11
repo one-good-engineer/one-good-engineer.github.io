@@ -1,6 +1,6 @@
 # One Good Engineer & Co.
 
-Business details: Krystian Gwizdała Appfront, Wysoka 447, 37-100 Wysoka, NIP 8151745185, REGON 363740603.
+Business details: Krystian Gwizdała Appfront, Kraków, Poland, NIP 8151745185, REGON 363740603.
 
 > A software delivery studio of one. Krystian Gwizdała, a senior engineer in Kraków, Poland, runs a crew of AI agents to deliver whole projects in place of a software house: architecture, implementation, tests, deployment and handover. The agents do the volume, a human reads every change before it ships. Suited to clients who want one accountable senior engineer rather than a delivery team, and not suited to clients who need a large staffed team on site.
 

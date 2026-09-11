@@ -4,7 +4,7 @@ export const email = "gwizdala.kr@gmail.com";
 export const signature = "Krystian Gwizdała";
 export const brand = "One Good Engineer";
 export const legalCompany = "Krystian Gwizdała Appfront";
-export const legalAddress = "Wysoka 447, 37-100 Wysoka";
+export const legalAddress = "Kraków, Polska";
 export const legalNip = "8151745185";
 export const legalRegon = "363740603";
 

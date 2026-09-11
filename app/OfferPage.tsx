@@ -137,7 +137,7 @@ export default function OfferPage({locale}: {locale: Locale}) {
     "@context": "https://schema.org",
     "@type": "Service",
     name: isPl ? "Strony internetowe i sklepy online dla firm" : "Web design and online shops for businesses",
-    provider: {"@type": "ProfessionalService", name: "One Good Engineer & Co.", legalName: legalCompany, url: `${SITE}/`, email, taxID: legalNip, identifier: legalRegon, address: {"@type": "PostalAddress", streetAddress: "447", postalCode: "37-100", addressLocality: "Wysoka", addressCountry: "PL"}},
+    provider: {"@type": "ProfessionalService", name: "One Good Engineer & Co.", legalName: legalCompany, url: `${SITE}/`, email, taxID: legalNip, identifier: legalRegon, address: {"@type": "PostalAddress", addressLocality: "Kraków", addressCountry: "PL"}},
     areaServed: "Poland",
     url: pageUrl,
     offers: [...c.plans, ...c.care].map((plan) => ({"@type": "Offer", name: plan.name, price: priceOf(plan.price), priceCurrency: "PLN", description: plan.lead})),
