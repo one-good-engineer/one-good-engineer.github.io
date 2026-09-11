@@ -46,7 +46,8 @@ li::before { content:""; position:absolute; left:0; top:16px; width:22px; height
 .sub { margin-top:18px; font-size:34px; color:var(--muted); max-width:900px; line-height:1.3; }
 `;
 
-const top = () => `<div class="grid"></div><div class="top"><div class="brand"><span class="mark"></span>One Good Engineer</div><div>Kraków · cała Polska</div></div>`;
+const markSvg = (lead, line) => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" style="width:34px;height:34px"><rect x="14" y="14" width="16" height="16" rx="3" fill="${lead}"/><rect x="35" y="15" width="14" height="14" rx="3" fill="none" stroke="${line}" stroke-width="3"/><rect x="15" y="35" width="14" height="14" rx="3" fill="none" stroke="${line}" stroke-width="3"/><rect x="35" y="35" width="14" height="14" rx="3" fill="none" stroke="${line}" stroke-width="3"/></svg>`;
+const top = (light) => `<div class="grid"></div><div class="top"><div class="brand">${light ? markSvg("#08090a", "#08090a") : markSvg("#c8ff62", "#eef0e9")}One Good Engineer</div><div>Kraków · cała Polska</div></div>`;
 const foot = (right = "faktura VAT") => `<div class="foot"><span><b>onegoodengineer.pl</b></span><span>${right}</span></div>`;
 
 const main = ({ kicker, title, price, unit, chips, small }) => `<div class="card">${top()}
@@ -54,15 +55,15 @@ const main = ({ kicker, title, price, unit, chips, small }) => `<div class="card
 <div class="price"><b>${price}</b><span>${unit}</span></div>
 <div class="chips">${chips.map((c) => `<span>${c}</span>`).join("")}</div></div>`;
 
-const steps = ({ kicker, title, items, light }) => `<div class="card ${light ? "light" : ""}">${top()}
+const steps = ({ kicker, title, items, light }) => `<div class="card ${light ? "light" : ""}">${top(light)}
 <div class="kicker">${kicker}</div><h1 class="s">${title}</h1>
 <div class="steps">${items.map(([i, b, p]) => `<div class="step"><i>${i}</i><b>${b}</b><p>${p}</p></div>`).join("")}</div>${foot()}</div>`;
 
-const list = ({ kicker, title, items, light, one, right }) => `<div class="card ${light ? "light" : ""}">${top()}
+const list = ({ kicker, title, items, light, one, right }) => `<div class="card ${light ? "light" : ""}">${top(light)}
 <div class="kicker">${kicker}</div><h1 class="s">${title}</h1>
 <ul class="${one ? "one" : ""}">${items.map((i) => `<li>${i}</li>`).join("")}</ul>${foot(right)}</div>`;
 
-const stat = ({ kicker, big, sub, light }) => `<div class="card ${light ? "light" : ""}">${top()}
+const stat = ({ kicker, big, sub, light }) => `<div class="card ${light ? "light" : ""}">${top(light)}
 <div class="kicker">${kicker}</div><div class="big">${big}</div><div class="sub">${sub}</div>${foot()}</div>`;
 
 const proces = steps({
