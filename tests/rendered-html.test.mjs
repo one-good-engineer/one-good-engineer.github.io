@@ -118,6 +118,8 @@ test("retains language alternates in each page head without relying on the sitem
     { en: `${SITE}/en/`, pl: SITE, "x-default": SITE },
     { en: `${SITE}/en/`, pl: SITE, "x-default": SITE },
     { pl: `${SITE}/automatyzacje/`, "x-default": `${SITE}/automatyzacje/` },
+    { en: `${SITE}/en/websites/`, pl: `${SITE}/strony/`, "x-default": `${SITE}/strony/` },
+    { en: `${SITE}/en/websites/`, pl: `${SITE}/strony/`, "x-default": `${SITE}/strony/` },
   ];
   for (const [index, page] of pages.entries()) {
     const head = page.slice(0, page.indexOf("</head>"));
