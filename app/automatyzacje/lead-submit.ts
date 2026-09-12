@@ -1,6 +1,6 @@
-import {looksLikeEmail} from "../../lead/formspree.ts";
+import {looksLikeEmail} from "../lead/formspree.ts";
 
-export {LEAD_ENDPOINT, submitLead} from "../../lead/formspree.ts";
+export {LEAD_ENDPOINT, submitLead} from "../lead/formspree.ts";
 
 export function buildLeadPayload(values: Record<string, string>, source: string) {
   const contact = (values.contact || "").trim();

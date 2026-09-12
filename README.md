@@ -2,7 +2,7 @@
 
 Software delivery without a software house: one senior engineer running a crew of AI agents.
 
-The bilingual studio site, statically generated for GitHub Pages. English at `/`, Polish at `/pl/`.
+The bilingual studio site, statically generated for GitHub Pages. Polish at `/`, English at `/en/`.
 
 ## Development
 

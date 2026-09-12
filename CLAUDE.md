@@ -1,9 +1,9 @@
 # One Good Engineer & Co., site
 
 Static bilingual site for a one-person software delivery studio, live at `https://onegoodengineer.pl`
-(the host lives once, in `app/site.ts`; `one-good-engineer.github.io` redirects there). English at
-`/`, Polish at `/pl/`, plus the productised websites-and-shops offer at `/websites/` and
-`/pl/strony/` (`app/OfferPage.tsx`). Built with vinext (Vite + Next-compatible), exported statically, deployed to
+(the host lives once, in `app/site.ts`; `one-good-engineer.github.io` redirects there). Polish at
+`/`, English at `/en/`, plus the productised websites-and-shops offer at `/strony/` and
+`/en/websites/` (`app/OfferPage.tsx`). Built with vinext (Vite + Next-compatible), exported statically, deployed to
 GitHub Pages by `.github/workflows/pages.yml`. Header, footer and the mark live in
 `app/SiteChrome.tsx` and are shared by both pages.
 

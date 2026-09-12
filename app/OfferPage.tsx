@@ -15,8 +15,8 @@ type Plan = {
 
 const copy = {
   en: {
-    nav: [["Flow", "#flow"], ["Full pack", "#full-pack"], ["Packages", "#packages"], ["Support", "#care"], ["FAQ", "#faq"], ["Studio", "/"]],
-    langHref: "/pl/strony/",
+    nav: [["Flow", "#flow"], ["Full pack", "#full-pack"], ["Packages", "#packages"], ["Support", "#care"], ["FAQ", "#faq"], ["Studio", "/en/"]],
+    langHref: "/strony/",
     langLabel: "PL",
     eyebrow: "Websites and online shops · for businesses in Poland",
     heroA: "A website that earns its keep.",
@@ -65,8 +65,8 @@ const copy = {
     footer: "Websites · online shops · ongoing support · Kraków",
   },
   pl: {
-    nav: [["Przebieg", "#flow"], ["Full pack", "#full-pack"], ["Pakiety", "#packages"], ["Opieka", "#care"], ["Pytania", "#faq"], ["Automatyzacje", "/pl/automatyzacje/"], ["Studio", "/pl/"]],
-    langHref: "/websites/",
+    nav: [["Przebieg", "#flow"], ["Full pack", "#full-pack"], ["Pakiety", "#packages"], ["Opieka", "#care"], ["Pytania", "#faq"], ["Automatyzacje", "/automatyzacje/"], ["Studio", "/"]],
+    langHref: "/en/websites/",
     langLabel: "EN",
     eyebrow: "Strony i sklepy internetowe · dla firm w Polsce",
     heroA: "Strona, która pomaga sprzedawać.",
@@ -131,7 +131,7 @@ function PlanCard({plan}: {plan: Plan}) {
 export default function OfferPage({locale}: {locale: Locale}) {
   const c = copy[locale];
   const isPl = locale === "pl";
-  const pageUrl = `${SITE}${isPl ? "/pl/strony/" : "/websites/"}`;
+  const pageUrl = `${SITE}${isPl ? "/strony/" : "/en/websites/"}`;
   const priceOf = (price: string) => Number(price.replace(/\D/g, ""));
   const offerSchema = {
     "@context": "https://schema.org",

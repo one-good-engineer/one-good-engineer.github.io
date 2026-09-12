@@ -1,6 +1,6 @@
 # Brief, krok drugi: odpowiedź na zgłoszenie z formularza
 
-Formularz na `/pl/strony/` i `/websites/` zbiera cztery pola (imię, kontakt, firma, pakiet) i
+Formularz na `/strony/` i `/en/websites/` zbiera cztery pola (imię, kontakt, firma, pakiet) i
 obiecuje, że dziesięć pytań briefu wraca mailem. To jest ten mail. Wysyła go człowiek, nie
 automat, w tym samym dniu roboczym. 24 godziny do trzech wersji liczą się od odpowiedzi klienta.
 

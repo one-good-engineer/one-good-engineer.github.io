@@ -1,4 +1,4 @@
-import {sourceOf} from "../../lead/formspree.ts";
+import {sourceOf} from "../lead/formspree.ts";
 
 export function buildLeadMessage(values: Record<string, string>, pageUrl: string, recipient: string) {
   const source = new URL(sourceOf(pageUrl));

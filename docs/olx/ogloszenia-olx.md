@@ -281,7 +281,7 @@ Grafika: Plansza główna: „Prototyp przed decyzją”, wycena w 24 h.
 
 Szablon:
 
-Dziękuję za wiadomość. Żeby podać sensowną cenę, napisz proszę: 1) czym zajmuje się firma i co ma robić strona, 2) czy masz już stronę, teksty, zdjęcia lub logo, 3) na kiedy potrzebujesz gotowego wdrożenia? Możesz też wypełnić krótki brief, są tam tylko cztery pola: https://onegoodengineer.pl/pl/strony/#brief. Wrócę z konkretną propozycją.
+Dziękuję za wiadomość. Żeby podać sensowną cenę, napisz proszę: 1) czym zajmuje się firma i co ma robić strona, 2) czy masz już stronę, teksty, zdjęcia lub logo, 3) na kiedy potrzebujesz gotowego wdrożenia? Możesz też wypełnić krótki brief, są tam tylko cztery pola: https://onegoodengineer.pl/strony/#brief. Wrócę z konkretną propozycją.
 
 ## Inne miejsca na te same ogloszenia (stan 2026-09-11)
 

@@ -1,9 +1,9 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import {buildLeadPayload, LEAD_ENDPOINT, submitLead} from "../app/pl/automatyzacje/lead-submit.ts";
+import {buildLeadPayload, LEAD_ENDPOINT, submitLead} from "../app/automatyzacje/lead-submit.ts";
 
 const values = {name: " Anna ", companyIndustry: "Usługi B2B", contact: " anna@example.com ", service: "Audyt i plan usprawnień", process: "Oferty i dokumenty\nDwa systemy", volume: "20-100", _gotcha: ""};
-const source = "https://onegoodengineer.pl/pl/automatyzacje/?utm_source=youtube";
+const source = "https://onegoodengineer.pl/automatyzacje/?utm_source=youtube";
 
 test("payload preserves diagnostic fields and sets email Reply-To", () => {
   const payload = buildLeadPayload(values, source);
