@@ -16,6 +16,7 @@ const copy = {
     contact: "E-mail lub telefon",
     contactPlaceholder: "Jak najlepiej się z Tobą skontaktować?",
     service: "W czym mogę pomóc?",
+    audit: "Audyt i plan usprawnień",
     undecided: "Nie wiem jeszcze",
     privateAI: "Prywatne AI i asystent wiedzy",
     automation: "Wdrożenie i integracje",
@@ -45,6 +46,7 @@ const copy = {
     contact: "Email or phone",
     contactPlaceholder: "What is the best way to reach you?",
     service: "What can I help with?",
+    audit: "Audit and improvement plan",
     undecided: "I am not sure yet",
     privateAI: "Private AI and knowledge assistant",
     automation: "Implementation and integrations",
@@ -116,7 +118,7 @@ export default function LeadForm({locale = "pl"}: {locale?: Locale}) {
         <span>{t.contact}</span>
         <input name="contact" autoComplete="email" placeholder={t.contactPlaceholder} maxLength={160} required />
       </label>
-      <label><span>{t.service}</span><select name="service" defaultValue={t.undecided}><option>{t.undecided}</option><option>Audyt i plan usprawnień</option><option>{t.privateAI}</option><option>{t.automation}</option><option>{t.review}</option></select></label>
+      <label><span>{t.service}</span><select name="service" defaultValue={t.undecided}><option>{t.undecided}</option><option>{t.audit}</option><option>{t.privateAI}</option><option>{t.automation}</option><option>{t.review}</option></select></label>
       <label>
         <span>{t.process}</span>
         <textarea
