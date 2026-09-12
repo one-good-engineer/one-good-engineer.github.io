@@ -376,7 +376,7 @@ export default function LandingPage({ locale }: { locale: Locale }) {
           ))}
         </nav>
         <div className="top-actions">
-          {isPl ? <a className="automation-link" href="/pl/automatyzacje/">Automatyzacje</a> : null}
+          {isPl ? <><a className="private-ai-link" href="/pl/prywatne-ai/">Prywatne AI</a><a className="automation-link" href="/pl/automatyzacje/">Automatyzacje</a></> : null}
           <a className="language" href={c.langHref} hrefLang={isPl ? "en" : "pl"}>{c.langLabel}</a>
           <a className="contact-pill" href={`mailto:${email}`}>{isPl ? "Kontakt" : "Contact"}</a>
         </div>

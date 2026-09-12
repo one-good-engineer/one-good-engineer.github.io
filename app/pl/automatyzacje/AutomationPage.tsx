@@ -35,7 +35,7 @@ export default function AutomationPage() {
       <header className="topbar automation-topbar">
         <a className="brand" href="/pl/" aria-label="One Good Engineer, strona główna"><Mark /><span className="brand-name">{brand}<i>&amp; Co.</i></span></a>
         <nav className="nav" aria-label="Nawigacja po ofercie automatyzacji"><a href="#obszary">Obszary</a><a href="#uslugi">Usługi</a><a href="#demo">Demo</a></nav>
-        <div className="top-actions"><a className="language" href="/pl/">Inżynieria produktów</a><a className="contact-pill" href="#konsultacja">Porozmawiajmy</a></div>
+        <div className="top-actions"><a className="private-ai-link" href="/pl/prywatne-ai/">Prywatne AI</a><a className="language" href="/pl/">Inżynieria produktów</a><a className="contact-pill" href="#konsultacja">Porozmawiajmy</a></div>
       </header>
       <main>
         <section className="automation-hero section-pad">

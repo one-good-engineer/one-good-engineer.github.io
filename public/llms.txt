@@ -13,6 +13,12 @@ Trzy samodzielne usługi: płatny audyt i plan usprawnień jednego obszaru, wdro
 
 Na stronie jest krótka, bezdźwięczna demonstracja lokalnego n8n: formularz, tabela i dwa maile przechwycone przez Mailpit. To fikcyjne dane i przykład edukacyjny, nie studium wdrożenia klienta. Nie obejmuje klasyfikacji AI, pełnego CRM ani follow-upów. Proces i instrukcja są dostępne do pobrania. Bez skonfigurowanego endpointu formularz kontaktowy tylko przygotowuje wiadomość e-mail; użytkownik musi ją wysłać we własnej poczcie.
 
+## Prywatne AI i asystenci wiedzy dla firm
+
+[Polska oferta prywatnego AI](https://one-good-engineer.github.io/pl/prywatne-ai/) obejmuje audyt danych i procesu, PoC asystenta wiedzy, integracje z pocztą, dyskiem, CRM lub SharePointem oraz ewaluacje i opiekę. Asystent może działać lokalnie albo w europejskiej chmurze, a odpowiedzi powinny wskazywać źródła, respektować uprawnienia i przekazywać niepewne sprawy człowiekowi.
+
+Pierwszy projekt zaczyna się od jednego procesu i próbki legalnie udostępnionych danych. Model lokalny, europejska chmura i gotowe API są porównywane pod kątem jakości, opóźnienia, bezpieczeństwa i kosztu gotowego zadania. Lokalny model nie jest obiecywany jako zawsze tańszy ani automatycznie zgodny z RODO.
+
 ## How the work runs
 
 1. Frame. The outcome, the constraints and the acceptance evidence are agreed with the client. This step is never handed to a model.
