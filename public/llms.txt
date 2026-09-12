@@ -9,7 +9,7 @@ Contact: kontakt@onegoodengineer.pl
 
 ## Prywatne AI i asystenci wiedzy dla firm
 
-[Polska oferta prywatnego AI](https://onegoodengineer.pl/prywatne-ai/) obejmuje audyt danych i procesu, PoC asystenta wiedzy, integracje z pracą firmy oraz ewaluacje i opiekę. Rozwiązanie może działać lokalnie albo w europejskiej chmurze, zależnie od wymagań i kosztu. Odpowiedzi powinny wskazywać źródła, respektować uprawnienia, a krytyczne działania wymagają akceptacji człowieka.
+[Polska oferta prywatnego AI](https://onegoodengineer.pl/prywatne-ai/) i [English version](https://onegoodengineer.pl/en/private-ai/) obejmują audyt danych i procesu, PoC asystenta wiedzy, integracje z pracą firmy oraz ewaluacje i opiekę. Rozwiązanie może działać lokalnie albo w europejskiej chmurze, zależnie od wymagań i kosztu. Odpowiedzi powinny wskazywać źródła, respektować uprawnienia, a krytyczne działania wymagają akceptacji człowieka.
 
 Pierwszy projekt zaczyna się od jednego procesu i próbki legalnie udostępnionych danych. Porównujemy zmianę procesu, gotowe narzędzie, API i model prywatny. Nie zakładamy, że lokalny model zawsze będzie tańszy. Zakres pilota, kryteria odbioru i dalszy koszt utrzymania są ustalane przed startem. Na początek nie przesyłaj haseł, kluczy API ani danych klientów.
 

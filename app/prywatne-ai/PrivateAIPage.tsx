@@ -1,74 +1,76 @@
-import {brand, email, Footer, TopBar} from "../SiteChrome";
+import {brand, email, Footer, TopBar, type Locale} from "../SiteChrome";
+import LeadForm from "../automatyzacje/LeadForm";
 import {SITE} from "../site";
 
-const concerns = [
-  ["01", "Wiedza jest w dokumentach", "Umowy, procedury i instrukcje są rozproszone, a odpowiedź zależy od tego, kto wie, gdzie szukać."],
-  ["02", "Te same pytania wracają", "Zespół traci czas na odtwarzanie odpowiedzi zamiast zajmować się sprawami wymagającymi doświadczenia."],
-  ["03", "Dane wymagają ostrożności", "Liczą się uprawnienia, retencja, logi i zasady użycia, nie sama nazwa modelu."],
-  ["04", "Nie wiesz, co wybrać", "Model lokalny, europejska chmura czy gotowe API? Odpowiedź zależy od danych, jakości i kosztu całego procesu."],
-] as const;
+type Card = readonly [string, string, string];
+type Service = {n: string; situation: string; title: string; body: string; outputs: readonly string[]; note: string};
+type Step = readonly [string, string, string];
 
-const services = [
-  {n: "01", situation: "Nie wiem, od czego zacząć", title: "Audyt danych i procesu", body: "Sprawdzam jeden konkretny proces, źródła wiedzy, systemy i ograniczenia. Porównuję zmianę procesu, gotowe narzędzie, API i model uruchamiany prywatnie.", outputs: ["Mapa procesu i ryzyk", "Zakres pilota oraz sposób pomiaru", "Rekomendacja technologiczna"], note: "Wynikiem może być decyzja, żeby niczego nie wdrażać."},
-  {n: "02", situation: "Chcę sprawdzić jeden przypadek", title: "PoC asystenta wiedzy", body: "Buduję mały, mierzalny prototyp nad legalnie udostępnionymi dokumentami. Odpowiedź pokazuje źródło, respektuje uprawnienia i przekazuje niepewne sprawy człowiekowi.", outputs: ["Działający pilot", "Zestaw prawdziwych testów", "Decyzja o dalszym kierunku"], note: "Pilot nie udaje gotowego produktu ani automatycznej decyzji."},
-  {n: "03", situation: "Pilot działa, czas go połączyć", title: "Integracja z pracą firmy", body: "Łączę asystenta z pocztą, dyskiem, CRM, SharePointem lub innym systemem. Dodaję role, logowanie operacji, obsługę błędów i akceptację czynności o skutkach.", outputs: ["Proces do obserwowania i testowania", "Uprawnienia oraz ślad operacji", "Dokumentacja przekazania"], note: "Zakres i zależności od dostawców są jawne przed startem."},
-  {n: "04", situation: "Mam system, który trzeba utrzymać", title: "Ewaluacje i opieka", body: "Monitoruję jakość odpowiedzi, dostępność, koszt i zmiany w bazie wiedzy. Aktualizuję reguły oraz modele wtedy, gdy pomiar pokazuje realną potrzebę.", outputs: ["Raport jakości i kosztu", "Testy regresji na prawdziwych pytaniach", "Plan kolejnych poprawek"], note: "Opieka jest osobną usługą, nie ukrytym abonamentem."},
-] as const;
+const copy = {
+  pl: {
+    nav: [["Dlaczego prywatnie", "#dlaczego"], ["Usługi", "#uslugi"], ["Proces", "#proces"], ["Automatyzacje", "/automatyzacje/"], ["Strony i sklepy", "/strony/"]],
+    langHref: "/en/private-ai/", langLabel: "EN", langOf: "en" as Locale,
+    eyebrow: "Prywatne AI dla firm", title: "Asystent, który zna dokumenty firmy, ale nie decyduje za ludzi.",
+    sub: "Projektuję i wdrażam rozwiązania AI do pracy z dokumentami, wiedzą i procesami, z kontrolą dostępu, źródłami odpowiedzi i jasnym miejscem na akceptację człowieka.",
+    primary: "Przejdź do formularza", secondary: "Zobacz zakres usług", qualifier: "Firmy usługowe i B2B · Kraków i cała Polska. Pierwszy krok to rozmowa o jednym procesie, nie zakup serwera.",
+    briefKicker: "Kontrolowany przepływ", briefTitle: "Prywatność zaczyna się od procesu, nie od nazwy modelu.", briefBody: "Model pomaga znaleźć i przygotować odpowiedź. Procedura, dostęp i akceptacja pozostają częścią systemu.",
+    briefSteps: [["Uprawnienia", "Użytkownik widzi tylko swoje źródła."], ["Dokumenty", "Odpowiedź opiera się na wskazanych fragmentach."], ["Człowiek", "Niepewna lub krytyczna sprawa trafia do akceptacji."]], briefNote: "Nie każdą treść trzeba wysyłać do przypadkowego narzędzia.",
+    proof: [["Źródła odpowiedzi", "Dokument do sprawdzenia, nie tylko prawdopodobny tekst."], ["Dobór po pomiarze", "Lokalny model nie jest celem samym w sobie."], ["Bez decyzji w ciemno", "Krytyczne działania wymagają akceptacji człowieka."]],
+    concernsKicker: "Z czym przychodzą firmy", concernsTitle: "Dokumenty, pytania i dane w jednym kontrolowanym procesie.", concernsIntro: "Największą wartość daje połączenie wiedzy firmy z konkretną pracą. Sam chatbot bez źródeł, uprawnień i sposobu mierzenia szybko staje się kolejnym miejscem do ręcznego sprawdzania.",
+    concerns: [["01", "Wiedza jest w dokumentach", "Umowy, procedury i instrukcje są rozproszone, a odpowiedź zależy od tego, kto wie, gdzie szukać."], ["02", "Te same pytania wracają", "Zespół traci czas na odtwarzanie odpowiedzi zamiast zajmować się sprawami wymagającymi doświadczenia."], ["03", "Dane wymagają ostrożności", "Liczą się uprawnienia, retencja, logi i zasady użycia, nie sama nazwa modelu."], ["04", "Nie wiesz, co wybrać", "Model lokalny, europejska chmura czy gotowe API? Odpowiedź zależy od danych, jakości i kosztu całego procesu."]] satisfies readonly Card[],
+    servicesKicker: "Cztery sposoby współpracy", servicesTitle: "Od pytania biznesowego do rozwiązania, które można utrzymać.", servicesIntro: "Możesz zamówić sam audyt, pilota albo pełną integrację. Zakres i koszt ustalamy po poznaniu procesu.",
+    services: [{n: "01", situation: "Nie wiem, od czego zacząć", title: "Audyt danych i procesu", body: "Sprawdzam jeden konkretny proces, źródła wiedzy, systemy i ograniczenia. Porównuję zmianę procesu, gotowe narzędzie, API i model uruchamiany prywatnie.", outputs: ["Mapa procesu i ryzyk", "Zakres pilota oraz sposób pomiaru", "Rekomendacja technologiczna"], note: "Wynikiem może być decyzja, żeby niczego nie wdrażać."}, {n: "02", situation: "Chcę sprawdzić jeden przypadek", title: "PoC asystenta wiedzy", body: "Buduję mały, mierzalny prototyp nad legalnie udostępnionymi dokumentami. Odpowiedź pokazuje źródło, respektuje uprawnienia i przekazuje niepewne sprawy człowiekowi.", outputs: ["Działający pilot", "Zestaw prawdziwych testów", "Decyzja o dalszym kierunku"], note: "Pilot nie udaje gotowego produktu ani automatycznej decyzji."}, {n: "03", situation: "Pilot działa, czas go połączyć", title: "Integracja z pracą firmy", body: "Łączę asystenta z pocztą, dyskiem, CRM, SharePointem lub innym systemem. Dodaję role, logowanie operacji, obsługę błędów i akceptację czynności o skutkach.", outputs: ["Proces do obserwowania i testowania", "Uprawnienia oraz ślad operacji", "Dokumentacja przekazania"], note: "Zakres i zależności od dostawców są jawne przed startem."}, {n: "04", situation: "Mam system, który trzeba utrzymać", title: "Ewaluacje i opieka", body: "Monitoruję jakość odpowiedzi, dostępność, koszt i zmiany w bazie wiedzy. Aktualizuję reguły oraz modele wtedy, gdy pomiar pokazuje realną potrzebę.", outputs: ["Raport jakości i kosztu", "Testy regresji na prawdziwych pytaniach", "Plan kolejnych poprawek"], note: "Opieka jest osobną usługą, nie ukrytym abonamentem."}] satisfies readonly Service[],
+    trustFacts: [["Dane", "lokalnie albo w europejskiej chmurze"], ["RAG", "źródła i cytaty w odpowiedzi"], ["Testy", "pytania, błędy, koszt i opóźnienie"]], trustKicker: "Co znaczy prywatne", trustTitle: "Prywatność to architektura, nie naklejka.",
+    guardrails: [["Dane", "Lokalnie albo w europejskiej chmurze, zależnie od wymagań i kosztu."], ["Źródła", "Odpowiedź wskazuje dokument i fragment, na którym się opiera."], ["Dostęp", "Użytkownik widzi tylko to, do czego ma uprawnienia."], ["Człowiek", "Krytyczne działania i niepewne odpowiedzi trafiają do akceptacji."], ["Pomiar", "Testujemy prawdziwe pytania, błędy, opóźnienie i koszt zadania."], ["Przekazanie", "Kod, konfiguracja, logi i instrukcja zostają w uzgodnionym zakresie po Twojej stronie."]],
+    processKicker: "Pierwszy projekt", processTitle: "Mały pilot, konkretne kryteria, decyzja po wyniku.", steps: [["01", "Wybieramy jeden proces", "Nie zaczynamy od modelu. Zaczynamy od pytania, które dziś kosztuje czas albo powoduje błędy."], ["02", "Bierzemy próbkę danych", "Na legalnie udostępnionych materiałach ustalamy, co system może zobaczyć i jak wygląda dobry wynik."], ["03", "Porównujemy rozwiązania", "Sprawdzamy model lokalny, europejską chmurę i gotowe API. Lokalnie nie zawsze znaczy taniej."], ["04", "Podejmujesz decyzję", "Dostajesz wynik pilota, testy i koszt dalszego utrzymania. Możemy rozwijać, zmienić kierunek albo zakończyć temat."]] satisfies readonly Step[],
+    consultationKicker: "Zacznijmy od problemu", consultationTitle: "Masz dokumenty, których zespół ciągle szuka?", consultationBody: "Opisz, gdzie dziś ginie czas. Na początek wystarczy proces, bez haseł, kluczy API i danych klientów.", consultationItems: ["Rozmowa o jednym procesie", "Audyt, PoC albo integracja jako osobna usługa", "Zakres, koszt i kryteria przed startem"], footer: "Prywatne AI · audyt · PoC · integracje · Kraków i cała Polska",
+  },
+  en: {
+    nav: [["Why private", "#why"], ["Services", "#services"], ["Process", "#process"], ["Automation", "/automatyzacje/"], ["Websites", "/en/websites/"]],
+    langHref: "/prywatne-ai/", langLabel: "PL", langOf: "pl" as Locale,
+    eyebrow: "Private AI for businesses", title: "An assistant that knows your company documents, but does not decide for people.",
+    sub: "I design and implement AI solutions for documents, knowledge and processes, with access control, cited answers and a clear place for human approval.",
+    primary: "Go to the form", secondary: "See the service scope", qualifier: "Service and B2B companies · Kraków and Poland. The first step is one process, not buying a server.",
+    briefKicker: "Controlled flow", briefTitle: "Privacy starts with the process, not the model name.", briefBody: "The model helps find and prepare an answer. Procedure, access and approval remain part of the system.",
+    briefSteps: [["Permissions", "Users see only their allowed sources."], ["Documents", "The answer points to the relevant passages."], ["Human", "Uncertain or critical cases go to approval."]], briefNote: "Not every piece of content belongs in a random tool.",
+    proof: [["Cited answers", "A source to check, not just plausible text."], ["Measured choice", "A local model is not the goal by itself."], ["No blind decisions", "Critical actions require human approval."]],
+    concernsKicker: "Where companies get stuck", concernsTitle: "Documents, questions and data in one controlled process.", concernsIntro: "The value comes from connecting company knowledge to real work. A chatbot without sources, permissions and measurement soon becomes another place to check by hand.",
+    concerns: [["01", "Knowledge lives in documents", "Contracts, procedures and instructions are scattered, and the answer depends on who remembers where to look."], ["02", "The same questions return", "The team spends time reconstructing answers instead of handling work that needs experience."], ["03", "Data needs care", "Permissions, retention, logs and rules of use matter more than the model name."], ["04", "The choice is unclear", "Local model, European cloud or ready API? It depends on data, quality and total task cost."]] satisfies readonly Card[],
+    servicesKicker: "Four ways to work together", servicesTitle: "From a business question to a solution you can maintain.", servicesIntro: "You can order the audit, the pilot or the full integration. Scope and cost follow the process review.",
+    services: [{n: "01", situation: "I do not know where to start", title: "Data and process audit", body: "I review one concrete process, its knowledge sources, systems and constraints. I compare changing the process, buying a tool, using an API and running a model privately.", outputs: ["Process and risk map", "Pilot scope and measurement plan", "Technology recommendation"], note: "The result may be a decision not to build anything."}, {n: "02", situation: "I want to test one case", title: "Knowledge assistant PoC", body: "I build a small, measurable prototype over legally shared documents. Answers show their sources, respect permissions and hand uncertain cases to a person.", outputs: ["Working pilot", "Test set from real questions", "Decision on the next direction"], note: "A pilot does not pretend to be a finished product or an automatic decision."}, {n: "03", situation: "The pilot works, now connect it", title: "Integration with company work", body: "I connect the assistant to email, storage, CRM, SharePoint or another system. I add roles, operation logs, error handling and approval for consequential actions.", outputs: ["Observable, testable process", "Permissions and audit trail", "Handover documentation"], note: "Provider dependencies and limits are clear before work starts."}, {n: "04", situation: "I have a system to maintain", title: "Evaluation and care", body: "I monitor answer quality, availability, cost and changes in the knowledge base. I update rules and models when measurement shows a real need.", outputs: ["Quality and cost report", "Regression tests on real questions", "Next-improvement plan"], note: "Care is a separate service, not a hidden subscription."}] satisfies readonly Service[],
+    trustFacts: [["Data", "local or in a European cloud"], ["RAG", "sources and citations in answers"], ["Tests", "questions, errors, cost and latency"]], trustKicker: "What private means", trustTitle: "Privacy is architecture, not a sticker.",
+    guardrails: [["Data", "Local or in a European cloud, depending on requirements and cost."], ["Sources", "Answers point to the document and passage behind them."], ["Access", "Users see only what they are allowed to see."], ["Human", "Critical actions and uncertain answers go to approval."], ["Measurement", "We test real questions, errors, latency and task cost."], ["Handover", "Code, configuration, logs and instructions stay with you within the agreed scope."]],
+    processKicker: "First project", processTitle: "A small pilot, clear criteria and a decision after the result.", steps: [["01", "Choose one process", "We do not start with a model. We start with a question that costs time or causes errors today."], ["02", "Take a data sample", "Using legally shared material, we define what the system can see and what a good result looks like."], ["03", "Compare solutions", "We test a local model, a European cloud and ready APIs. Local does not always mean cheaper."], ["04", "Make the decision", "You get the pilot result, tests and the cost of keeping it running. We can continue, change direction or stop."]] satisfies readonly Step[],
+    consultationKicker: "Start with the problem", consultationTitle: "Do you have documents your team keeps searching for?", consultationBody: "Describe where time disappears today. To start, you only need the process, never passwords, API keys or customer data.", consultationItems: ["A conversation about one process", "Audit, PoC or integration as a separate service", "Scope, cost and acceptance criteria before work starts"], footer: "Private AI · audit · PoC · integrations · Kraków and Poland",
+  },
+} as const;
 
-const steps = [
-  ["01", "Wybieramy jeden proces", "Nie zaczynamy od modelu. Zaczynamy od pytania, które dziś kosztuje czas albo powoduje błędy."],
-  ["02", "Bierzemy próbkę danych", "Na legalnie udostępnionych materiałach ustalamy, co system może zobaczyć i jak wygląda dobry wynik."],
-  ["03", "Porównujemy rozwiązania", "Sprawdzamy model lokalny, europejską chmurę i gotowe API. Lokalnie nie zawsze znaczy taniej."],
-  ["04", "Podejmujesz decyzję", "Dostajesz wynik pilota, testy i koszt dalszego utrzymania. Możemy rozwijać, zmienić kierunek albo zakończyć temat."],
-] as const;
-
-const guardrails = [
-  ["Dane", "Lokalnie albo w europejskiej chmurze, zależnie od wymagań i kosztu."],
-  ["Źródła", "Odpowiedź wskazuje dokument i fragment, na którym się opiera."],
-  ["Dostęp", "Użytkownik widzi tylko to, do czego ma uprawnienia."],
-  ["Człowiek", "Krytyczne działania i niepewne odpowiedzi trafiają do akceptacji."],
-  ["Pomiar", "Testujemy prawdziwe pytania, błędy, opóźnienie i koszt zadania."],
-  ["Przekazanie", "Kod, konfiguracja, logi i instrukcja zostają w uzgodnionym zakresie po Twojej stronie."],
-] as const;
-
-const schema = {
+const schema = (locale: Locale) => ({
   "@context": "https://schema.org", "@type": "Service",
-  name: "Prywatne AI i asystenci wiedzy dla firm",
-  description: "Audyt danych i procesu, PoC asystenta wiedzy, integracje oraz ewaluacje prywatnych rozwiązań AI.",
+  name: locale === "pl" ? "Prywatne AI i asystenci wiedzy dla firm" : "Private AI and knowledge assistants for businesses",
+  description: locale === "pl" ? "Audyt danych i procesu, PoC asystenta wiedzy, integracje oraz ewaluacje prywatnych rozwiązań AI." : "Data and process audits, knowledge assistant PoCs, integrations and evaluation of private AI solutions.",
   provider: {"@type": "ProfessionalService", name: `${brand} & Co.`, email, address: {"@type": "PostalAddress", addressLocality: "Kraków", addressCountry: "PL"}},
-  areaServed: {"@type": "Country", name: "Polska"},
-  serviceType: "Wdrożenia prywatnego AI",
-  availableChannel: {"@type": "ServiceChannel", serviceUrl: `${SITE}/prywatne-ai/`},
-};
+  areaServed: {"@type": "Country", name: locale === "pl" ? "Polska" : "Poland"},
+  serviceType: locale === "pl" ? "Wdrożenia prywatnego AI" : "Private AI implementation",
+  availableChannel: {"@type": "ServiceChannel", serviceUrl: `${SITE}${locale === "pl" ? "/prywatne-ai/" : "/en/private-ai/"}`},
+});
 
-export default function PrivateAIPage() {
-  return <div className="site-shell automation-shell" lang="pl">
+export default function PrivateAIPage({locale}: {locale: Locale}) {
+  const c = copy[locale];
+  const isPl = locale === "pl";
+  return <div className="site-shell automation-shell" lang={locale}>
     <div className="noise" aria-hidden="true" />
-    <TopBar locale="pl" nav={[["Dlaczego prywatnie", "#dlaczego"], ["Usługi", "#uslugi"], ["Proces", "#proces"], ["Automatyzacje", "/automatyzacje/"], ["Strony i sklepy", "/strony/"]]} langHref="/" langLabel="Studio" langOf="pl" />
+    <TopBar locale={locale} nav={c.nav} langHref={c.langHref} langLabel={c.langLabel} langOf={c.langOf} />
     <main>
-      <section className="automation-hero section-pad">
-        <div className="automation-hero-copy">
-          <p className="eyebrow"><span className="status-dot" />Prywatne AI dla firm</p>
-          <h1>Asystent, który zna dokumenty firmy, ale nie decyduje za ludzi.</h1>
-          <p className="automation-hero-sub">Projektuję i wdrażam rozwiązania AI do pracy z dokumentami, wiedzą i procesami, z kontrolą dostępu, źródłami odpowiedzi i jasnym miejscem na akceptację człowieka.</p>
-          <div className="hero-actions"><a className="button button-primary" href={`mailto:${email}?subject=Prywatne%20AI%20dla%20firm`}>Opisz proces<span>↗</span></a><a className="button button-ghost" href="#uslugi">Zobacz zakres usług</a></div>
-          <p className="automation-qualifier">Firmy usługowe i B2B · Kraków i cała Polska. Pierwszy krok to rozmowa o jednym procesie, nie zakup serwera.</p>
-        </div>
-        <aside className="process-brief" aria-label="Jak działa kontrolowany asystent wiedzy">
-          <p className="kicker">Kontrolowany przepływ</p><h2>Prywatność zaczyna się od procesu, nie od nazwy modelu.</h2>
-          <p>Model pomaga znaleźć i przygotować odpowiedź. Procedura, dostęp i akceptacja pozostają częścią systemu.</p>
-          <ol><li><span>01</span><div><strong>Uprawnienia</strong><p>Użytkownik widzi tylko swoje źródła.</p></div></li><li><span>02</span><div><strong>Dokumenty</strong><p>Odpowiedź opiera się na wskazanych fragmentach.</p></div></li><li><span>03</span><div><strong>Człowiek</strong><p>Niepewna lub krytyczna sprawa trafia do akceptacji.</p></div></li></ol>
-          <p className="brief-note">Nie każdą treść trzeba wysyłać do przypadkowego narzędzia.</p>
-        </aside>
-      </section>
-      <section className="automation-proof section-pad" aria-label="Zasady oferty"><div><strong>Źródła odpowiedzi</strong><span>Dokument do sprawdzenia, nie tylko prawdopodobny tekst.</span></div><div><strong>Dobór po pomiarze</strong><span>Lokalny model nie jest celem samym w sobie.</span></div><div><strong>Bez decyzji w ciemno</strong><span>Krytyczne działania wymagają akceptacji człowieka.</span></div></section>
-      <section className="automation-problems section-pad" id="dlaczego"><div className="section-head"><div><p className="kicker">Z czym przychodzą firmy</p><h2>Dokumenty, pytania i dane w jednym kontrolowanym procesie.</h2></div><p>Największą wartość daje połączenie wiedzy firmy z konkretną pracą. Sam chatbot bez źródeł, uprawnień i sposobu mierzenia szybko staje się kolejnym miejscem do ręcznego sprawdzania.</p></div><div className="problem-grid">{concerns.map(([n, title, body]) => <article key={n}><span>{n}</span><h3>{title}</h3><p>{body}</p></article>)}</div></section>
-      <section className="automation-services section-pad" id="uslugi"><div className="section-head"><div><p className="kicker">Cztery sposoby współpracy</p><h2>Od pytania biznesowego do rozwiązania, które można utrzymać.</h2></div><p>Możesz zamówić sam audyt, pilota albo pełną integrację. Zakres i koszt ustalamy po poznaniu procesu.</p></div><div className="service-grid">{services.map(s => <article key={s.n}><p className="service-situation">{s.n} / {s.situation}</p><h3>{s.title}</h3><p>{s.body}</p><ul>{s.outputs.map(item => <li key={item}>{item}</li>)}</ul><p className="service-note">{s.note}</p><a href="#konsultacja">Zapytaj o tę usługę<span aria-hidden="true"> ↗</span></a></article>)}</div></section>
-      <section className="automation-trust section-pad"><div className="trust-facts"><div><strong>Dane</strong><span>lokalnie albo w europejskiej chmurze</span></div><div><strong>RAG</strong><span>źródła i cytaty w odpowiedzi</span></div><div><strong>Testy</strong><span>pytania, błędy, koszt i opóźnienie</span></div></div><div className="trust-copy"><p className="kicker">Co znaczy prywatne</p><h2>Prywatność to architektura, nie naklejka.</h2><div className="guardrail-copy">{guardrails.map(([title, body]) => <p key={title}><strong>{title}:</strong> {body}</p>)}</div></div></section>
-      <section className="automation-method section-pad" id="proces"><div className="section-head compact"><div><p className="kicker">Pierwszy projekt</p><h2>Mały pilot, konkretne kryteria, decyzja po wyniku.</h2></div></div><div className="cooperation-list">{steps.map(([n, title, body]) => <article key={n}><span>{n}</span><h3>{title}</h3><p>{body}</p></article>)}</div></section>
-      <section className="automation-consultation section-pad" id="konsultacja"><div className="consultation-copy"><p className="kicker">Zacznijmy od problemu</p><h2>Masz dokumenty, których zespół ciągle szuka?</h2><p>Napisz, gdzie dziś ginie czas. Na początek wystarczy opis procesu, bez haseł, kluczy API i danych klientów.</p><ul><li><span>✓</span>Rozmowa o jednym procesie</li><li><span>✓</span>Audyt, PoC albo integracja jako osobna usługa</li><li><span>✓</span>Zakres, koszt i kryteria przed startem</li></ul></div><a className="button button-primary" href={`mailto:${email}?subject=Prywatne%20AI%20dla%20firm`}>Napisz do mnie<span>↗</span></a></section>
+      <section className="automation-hero section-pad"><div className="automation-hero-copy"><p className="eyebrow"><span className="status-dot" />{c.eyebrow}</p><h1>{c.title}</h1><p className="automation-hero-sub">{c.sub}</p><div className="hero-actions"><a className="button button-primary" href="#konsultacja">{c.primary}<span>↓</span></a><a className="button button-ghost" href="#uslugi">{c.secondary}</a></div><p className="automation-qualifier">{c.qualifier}</p></div><aside className="process-brief" aria-label={c.briefTitle}><p className="kicker">{c.briefKicker}</p><h2>{c.briefTitle}</h2><p>{c.briefBody}</p><ol>{c.briefSteps.map(([title, body], index) => <li key={title}><span>0{index + 1}</span><div><strong>{title}</strong><p>{body}</p></div></li>)}</ol><p className="brief-note">{c.briefNote}</p></aside></section>
+      <section className="automation-proof section-pad" aria-label={isPl ? "Zasady oferty" : "Offer principles"}>{c.proof.map(([title, body]) => <div key={title}><strong>{title}</strong><span>{body}</span></div>)}</section>
+      <section className="automation-problems section-pad" id={isPl ? "dlaczego" : "why"}><div className="section-head"><div><p className="kicker">{c.concernsKicker}</p><h2>{c.concernsTitle}</h2></div><p>{c.concernsIntro}</p></div><div className="problem-grid">{c.concerns.map(([n, title, body]) => <article key={n}><span>{n}</span><h3>{title}</h3><p>{body}</p></article>)}</div></section>
+      <section className="automation-services section-pad" id={isPl ? "uslugi" : "services"}><div className="section-head"><div><p className="kicker">{c.servicesKicker}</p><h2>{c.servicesTitle}</h2></div><p>{c.servicesIntro}</p></div><div className="service-grid">{c.services.map(s => <article key={s.n}><p className="service-situation">{s.n} / {s.situation}</p><h3>{s.title}</h3><p>{s.body}</p><ul>{s.outputs.map(item => <li key={item}>{item}</li>)}</ul><p className="service-note">{s.note}</p><a href="#konsultacja">{isPl ? "Zapytaj o tę usługę" : "Ask about this service"}<span aria-hidden="true"> ↗</span></a></article>)}</div></section>
+      <section className="automation-trust section-pad"><div className="trust-facts">{c.trustFacts.map(([title, body]) => <div key={title}><strong>{title}</strong><span>{body}</span></div>)}</div><div className="trust-copy"><p className="kicker">{c.trustKicker}</p><h2>{c.trustTitle}</h2><div className="guardrail-copy">{c.guardrails.map(([title, body]) => <p key={title}><strong>{title}:</strong> {body}</p>)}</div></div></section>
+      <section className="automation-method section-pad" id={isPl ? "proces" : "process"}><div className="section-head compact"><div><p className="kicker">{c.processKicker}</p><h2>{c.processTitle}</h2></div></div><div className="cooperation-list">{c.steps.map(([n, title, body]) => <article key={n}><span>{n}</span><h3>{title}</h3><p>{body}</p></article>)}</div></section>
+      <section className="automation-consultation section-pad" id="konsultacja"><div className="consultation-copy"><p className="kicker">{c.consultationKicker}</p><h2>{c.consultationTitle}</h2><p>{c.consultationBody}</p><ul>{c.consultationItems.map(item => <li key={item}><span>✓</span>{item}</li>)}</ul></div><LeadForm locale={locale} /></section>
     </main>
-    <Footer locale="pl" line="Prywatne AI · audyt · PoC · integracje · Kraków i cała Polska" />
-    <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(schema)}} />
+    <Footer locale={locale} line={c.footer} />
+    <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(schema(locale))}} />
   </div>;
 }

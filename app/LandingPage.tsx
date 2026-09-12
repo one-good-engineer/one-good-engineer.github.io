@@ -10,6 +10,7 @@ const copy = {
       ["About", "#studio"],
       ["Pricing", "#billing"],
       ["Websites", "/en/websites/"],
+      ["Private AI", "/en/private-ai/"],
     ],
     langHref: "/",
     langLabel: "PL",

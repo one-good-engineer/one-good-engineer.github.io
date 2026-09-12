@@ -15,7 +15,7 @@ type Plan = {
 
 const copy = {
   en: {
-    nav: [["Flow", "#flow"], ["Full pack", "#full-pack"], ["Packages", "#packages"], ["Support", "#care"], ["FAQ", "#faq"], ["Studio", "/en/"]],
+    nav: [["Flow", "#flow"], ["Full pack", "#full-pack"], ["Packages", "#packages"], ["Support", "#care"], ["FAQ", "#faq"], ["Private AI", "/en/private-ai/"], ["Studio", "/en/"]],
     langHref: "/strony/",
     langLabel: "PL",
     eyebrow: "Websites and online shops · for businesses in Poland",
