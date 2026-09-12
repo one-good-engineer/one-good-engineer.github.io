@@ -36,7 +36,7 @@ export default function AutomationPage() {
       <div className="noise" aria-hidden="true" />
       <TopBar
         locale="pl"
-        nav={[["Obszary", "#obszary"], ["Usługi", "#uslugi"], ["Demo", "#demo"], ["Strony i sklepy", "/strony/"]]}
+        nav={[["Obszary", "#obszary"], ["Usługi", "#uslugi"], ["Demo", "#demo"], ["Prywatne AI", "/prywatne-ai/"], ["Strony i sklepy", "/strony/"]]}
         langHref="/"
         langLabel="Studio"
         langOf="pl"

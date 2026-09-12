@@ -10,6 +10,7 @@ const readPages = () =>
     readFile(new URL("en/index.html", root), "utf8"),
   ]);
 const readAutomation = () => readFile(new URL("automatyzacje/index.html", root), "utf8");
+const readPrivateAI = () => readFile(new URL("prywatne-ai/index.html", root), "utf8");
 const readOfferPages = () =>
   Promise.all([
     readFile(new URL("en/websites/index.html", root), "utf8"),
@@ -81,7 +82,7 @@ test("carries the One Good Engineer brand and no trace of the old one", async ()
 });
 
 test("points every canonical, sitemap and robots entry at the live host", async () => {
-  const [polish, english, automation] = await Promise.all([...await readPages(), readAutomation()]);
+  const [polish, english, automation, privateAI] = await Promise.all([...await readPages(), readAutomation(), readPrivateAI()]);
   const [robots, sitemap] = await Promise.all([
     readFile(new URL("robots.txt", root), "utf8"),
     readFile(new URL("sitemap.xml", root), "utf8"),
@@ -90,6 +91,7 @@ test("points every canonical, sitemap and robots entry at the live host", async 
   assert.match(polish, new RegExp(`rel="canonical" href="${SITE}"`));
   assert.match(english, new RegExp(`rel="canonical" href="${SITE}/en/"`));
   assert.match(automation, new RegExp(`rel="canonical" href="${SITE}/automatyzacje/"`));
+  assert.match(privateAI, new RegExp(`rel="canonical" href="${SITE}/prywatne-ai/"`));
   assert.match(robots, new RegExp(`Sitemap: ${SITE}/sitemap\\.xml`));
   assert.match(sitemap, new RegExp(`${SITE}/automatyzacje/`));
   assert.doesNotMatch(sitemap, /aptlayer/i);
@@ -106,7 +108,7 @@ test("exports a browser-readable XML sitemap with every public page exactly once
     assert.ok(Date.parse(lastmod[1]) <= Date.now(), `lastmod ${lastmod[1]} is in the future`);
   }
   const locations = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
-  assert.deepEqual(locations, [`${SITE}/`, `${SITE}/en/`, `${SITE}/en/websites/`, `${SITE}/strony/`, `${SITE}/automatyzacje/`]);
+  assert.deepEqual(locations, [`${SITE}/`, `${SITE}/en/`, `${SITE}/en/websites/`, `${SITE}/strony/`, `${SITE}/automatyzacje/`, `${SITE}/prywatne-ai/`]);
   for (const location of locations) {
     await access(new URL(`${new URL(location).pathname.slice(1)}index.html`, root));
   }
@@ -150,6 +152,19 @@ test("describes the delivery loop with the human review step intact", async () =
   for (const page of [english, polish]) {
     assert.doesNotMatch(page, /€0\.014|quality<\/span><strong>0\.96/);
   }
+});
+
+test("exports the private AI business profile with its guardrails", async () => {
+  const page = await readPrivateAI();
+
+  assert.match(page, /Prywatne AI dla firm/);
+  assert.match(page, /Audyt danych i procesu/);
+  assert.match(page, /PoC asystenta wiedzy/);
+  assert.match(page, /kontrolą dostępu/);
+  assert.match(page, /akceptacji człowieka/);
+  assert.match(page, /model lokalny.*europejską chmurę.*gotowe API/s);
+  assert.match(page, /href="\/automatyzacje\/"/);
+  assert.match(page, /href="\/strony\/"/);
 });
 
 test("keeps the copy free of em dashes and en dashes", async () => {

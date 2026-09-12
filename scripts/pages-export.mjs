@@ -14,6 +14,7 @@ const routeSources = {
   "en/websites": ["app/en/websites", "app/OfferPage.tsx", "app/lead"],
   strony: ["app/strony", "app/OfferPage.tsx", "app/lead"],
   automatyzacje: ["app/automatyzacje"],
+  "prywatne-ai": ["app/prywatne-ai"],
 };
 const redirects = {
   pl: "",

@@ -175,6 +175,7 @@ const copy = {
       ["Rozliczenie", "#billing"],
       ["Strony i sklepy", "/strony/"],
       ["Automatyzacje", "/automatyzacje/"],
+      ["Prywatne AI", "/prywatne-ai/"],
     ],
     langHref: "/en/",
     langLabel: "EN",

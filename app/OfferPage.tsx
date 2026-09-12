@@ -65,7 +65,7 @@ const copy = {
     footer: "Websites · online shops · ongoing support · Kraków",
   },
   pl: {
-    nav: [["Przebieg", "#flow"], ["Full pack", "#full-pack"], ["Pakiety", "#packages"], ["Opieka", "#care"], ["Pytania", "#faq"], ["Automatyzacje", "/automatyzacje/"], ["Studio", "/"]],
+    nav: [["Przebieg", "#flow"], ["Full pack", "#full-pack"], ["Pakiety", "#packages"], ["Opieka", "#care"], ["Pytania", "#faq"], ["Automatyzacje", "/automatyzacje/"], ["Prywatne AI", "/prywatne-ai/"], ["Studio", "/"]],
     langHref: "/en/websites/",
     langLabel: "EN",
     eyebrow: "Strony i sklepy internetowe · dla firm w Polsce",

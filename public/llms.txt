@@ -7,6 +7,12 @@ Business details: Krystian Gwizdała Appfront, Kraków, Poland, NIP 8151745185, 
 Languages: Polish at the root, English at [/en/](https://onegoodengineer.pl/en/).
 Contact: kontakt@onegoodengineer.pl
 
+## Prywatne AI i asystenci wiedzy dla firm
+
+[Polska oferta prywatnego AI](https://onegoodengineer.pl/prywatne-ai/) obejmuje audyt danych i procesu, PoC asystenta wiedzy, integracje z pracą firmy oraz ewaluacje i opiekę. Rozwiązanie może działać lokalnie albo w europejskiej chmurze, zależnie od wymagań i kosztu. Odpowiedzi powinny wskazywać źródła, respektować uprawnienia, a krytyczne działania wymagają akceptacji człowieka.
+
+Pierwszy projekt zaczyna się od jednego procesu i próbki legalnie udostępnionych danych. Porównujemy zmianę procesu, gotowe narzędzie, API i model prywatny. Nie zakładamy, że lokalny model zawsze będzie tańszy. Zakres pilota, kryteria odbioru i dalszy koszt utrzymania są ustalane przed startem. Na początek nie przesyłaj haseł, kluczy API ani danych klientów.
+
 ## Audyt procesów, automatyzacje i integracje dla firm w Polsce
 
 [Polska oferta automatyzacji i integracji](https://onegoodengineer.pl/automatyzacje/) obejmuje sprzedaż i obsługę klienta, realizację usług i zleceń, dokumenty i administrację oraz raportowanie i przepływ danych między systemami. Jest skierowana do firm usługowych i B2B, z Krakowa i całej Polski.
