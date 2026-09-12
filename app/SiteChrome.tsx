@@ -1,6 +1,7 @@
 export type Locale = "en" | "pl";
 
 export const email = "kontakt@onegoodengineer.pl";
+export const facebook = "https://www.facebook.com/profile.php?id=61594502542372";
 export const signature = "Krystian Gwizdała";
 export const brand = "One Good Engineer";
 export const legalCompany = "Krystian Gwizdała Appfront";

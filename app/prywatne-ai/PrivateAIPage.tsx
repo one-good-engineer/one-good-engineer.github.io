@@ -1,4 +1,4 @@
-import {brand, email, Footer, TopBar, type Locale} from "../SiteChrome";
+import {brand, email, facebook, Footer, TopBar, type Locale} from "../SiteChrome";
 import LeadForm from "../automatyzacje/LeadForm";
 import {SITE} from "../site";
 
@@ -49,7 +49,7 @@ const schema = (locale: Locale) => ({
   "@context": "https://schema.org", "@type": "Service",
   name: locale === "pl" ? "Prywatne AI i asystenci wiedzy dla firm" : "Private AI and knowledge assistants for businesses",
   description: locale === "pl" ? "Audyt danych i procesu, PoC asystenta wiedzy, integracje oraz ewaluacje prywatnych rozwiązań AI." : "Data and process audits, knowledge assistant PoCs, integrations and evaluation of private AI solutions.",
-  provider: {"@type": "ProfessionalService", name: `${brand} & Co.`, email, address: {"@type": "PostalAddress", addressLocality: "Kraków", addressCountry: "PL"}},
+  provider: {"@type": "ProfessionalService", name: `${brand} & Co.`, email, sameAs: [facebook], address: {"@type": "PostalAddress", addressLocality: "Kraków", addressCountry: "PL"}},
   areaServed: {"@type": "Country", name: locale === "pl" ? "Polska" : "Poland"},
   serviceType: locale === "pl" ? "Wdrożenia prywatnego AI" : "Private AI implementation",
   availableChannel: {"@type": "ServiceChannel", serviceUrl: `${SITE}${locale === "pl" ? "/prywatne-ai/" : "/en/private-ai/"}`},

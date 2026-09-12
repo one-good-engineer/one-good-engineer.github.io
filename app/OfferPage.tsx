@@ -1,4 +1,4 @@
-import {email, signature, legalCompany, legalNip, legalRegon, TopBar, Footer, type Locale} from "./SiteChrome";
+import {email, facebook, signature, legalCompany, legalNip, legalRegon, TopBar, Footer, type Locale} from "./SiteChrome";
 import BriefForm from "./lead/BriefForm";
 import {planHref} from "./lead/brief-payload.ts";
 import {SITE} from "./site";
@@ -137,7 +137,7 @@ export default function OfferPage({locale}: {locale: Locale}) {
     "@context": "https://schema.org",
     "@type": "Service",
     name: isPl ? "Strony internetowe i sklepy online dla firm" : "Web design and online shops for businesses",
-    provider: {"@type": "ProfessionalService", name: "One Good Engineer & Co.", legalName: legalCompany, url: `${SITE}/`, email, taxID: legalNip, identifier: legalRegon, address: {"@type": "PostalAddress", addressLocality: "Kraków", addressCountry: "PL"}},
+    provider: {"@type": "ProfessionalService", name: "One Good Engineer & Co.", legalName: legalCompany, url: `${SITE}/`, email, taxID: legalNip, identifier: legalRegon, sameAs: [facebook], address: {"@type": "PostalAddress", addressLocality: "Kraków", addressCountry: "PL"}},
     areaServed: "Poland",
     url: pageUrl,
     offers: [...c.plans, ...c.care].map((plan) => ({"@type": "Offer", name: plan.name, price: priceOf(plan.price), priceCurrency: "PLN", description: plan.lead})),

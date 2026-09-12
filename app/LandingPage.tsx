@@ -1,4 +1,4 @@
-import { email, signature, brand, TopBar, Footer, type Locale } from "./SiteChrome";
+import { email, facebook, signature, brand, TopBar, Footer, type Locale } from "./SiteChrome";
 import { SITE } from "./site";
 
 const copy = {
@@ -369,7 +369,7 @@ export default function LandingPage({ locale }: { locale: Locale }) {
       "LLM Evaluation",
       "AI Cost Optimization",
     ],
-    sameAs: ["https://github.com/krystiangw"],
+    sameAs: ["https://github.com/krystiangw", facebook],
   };
 
   return (

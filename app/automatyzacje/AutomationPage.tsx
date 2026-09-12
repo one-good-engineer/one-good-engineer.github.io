@@ -1,5 +1,5 @@
 import Link from "next/link";
-import {brand, email, Footer, TopBar} from "../SiteChrome";
+import {brand, email, facebook, Footer, TopBar} from "../SiteChrome";
 import {SITE} from "../site";
 import LeadForm from "./LeadForm";
 
@@ -24,7 +24,7 @@ const serviceSchema = {
   "@context": "https://schema.org", "@type": "Service",
   name: "Audyt procesów, automatyzacje i integracje dla firm",
   description: "Audyt i plan usprawnień, wdrożenia integracji oraz przeglądy istniejących automatyzacji. Sprzedaż, realizacja usług, dokumenty i raportowanie.",
-  provider: {"@type": "ProfessionalService", name: brand + " & Co.", email, address: {"@type": "PostalAddress", addressLocality: "Kraków", addressCountry: "PL"}},
+  provider: {"@type": "ProfessionalService", name: brand + " & Co.", email, sameAs: [facebook], address: {"@type": "PostalAddress", addressLocality: "Kraków", addressCountry: "PL"}},
   areaServed: {"@type": "Country", name: "Polska"},
   hasOfferCatalog: {"@type": "OfferCatalog", name: "Usługi procesowe i inżynierskie", itemListElement: services.map(s => ({"@type": "Offer", itemOffered: {"@type": "Service", name: s.title, description: s.body}}))},
   availableChannel: {"@type": "ServiceChannel", serviceUrl: `${SITE}/automatyzacje/`},
