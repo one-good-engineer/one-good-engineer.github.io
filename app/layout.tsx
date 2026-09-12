@@ -16,11 +16,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE),
   title: {
-    default: "One Good Engineer · Software delivery without a software house",
+    default: "One Good Engineer · Oprogramowanie bez software house'u",
     template: "%s · One Good Engineer",
   },
   description:
-    "Krystian Gwizdała: one senior engineer running a crew of AI agents delivers your project end to end, with review on every change and a runbook you own.",
+    "Jeden inżynier prowadzący załogę agentów AI dowozi projekt od architektury po produkcję, z review każdej zmiany i runbookiem, który należy do Ciebie.",
   keywords: [
     "software development without agency",
     "AI agent software delivery",
@@ -44,25 +44,25 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: "One Good Engineer & Co.",
-    title: "One Good Engineer · Software delivery without a software house",
+    title: "One Good Engineer · Oprogramowanie bez software house'u",
     description:
-      "One engineer running a crew of AI agents, with senior review on every change. Vibe coding gets you a prototype. This gets you something you can run.",
-    locale: "en_US",
-    alternateLocale: "pl_PL",
+      "Nie potrzebujesz software house'u. Potrzebujesz jednego inżyniera, który prowadzi załogę agentów.",
+    locale: "pl_PL",
+    alternateLocale: "en_US",
     images: [
       {
         url: "/og.png",
         width: 1200,
         height: 630,
-        alt: "One Good Engineer & Co. · one engineer, a crew of agents",
+        alt: "One Good Engineer & Co. · jeden inżynier, załoga agentów",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "One Good Engineer · Software delivery without a software house",
+    title: "One Good Engineer · Oprogramowanie bez software house'u",
     description:
-      "One engineer running a crew of AI agents, with senior review on every change. Vibe coding gets you a prototype. This gets you something you can run.",
+      "Nie potrzebujesz software house'u. Potrzebujesz jednego inżyniera, który prowadzi załogę agentów.",
     images: ["/og.png"],
   },
 };
@@ -73,7 +73,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="pl">
       <body
         className={`${geistSans.variable} ${geistMono.variable}`}
       >

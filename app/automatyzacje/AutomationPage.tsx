@@ -1,5 +1,6 @@
-import {brand, email, Footer, TopBar} from "../../SiteChrome";
-import {SITE} from "../../site";
+import Link from "next/link";
+import {brand, email, Footer, TopBar} from "../SiteChrome";
+import {SITE} from "../site";
 import LeadForm from "./LeadForm";
 
 const areas = [
@@ -26,7 +27,7 @@ const serviceSchema = {
   provider: {"@type": "ProfessionalService", name: brand + " & Co.", email, address: {"@type": "PostalAddress", addressLocality: "Kraków", addressCountry: "PL"}},
   areaServed: {"@type": "Country", name: "Polska"},
   hasOfferCatalog: {"@type": "OfferCatalog", name: "Usługi procesowe i inżynierskie", itemListElement: services.map(s => ({"@type": "Offer", itemOffered: {"@type": "Service", name: s.title, description: s.body}}))},
-  availableChannel: {"@type": "ServiceChannel", serviceUrl: `${SITE}/pl/automatyzacje/`},
+  availableChannel: {"@type": "ServiceChannel", serviceUrl: `${SITE}/automatyzacje/`},
 };
 
 export default function AutomationPage() {
@@ -35,8 +36,8 @@ export default function AutomationPage() {
       <div className="noise" aria-hidden="true" />
       <TopBar
         locale="pl"
-        nav={[["Obszary", "#obszary"], ["Usługi", "#uslugi"], ["Demo", "#demo"], ["Strony i sklepy", "/pl/strony/"]]}
-        langHref="/pl/"
+        nav={[["Obszary", "#obszary"], ["Usługi", "#uslugi"], ["Demo", "#demo"], ["Strony i sklepy", "/strony/"]]}
+        langHref="/"
         langLabel="Studio"
         langOf="pl"
       />
@@ -72,7 +73,7 @@ export default function AutomationPage() {
         <section className="automation-services section-pad" id="uslugi">
           <div className="section-head"><div><p className="kicker">Trzy sposoby współpracy</p><h2>Zacznij od miejsca, w którym jesteś.</h2></div><p>Nie musisz zamawiać wdrożenia, żeby dostać konkretną analizę. Każdą usługę wyceniam po ustaleniu zakresu.</p></div>
           <div className="service-grid">{services.map(s => <article id={s.id} key={s.id}><p className="service-situation">{s.n} / {s.situation}</p><h3>{s.title}</h3><p>{s.body}</p><ul>{s.outputs.map(item => <li key={item}>{item}</li>)}</ul><p className="service-note">{s.note}</p><a href="#konsultacja">{s.cta}<span aria-hidden="true"> ↗</span></a></article>)}</div>
-          <div className="care-note"><h3>Po wdrożeniu: opieka i rozwój</h3><p>Monitoring, poprawki i zmiany zgłaszane mailem, jedno zgłoszenie naraz, z ustalonym czasem reakcji. Wszystko większe niż drobna zmiana dostaje stałą cenę przed startem, nie fakturę po. Koszty narzędzi rozliczamy osobno; opieka jest opcjonalna, tak samo jak przy <a href="/pl/strony/#care">stronach i sklepach</a>.</p></div>
+          <div className="care-note"><h3>Po wdrożeniu: opieka i rozwój</h3><p>Monitoring, poprawki i zmiany zgłaszane mailem, jedno zgłoszenie naraz, z ustalonym czasem reakcji. Wszystko większe niż drobna zmiana dostaje stałą cenę przed startem, nie fakturę po. Koszty narzędzi rozliczamy osobno; opieka jest opcjonalna, tak samo jak przy <a href="/strony/#care">stronach i sklepach</a>.</p></div>
         </section>
         <section className="automation-demo section-pad" id="demo">
           <div className="demo-copy"><p className="kicker">Zobacz działający przykład</p><h2>Formularz wysłany. I co dalej?</h2><p>Zapytanie trafia do tabeli, klient otrzymuje potwierdzenie, a zespół osobną wiadomość. Zobacz krótki zapis działania lokalnego n8n.</p><p className="demo-disclosure">Demonstracja na fikcyjnych danych, nie wdrożenie klienta. Tabela n8n i poczta testowa Mailpit. Bez klasyfikacji AI, pełnego CRM i follow-upów.</p><div className="demo-downloads"><a href="/materialy/formularz-baza-email.json" download>Pobierz proces n8n ↓</a><a href="/materialy/formularz-instrukcja.txt" download>Instrukcja i ograniczenia ↓</a></div></div>
@@ -84,7 +85,7 @@ export default function AutomationPage() {
         </section>
         <section className="automation-trust section-pad">
           <div className="trust-facts"><div><strong>10+</strong><span>lat tworzenia oprogramowania produkcyjnego</span></div><div><strong>API</strong><span>integracje i własny kod, gdy gotowe funkcje nie wystarczą</span></div><div><strong>Testy</strong><span>sprawdzenie błędów, powtórzeń i sposobu odzyskania działania</span></div></div>
-          <div className="trust-copy"><p className="kicker">Doświadczenie inżynierskie</p><h2>Za analizą stoi umiejętność wdrożenia.</h2><p>Jestem Krystian. Od ponad dziesięciu lat buduję produkty webowe, od interfejsu po backend i produkcję. Łączę analizę procesu z integracjami, testami i utrzymaniem. Publiczne produkty pokazują mój warsztat techniczny; nie przedstawiam ich jako wyników automatyzacji u klientów.</p><p>Przekazuję uzgodniony kod, konfigurację i dokumentację. Zależności od dostawców oraz możliwości przeniesienia rozwiązania omawiam przed wdrożeniem.</p><a href="/pl/#work">Zobacz produkty i doświadczenie<span>↗</span></a></div>
+          <div className="trust-copy"><p className="kicker">Doświadczenie inżynierskie</p><h2>Za analizą stoi umiejętność wdrożenia.</h2><p>Jestem Krystian. Od ponad dziesięciu lat buduję produkty webowe, od interfejsu po backend i produkcję. Łączę analizę procesu z integracjami, testami i utrzymaniem. Publiczne produkty pokazują mój warsztat techniczny; nie przedstawiam ich jako wyników automatyzacji u klientów.</p><p>Przekazuję uzgodniony kod, konfigurację i dokumentację. Zależności od dostawców oraz możliwości przeniesienia rozwiązania omawiam przed wdrożeniem.</p><Link href="/#work">Zobacz produkty i doświadczenie<span>↗</span></Link></div>
         </section>
         <section className="automation-consultation section-pad" id="konsultacja">
           <div className="consultation-copy"><p className="kicker">Zacznijmy od rozmowy</p><h2>Co dziś niepotrzebnie zajmuje czas Twojego zespołu?</h2><p>Opisz sytuację, nawet jeśli nie wiesz jeszcze, czego potrzebujesz. Możemy porozmawiać o audycie, konkretnym wdrożeniu lub przeglądzie istniejącej automatyzacji.</p><ul><li><span>✓</span>Pierwsza rozmowa: 20 minut bez opłat</li><li><span>✓</span>Kontakt bezpośrednio ze mną</li><li><span>✓</span>Szczegółowa analiza jako osobna, płatna usługa</li></ul><p className="contact-boundary">Nie przesyłaj haseł, kluczy API ani danych klientów. Na początek wystarczy opis procesu.</p></div>

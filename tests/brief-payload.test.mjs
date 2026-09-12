@@ -4,7 +4,7 @@ import {buildBriefPayload, briefFields, planFromHash, planHref} from "../app/lea
 import {sourceOf} from "../app/lead/formspree.ts";
 
 const values = {name: " Anna ", company: "Sklep z kawą, sprzedaje na Allegro", contact: " anna@example.com ", package: "Sklep internetowy", _gotcha: ""};
-const source = "https://onegoodengineer.pl/pl/strony/";
+const source = "https://onegoodengineer.pl/strony/";
 
 test("brief payload carries every brief field, trimmed, with a Reply-To when the contact is an email", () => {
   const payload = buildBriefPayload(values, source, "pl");
@@ -24,7 +24,7 @@ test("injected fields are dropped and the honeypot is kept", () => {
 });
 
 test("source keeps campaign parameters and drops everything else", () => {
-  assert.equal(sourceOf("https://x.pl/pl/strony/?utm_source=fb&fbclid=123#brief"), "https://x.pl/pl/strony/?utm_source=fb");
+  assert.equal(sourceOf("https://x.pl/strony/?utm_source=fb&fbclid=123#brief"), "https://x.pl/strony/?utm_source=fb");
 });
 
 test("the plan travels from the CTA hash into the form and back", () => {

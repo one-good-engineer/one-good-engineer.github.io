@@ -7,17 +7,17 @@ import { SITE } from "../app/site.ts";
 const readPages = () =>
   Promise.all([
     readFile(new URL("index.html", root), "utf8"),
-    readFile(new URL("pl/index.html", root), "utf8"),
+    readFile(new URL("en/index.html", root), "utf8"),
   ]);
-const readAutomation = () => readFile(new URL("pl/automatyzacje/index.html", root), "utf8");
+const readAutomation = () => readFile(new URL("automatyzacje/index.html", root), "utf8");
 const readOfferPages = () =>
   Promise.all([
-    readFile(new URL("websites/index.html", root), "utf8"),
-    readFile(new URL("pl/strony/index.html", root), "utf8"),
+    readFile(new URL("en/websites/index.html", root), "utf8"),
+    readFile(new URL("strony/index.html", root), "utf8"),
   ]);
 
-test("exports the English and Polish pages for GitHub Pages", async () => {
-  const [english, polish] = await readPages();
+test("exports the Polish and English pages for GitHub Pages", async () => {
+  const [polish, english] = await readPages();
 
   assert.match(english, /You don't need a software house/);
   assert.match(english, /Krystian Gwizdała/);
@@ -29,11 +29,11 @@ test("exports the English and Polish pages for GitHub Pages", async () => {
 
 test("exports the Polish automation offer with a diagnostic form", async () => {
   const [polish, automation] = await Promise.all([
-    readFile(new URL("pl/index.html", root), "utf8"),
+    readFile(new URL("index.html", root), "utf8"),
     readAutomation(),
   ]);
 
-  assert.match(polish, /href="\/pl\/automatyzacje\/"/);
+  assert.match(polish, /href="\/automatyzacje\/"/);
   assert.match(automation, /Porządkuję procesy i automatyzuję pracę między systemami/);
   assert.match(automation, /name="companyIndustry"/);
   assert.match(automation, /name="contact"/);
@@ -72,7 +72,7 @@ test("contact form submits to Formspree without opening an email client", async 
 });
 
 test("carries the One Good Engineer brand and no trace of the old one", async () => {
-  const [english, polish] = await readPages();
+  const [polish, english] = await readPages();
 
   for (const page of [english, polish]) {
     assert.match(page, /One Good Engineer/);
@@ -81,17 +81,17 @@ test("carries the One Good Engineer brand and no trace of the old one", async ()
 });
 
 test("points every canonical, sitemap and robots entry at the live host", async () => {
-  const [english, polish, automation] = await Promise.all([...await readPages(), readAutomation()]);
+  const [polish, english, automation] = await Promise.all([...await readPages(), readAutomation()]);
   const [robots, sitemap] = await Promise.all([
     readFile(new URL("robots.txt", root), "utf8"),
     readFile(new URL("sitemap.xml", root), "utf8"),
   ]);
 
-  assert.match(english, new RegExp(`rel="canonical" href="${SITE}"`));
-  assert.match(polish, new RegExp(`rel="canonical" href="${SITE}/pl/"`));
-  assert.match(automation, new RegExp(`rel="canonical" href="${SITE}/pl/automatyzacje/"`));
+  assert.match(polish, new RegExp(`rel="canonical" href="${SITE}"`));
+  assert.match(english, new RegExp(`rel="canonical" href="${SITE}/en/"`));
+  assert.match(automation, new RegExp(`rel="canonical" href="${SITE}/automatyzacje/"`));
   assert.match(robots, new RegExp(`Sitemap: ${SITE}/sitemap\\.xml`));
-  assert.match(sitemap, new RegExp(`${SITE}/pl/automatyzacje/`));
+  assert.match(sitemap, new RegExp(`${SITE}/automatyzacje/`));
   assert.doesNotMatch(sitemap, /aptlayer/i);
 });
 
@@ -106,7 +106,7 @@ test("exports a browser-readable XML sitemap with every public page exactly once
     assert.ok(Date.parse(lastmod[1]) <= Date.now(), `lastmod ${lastmod[1]} is in the future`);
   }
   const locations = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
-  assert.deepEqual(locations, [`${SITE}/`, `${SITE}/pl/`, `${SITE}/pl/automatyzacje/`, `${SITE}/websites/`, `${SITE}/pl/strony/`]);
+  assert.deepEqual(locations, [`${SITE}/`, `${SITE}/en/`, `${SITE}/en/websites/`, `${SITE}/strony/`, `${SITE}/automatyzacje/`]);
   for (const location of locations) {
     await access(new URL(`${new URL(location).pathname.slice(1)}index.html`, root));
   }
@@ -115,11 +115,9 @@ test("exports a browser-readable XML sitemap with every public page exactly once
 test("retains language alternates in each page head without relying on the sitemap", async () => {
   const pages = [...await readPages(), await readAutomation(), ...await readOfferPages()];
   const alternatives = [
-    { en: SITE, pl: `${SITE}/pl/`, "x-default": SITE },
-    { en: SITE, pl: `${SITE}/pl/`, "x-default": SITE },
-    { pl: `${SITE}/pl/automatyzacje/`, "x-default": `${SITE}/pl/automatyzacje/` },
-    { en: `${SITE}/websites/`, pl: `${SITE}/pl/strony/`, "x-default": `${SITE}/websites/` },
-    { en: `${SITE}/websites/`, pl: `${SITE}/pl/strony/`, "x-default": `${SITE}/websites/` },
+    { en: `${SITE}/en/`, pl: SITE, "x-default": SITE },
+    { en: `${SITE}/en/`, pl: SITE, "x-default": SITE },
+    { pl: `${SITE}/automatyzacje/`, "x-default": `${SITE}/automatyzacje/` },
   ];
   for (const [index, page] of pages.entries()) {
     const head = page.slice(0, page.indexOf("</head>"));
@@ -130,7 +128,7 @@ test("retains language alternates in each page head without relying on the sitem
 });
 
 test("shows every case study as a real screenshot, not a decoration", async () => {
-  const [english, polish] = await readPages();
+  const [polish, english] = await readPages();
   const shots = ["agent-rynku", "let-agents-in", "meet-live-assist", "muster"];
 
   for (const shot of shots) {
@@ -141,7 +139,7 @@ test("shows every case study as a real screenshot, not a decoration", async () =
 });
 
 test("describes the delivery loop with the human review step intact", async () => {
-  const [english, polish] = await readPages();
+  const [polish, english] = await readPages();
 
   assert.match(english, /how a change reaches production/);
   assert.match(english, /I read it, and I sign it/);
@@ -163,16 +161,16 @@ test("keeps the copy free of em dashes and en dashes", async () => {
 
 test("exports the offer page in both languages as directory indexes with cross links", async () => {
   const [english, polish] = await readOfferPages();
-  const [home, homePl] = await readPages();
+  const [homePl, home] = await readPages();
 
   assert.match(english, /A website that earns its keep/);
-  assert.match(english, new RegExp(`rel="canonical" href="${SITE}/websites/"`));
-  assert.match(english, /hreflang="pl" href="[^"]*\/pl\/strony\/"/i);
+  assert.match(english, new RegExp(`rel="canonical" href="${SITE}/en/websites/"`));
+  assert.match(english, /hreflang="pl" href="[^"]*\/strony\/"/i);
   assert.match(polish, /Strona, która pomaga sprzedawać/);
-  assert.match(polish, new RegExp(`rel="canonical" href="${SITE}/pl/strony/"`));
-  assert.match(polish, /hreflang="en" href="[^"]*\/websites\/"/i);
-  assert.match(home, /href="\/websites\/"/);
-  assert.match(homePl, /href="\/pl\/strony\/"/);
+  assert.match(polish, new RegExp(`rel="canonical" href="${SITE}/strony/"`));
+  assert.match(polish, /hreflang="en" href="[^"]*\/en\/websites\/"/i);
+  assert.match(home, /href="\/en\/websites\/"/);
+  assert.match(homePl, /href="\/strony\/"/);
 });
 
 test("presents the full-service offer and SEO language in both locales", async () => {
@@ -238,16 +236,16 @@ test("links the two Polish offers to each other and both to the shared chrome", 
   const [, polish] = await readOfferPages();
   const automation = await readAutomation();
 
-  assert.match(polish, /href="\/pl\/automatyzacje\/"/);
-  assert.match(automation, /href="\/pl\/strony\/"/);
-  assert.match(automation, /href="\/pl\/strony\/#care"/);
+  assert.match(polish, /href="\/automatyzacje\/"/);
+  assert.match(automation, /href="\/strony\/"/);
+  assert.match(automation, /href="\/strony\/#care"/);
   for (const page of [polish, automation]) {
     assert.equal((page.match(/class="mark" aria-hidden="true"/g) || []).length, 2, "one mark in the header, one in the footer");
   }
 });
 
 test("ships machine-readable discovery and social assets", async () => {
-  const [llms, english] = await Promise.all([
+  const [llms, polish] = await Promise.all([
     readFile(new URL("llms.txt", root), "utf8"),
     readFile(new URL("index.html", root), "utf8"),
   ]);
@@ -256,14 +254,31 @@ test("ships machine-readable discovery and social assets", async () => {
   for (const product of ["Agent Rynku", "Let Agents In", "Meet Live Assist", "Muster"]) {
     assert.match(llms, new RegExp(product));
   }
-  assert.match(english, /og:image:width" content="1200"/);
-  assert.match(english, /og:image:height" content="630"/);
+  assert.match(polish, /og:image:width" content="1200"/);
+  assert.match(polish, /og:image:height" content="630"/);
   await access(new URL("og.png", root));
   await access(new URL("favicon.svg", root));
   await access(new URL(".nojekyll", root));
 });
 
+test("exports old paths as noindex redirects and excludes them from the sitemap", async () => {
+  const redirects = {
+    "pl/index.html": `${SITE}/`,
+    "pl/strony/index.html": `${SITE}/strony/`,
+    "pl/automatyzacje/index.html": `${SITE}/automatyzacje/`,
+    "websites/index.html": `${SITE}/en/websites/`,
+  };
+  const sitemap = await readFile(new URL("sitemap.xml", root), "utf8");
+
+  for (const [path, url] of Object.entries(redirects)) {
+    const page = await readFile(new URL(path, root), "utf8");
+    assert.match(page, new RegExp(`<meta http-equiv="refresh" content="0; url=${url}">`));
+    assert.match(page, /<meta name="robots" content="noindex">/);
+    assert.doesNotMatch(sitemap, new RegExp(`<loc>${SITE}/${path.replace("index.html", "")}</loc>`));
+  }
+});
+
 test("does not retain starter preview metadata or content", async () => {
-  const english = await readFile(new URL("index.html", root), "utf8");
-  assert.doesNotMatch(english, /codex-preview|Your site is taking shape|SkeletonPreview/i);
+  const polish = await readFile(new URL("index.html", root), "utf8");
+  assert.doesNotMatch(polish, /codex-preview|Your site is taking shape|SkeletonPreview/i);
 });

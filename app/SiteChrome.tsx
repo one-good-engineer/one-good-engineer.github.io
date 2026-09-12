@@ -1,6 +1,6 @@
 export type Locale = "en" | "pl";
 
-export const email = "gwizdala.kr@gmail.com";
+export const email = "kontakt@onegoodengineer.pl";
 export const signature = "Krystian Gwizdała";
 export const brand = "One Good Engineer";
 export const legalCompany = "Krystian Gwizdała Appfront";
@@ -39,7 +39,7 @@ export function TopBar({
   const targetLang = langOf ?? (isPl ? "en" : "pl");
   return (
     <header className="topbar">
-      <a className="brand" href={isPl ? "/pl/" : "/"} aria-label={`${brand} home`}>
+      <a className="brand" href={isPl ? "/" : "/en/"} aria-label={`${brand} home`}>
         <Mark />
         <span className="brand-name">{brand}<i>&amp; Co.</i></span>
       </a>
@@ -59,7 +59,7 @@ export function TopBar({
 export function Footer({ locale, line }: { locale: Locale; line: string }) {
   return (
     <footer className="footer section-pad">
-      <a className="brand" href={locale === "pl" ? "/pl/" : "/"}><Mark /><span className="brand-name">{brand}<i>&amp; Co.</i></span></a>
+      <a className="brand" href={locale === "pl" ? "/" : "/en/"}><Mark /><span className="brand-name">{brand}<i>&amp; Co.</i></span></a>
       <p>{line}</p>
       <p className="footer-legal">{legalCompany}<br />{legalAddress}<br />NIP {legalNip} · REGON {legalRegon}</p>
       <p>© {new Date().getFullYear()} {brand} &amp; Co.</p>
