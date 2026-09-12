@@ -1,4 +1,5 @@
-import {Mark, brand, email} from "../../LandingPage";
+import {brand, email, Footer, TopBar} from "../../SiteChrome";
+import {SITE} from "../../site";
 import LeadForm from "./LeadForm";
 
 const areas = [
@@ -25,18 +26,20 @@ const serviceSchema = {
   provider: {"@type": "ProfessionalService", name: brand + " & Co.", email, address: {"@type": "PostalAddress", addressLocality: "Kraków", addressCountry: "PL"}},
   areaServed: {"@type": "Country", name: "Polska"},
   hasOfferCatalog: {"@type": "OfferCatalog", name: "Usługi procesowe i inżynierskie", itemListElement: services.map(s => ({"@type": "Offer", itemOffered: {"@type": "Service", name: s.title, description: s.body}}))},
-  availableChannel: {"@type": "ServiceChannel", serviceUrl: "https://one-good-engineer.github.io/pl/automatyzacje/"},
+  availableChannel: {"@type": "ServiceChannel", serviceUrl: `${SITE}/pl/automatyzacje/`},
 };
 
 export default function AutomationPage() {
   return (
     <div className="site-shell automation-shell" lang="pl">
       <div className="noise" aria-hidden="true" />
-      <header className="topbar automation-topbar">
-        <a className="brand" href="/pl/" aria-label="One Good Engineer, strona główna"><Mark /><span className="brand-name">{brand}<i>&amp; Co.</i></span></a>
-        <nav className="nav" aria-label="Nawigacja po ofercie automatyzacji"><a href="#obszary">Obszary</a><a href="#uslugi">Usługi</a><a href="#demo">Demo</a></nav>
-        <div className="top-actions"><a className="private-ai-link" href="/pl/prywatne-ai/">Prywatne AI</a><a className="language" href="/pl/">Inżynieria produktów</a><a className="contact-pill" href="#konsultacja">Porozmawiajmy</a></div>
-      </header>
+      <TopBar
+        locale="pl"
+        nav={[["Obszary", "#obszary"], ["Usługi", "#uslugi"], ["Demo", "#demo"], ["Strony i sklepy", "/pl/strony/"]]}
+        langHref="/pl/"
+        langLabel="Studio"
+        langOf="pl"
+      />
       <main>
         <section className="automation-hero section-pad">
           <div className="automation-hero-copy">
@@ -69,7 +72,7 @@ export default function AutomationPage() {
         <section className="automation-services section-pad" id="uslugi">
           <div className="section-head"><div><p className="kicker">Trzy sposoby współpracy</p><h2>Zacznij od miejsca, w którym jesteś.</h2></div><p>Nie musisz zamawiać wdrożenia, żeby dostać konkretną analizę. Każdą usługę wyceniam po ustaleniu zakresu.</p></div>
           <div className="service-grid">{services.map(s => <article id={s.id} key={s.id}><p className="service-situation">{s.n} / {s.situation}</p><h3>{s.title}</h3><p>{s.body}</p><ul>{s.outputs.map(item => <li key={item}>{item}</li>)}</ul><p className="service-note">{s.note}</p><a href="#konsultacja">{s.cta}<span aria-hidden="true"> ↗</span></a></article>)}</div>
-          <div className="care-note"><h3>Po wdrożeniu: opieka i rozwój</h3><p>Monitoring, poprawki i uzgodnione zmiany. Z góry ustalamy godziny obsługi, czas reakcji i limit pracy. Koszty narzędzi rozliczamy osobno; opieka jest opcjonalna.</p></div>
+          <div className="care-note"><h3>Po wdrożeniu: opieka i rozwój</h3><p>Monitoring, poprawki i zmiany zgłaszane mailem, jedno zgłoszenie naraz, z ustalonym czasem reakcji. Wszystko większe niż drobna zmiana dostaje stałą cenę przed startem, nie fakturę po. Koszty narzędzi rozliczamy osobno; opieka jest opcjonalna, tak samo jak przy <a href="/pl/strony/#care">stronach i sklepach</a>.</p></div>
         </section>
         <section className="automation-demo section-pad" id="demo">
           <div className="demo-copy"><p className="kicker">Zobacz działający przykład</p><h2>Formularz wysłany. I co dalej?</h2><p>Zapytanie trafia do tabeli, klient otrzymuje potwierdzenie, a zespół osobną wiadomość. Zobacz krótki zapis działania lokalnego n8n.</p><p className="demo-disclosure">Demonstracja na fikcyjnych danych, nie wdrożenie klienta. Tabela n8n i poczta testowa Mailpit. Bez klasyfikacji AI, pełnego CRM i follow-upów.</p><div className="demo-downloads"><a href="/materialy/formularz-baza-email.json" download>Pobierz proces n8n ↓</a><a href="/materialy/formularz-instrukcja.txt" download>Instrukcja i ograniczenia ↓</a></div></div>
@@ -88,7 +91,7 @@ export default function AutomationPage() {
           <LeadForm />
         </section>
       </main>
-      <footer className="footer section-pad"><a className="brand" href="/pl/"><Mark /><span className="brand-name">{brand}<i>&amp; Co.</i></span></a><p>Audyt · integracje · automatyzacje · Kraków i cała Polska</p><p>© {new Date().getFullYear()} {brand} &amp; Co.</p></footer>
+      <Footer locale="pl" line="Audyt · integracje · automatyzacje · Kraków i cała Polska" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(serviceSchema)}} />
     </div>
   );

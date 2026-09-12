@@ -1,17 +1,19 @@
 # One Good Engineer & Co.
 
+Business details: Krystian Gwizdała Appfront, Kraków, Poland, NIP 8151745185, REGON 363740603.
+
 > A software delivery studio of one. Krystian Gwizdała, a senior engineer in Kraków, Poland, runs a crew of AI agents to deliver whole projects in place of a software house: architecture, implementation, tests, deployment and handover. The agents do the volume, a human reads every change before it ships. Suited to clients who want one accountable senior engineer rather than a delivery team, and not suited to clients who need a large staffed team on site.
 
-Languages: English at the root, Polish at [/pl/](https://one-good-engineer.github.io/pl/).
+Languages: English at the root, Polish at [/pl/](https://onegoodengineer.pl/pl/).
 Contact: gwizdala.kr@gmail.com
 
 ## Audyt procesów, automatyzacje i integracje dla firm w Polsce
 
-[Polska oferta automatyzacji i integracji](https://one-good-engineer.github.io/pl/automatyzacje/) obejmuje sprzedaż i obsługę klienta, realizację usług i zleceń, dokumenty i administrację oraz raportowanie i przepływ danych między systemami. Jest skierowana do firm usługowych i B2B, z Krakowa i całej Polski.
+[Polska oferta automatyzacji i integracji](https://onegoodengineer.pl/pl/automatyzacje/) obejmuje sprzedaż i obsługę klienta, realizację usług i zleceń, dokumenty i administrację oraz raportowanie i przepływ danych między systemami. Jest skierowana do firm usługowych i B2B, z Krakowa i całej Polski.
 
 Trzy samodzielne usługi: płatny audyt i plan usprawnień jednego obszaru, wdrożenie pilotażowe i integracje oraz przegląd istniejącej automatyzacji z planem napraw. Opcjonalna opieka ma uzgodnione godziny, czas reakcji i limit pracy. Pierwsza rozmowa kwalifikująca trwa 20 minut i jest bezpłatna. Szczegółowa analiza jest osobną usługą. Rekomendacja może polegać na użyciu istniejącej funkcji lub rezygnacji z automatyzacji.
 
-Na stronie jest krótka, bezdźwięczna demonstracja lokalnego n8n: formularz, tabela i dwa maile przechwycone przez Mailpit. To fikcyjne dane i przykład edukacyjny, nie studium wdrożenia klienta. Nie obejmuje klasyfikacji AI, pełnego CRM ani follow-upów. Proces i instrukcja są dostępne do pobrania. Bez skonfigurowanego endpointu formularz kontaktowy tylko przygotowuje wiadomość e-mail; użytkownik musi ją wysłać we własnej poczcie.
+Na stronie jest krótka, bezdźwięczna demonstracja lokalnego n8n: formularz, tabela i dwa maile przechwycone przez Mailpit. To fikcyjne dane i przykład edukacyjny, nie studium wdrożenia klienta. Nie obejmuje klasyfikacji AI, pełnego CRM ani follow-upów. Proces i instrukcja są dostępne do pobrania. Formularz kontaktowy korzysta z publicznego endpointu Formspree i nie wymaga otwierania programu pocztowego.
 
 ## Prywatne AI i asystenci wiedzy dla firm
 
@@ -58,3 +60,15 @@ Agent-Ready Product Sprint takes an existing SaaS or API to the state where an a
 ## Engagement model
 
 Work usually starts with a focused audit or a sprint, continues into a production implementation and can extend into measurement and optimization. Quality, latency, cost and failure recovery are measured from the first day, and cost is tracked per finished task rather than per token.
+
+## Websites and online shops for businesses in Poland
+
+A full-service, fixed-price offer is described at [/websites/](https://onegoodengineer.pl/websites/) (English) and [/pl/strony/](https://onegoodengineer.pl/pl/strony/) (Polish). The service can cover positioning, page structure, copy, design, implementation, SEO, analytics, hosting, domain setup and launch. The client leaves four fields on the page (name, contact, company, package), answers a ten-question brief that comes back automatically by email, receives three working versions within 24 hours of those answers, picks one, gets one revision round, and a company website is live on the client's own domain within 48 hours of the chosen version and complete materials (seven working days for an online shop). Prices are net, in PLN:
+
+- Business card, one static page with five to seven sections: 990 PLN one-off
+- Company website, up to six pages: from 2 990 PLN one-off
+- Online shop, up to 200 products, payments, InPost or courier delivery, Omnibus price history and WCAG 2.1 AA accessibility from day one: from 7 900 PLN one-off, usually live within seven working days of complete materials
+- Compliance audit of an existing shop (Omnibus, accessibility, speed): 1 490 PLN, credited against the fixes
+- Care plans, monthly, cancellable with one month's notice, with no hour limit: small changes are unlimited, one request at a time, live the same working day. Care 290 PLN (small changes, monitoring, backups, updates), Growth 590 PLN (adds one new page or article a month, technical SEO, a monthly report), Shop 990 PLN (adds unlimited products and promotions, a monthly Omnibus and accessibility check, integrations watched, four-hour outage response). A small change is one that fits in a working day on an existing page; anything bigger is quoted as a fixed price before it starts.
+
+The domain is registered to the client from day one, the code lives in a repository the client owns, and leaving the care plan switches nothing off. The offer is for Poland; it does not include mobile apps.

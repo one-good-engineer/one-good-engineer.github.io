@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { SITE } from "./site";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://one-good-engineer.github.io"),
+  metadataBase: new URL(SITE),
   title: {
     default: "One Good Engineer · Software delivery without a software house",
     template: "%s · One Good Engineer",
@@ -35,7 +36,10 @@ export const metadata: Metadata = {
     shortcut: "/favicon.svg",
   },
   verification: {
+    // one token per Search Console property: the github.io one and onegoodengineer.pl.
+    // An array under `google` renders as one comma-joined tag, which Google does not read.
     google: "AivhVutlgdzwPhOT26aWe5RxRWJp5YqixFXJ6ie48nM",
+    other: { "google-site-verification": "3ffKuF1iQL0fJGMbwIWWx_oBMDj2S1Jz5EjQfP-iy80" },
   },
   openGraph: {
     type: "website",

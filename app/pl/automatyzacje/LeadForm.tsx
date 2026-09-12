@@ -1,7 +1,7 @@
 "use client";
 
 import {FormEvent, useRef, useState} from "react";
-import {email} from "../../LandingPage";
+import {email} from "../../SiteChrome";
 import {buildLeadMessage} from "./lead-message";
 import {buildLeadPayload, LEAD_ENDPOINT, submitLead} from "./lead-submit";
 

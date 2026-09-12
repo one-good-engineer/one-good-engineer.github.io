@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://one-good-engineer.github.io/sitemap.xml
+Sitemap: https://onegoodengineer.pl/sitemap.xml
